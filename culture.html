@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节气文化 · 二十四节气</title>
+  <meta name="description" content="二十四节气文化溯源，探索节气起源、非遗传承、历法智慧、民俗风情、时令养生、节气诗词、农耕智慧等传统文化内容。">
+  <meta name="keywords" content="二十四节气,节气文化,传统文化,非遗,历法,民俗,养生,诗词,农耕">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== 全局变量 & 重置 ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Noto Serif SC", "STSong", "SimSun", serif;
+      background: #FAFFF5;
+      color: #2C3E2C;
+      line-height: 1.8;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* 整体背景美化：山水纹理叠加层 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path fill="none" stroke="%235B8C5A" stroke-width="0.5" d="M10,60 Q30,40 50,60 T90,60 M5,70 Q25,50 45,70 T85,70 M15,80 Q35,65 55,80 T80,80 M20,40 Q40,20 60,40 T95,40"/><path fill="none" stroke="%2380a080" stroke-width="0.3" d="M0,90 L100,90 M0,92 L100,92"/><circle cx="30" cy="30" r="1.5" fill="%235B8C5A"/><circle cx="70" cy="25" r="1.2" fill="%235B8C5A"/><circle cx="50" cy="45" r="1" fill="%235B8C5A"/></svg>');
+      background-repeat: repeat;
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* 飘落叶子效果 */
+    .leaf {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+    .leaf li {
+      position: absolute;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(91, 140, 90, 0.5);
+      border-radius: 0 50% 50% 50%;
+      opacity: 0.6;
+      animation: leafFall 12s linear infinite;
+    }
+    @keyframes leafFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+    /* 导航栏 */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #D4E8D4;
+      transition: all 0.3s;
+    }
+    .main-nav.scrolled {
+      box-shadow: 0 8px 24px rgba(91, 140, 90, 0.12);
+      background: rgba(255, 255, 255, 0.97);
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #3D6B3D;
+    }
+    .nav-logo-icon { font-size: 1.4rem; }
+    .nav-logo-text { letter-spacing: 1px; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5A6E5A;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(91, 140, 90, 0.15);
+      color: #3D6B3D;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #2C3E2C;
+      border-radius: 2px;
+    }
+    /* ========== 轮播区 ========== */
+    .hero-banner {
+      position: relative;
+      margin-top: 72px;
+      width: 100%;
+      height: 85vh;
+      min-height: 550px;
+      overflow: hidden;
+    }
+    .hero-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.8s;
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      pointer-events: none;
+    }
+    .hero-slide-content {
+      position: absolute;
+      bottom: 15%;
+      left: 8%;
+      z-index: 3;
+      max-width: 600px;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .hero-season-tag {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 3px;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    .hero-btn {
+      background: #5B8C5A;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .hero-btn:hover {
+      background: #3D6B3D;
+      transform: translateY(-2px);
+    }
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.2s;
+    }
+    .hero-arrow-prev { left: 20px; }
+    .hero-arrow-next { right: 20px; }
+    .hero-arrow:hover { background: #5B8C5A; color: #fff; }
+    .hero-dots {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .dot.active {
+      background: #5B8C5A;
+      width: 28px;
+      border-radius: 10px;
+    }
+
+    /* 页面标题区 */
+    .page-header {
+      position: relative;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      background: transparent;
+    }
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+    .page-tag {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      background: rgba(91, 140, 90, 0.15);
+      border-radius: 40px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .page-title {
+      font-size: 2.8rem;
+      color: #3D6B3D;
+      margin-bottom: 0.5rem;
+    }
+    .page-desc {
+      color: #5A6E5A;
+      font-size: 1rem;
+    }
+    .page-divider {
+      width: 60px;
+      height: 3px;
+      background: #5B8C5A;
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    /* 通用容器 */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-number {
+      font-size: 1.2rem;
+      color: #7DB87D;
+      letter-spacing: 2px;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: #3D6B3D;
+      margin: 0.5rem 0;
+    }
+    .section-subtitle {
+      color: #5A6E5A;
+      font-size: 0.95rem;
+    }
+    /* 节气起源区域 */
+    .origin-content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .origin-text {
+      flex: 1.5;
+      min-width: 250px;
+    }
+    .origin-image {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      text-align: center;
+      backdrop-filter: blur(2px);
+    }
+    .origin-image img {
+      width: 100%;
+      border-radius: 16px;
+    }
+    .origin-image .img-caption {
+      font-size: 0.75rem;
+      color: #7A8E7A;
+      margin-top: 0.5rem;
+    }
+    .culture-paragraph {
+      color: #5A6E5A;
+      line-height: 2;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      text-indent: 2em;
+    }
+    /* 媒体展示区 */
+    .media-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 32px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(4px);
+    }
+    .media-left {
+      flex: 1;
+      min-width: 250px;
+    }
+    .media-left h3 {
+      font-size: 1.6rem;
+      color: #3D6B3D;
+      margin-bottom: 1rem;
+    }
+    .media-left p {
+      color: #5A6E5A;
+      margin-bottom: 1rem;
+    }
+    .media-right {
+      flex: 1;
+      min-width: 280px;
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .media-right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* ============================================================
+               增强时间轴 ———— 全新设计
+               ============================================================ */
+    .timeline-enhanced {
+      background: rgba(255, 255, 245, 0.85);
+      border-radius: 32px;
+      padding: 2rem 2rem 2.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(212, 232, 212, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-enhanced::before {
+      content: "⏳ 千年历法 · 时序传承";
+      position: absolute;
+      top: 12px;
+      right: 24px;
+      font-size: 0.7rem;
+      color: #B8D0B8;
+      letter-spacing: 3px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    /* 时间轴轨道 —— 横向滚动容器 */
+    .timeline-track-horizontal {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      gap: 0.6rem;
+      margin-bottom: 2.2rem;
+      position: relative;
+      padding: 0.5rem 0.2rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #C8E6C9 transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+    .timeline-track-horizontal::-webkit-scrollbar {
+      height: 4px;
+    }
+    .timeline-track-horizontal::-webkit-scrollbar-thumb {
+      background: #C8E6C9;
+      border-radius: 4px;
+    }
+    .timeline-track-horizontal::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* 连接线（伪元素） */
+    .timeline-track-horizontal::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 6%;
+      right: 6%;
+      height: 3px;
+      background: linear-gradient(90deg, #C8E6C9, #5B8C5A, #C8E6C9);
+      border-radius: 4px;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* 每个节点卡片 */
+    .timeline-node {
+      flex: 0 0 auto;
+      min-width: 84px;
+      max-width: 130px;
+      text-align: center;
+      padding: 0.7rem 0.4rem 0.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 60px 60px 24px 24px;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 2px solid #D4E8D4;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(2px);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.6s ease, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    /* 节点显现状态 */
+    .timeline-node.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    /* 依次延迟 */
+    .timeline-node:nth-child(1) { transition-delay: 0.05s; }
+    .timeline-node:nth-child(2) { transition-delay: 0.15s; }
+    .timeline-node:nth-child(3) { transition-delay: 0.25s; }
+    .timeline-node:nth-child(4) { transition-delay: 0.35s; }
+    .timeline-node:nth-child(5) { transition-delay: 0.45s; }
+    .timeline-node:nth-child(6) { transition-delay: 0.55s; }
+    .timeline-node:nth-child(7) { transition-delay: 0.65s; }
+    .timeline-node:nth-child(8) { transition-delay: 0.75s; }
+
+    .timeline-node:hover:not(.active) {
+      transform: translateY(-4px) scale(1.02);
+      background: #F0F7F0;
+      border-color: #8DBB8D;
+      box-shadow: 0 8px 20px rgba(91, 140, 90, 0.15);
+    }
+    .timeline-node.active {
+      background: linear-gradient(135deg, #5B8C5A, #3D6B3D);
+      color: white;
+      border-color: #3D6B3D;
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 12px 28px rgba(91, 140, 90, 0.3);
+    }
+    .timeline-node.active .timeline-year { color: #fff; }
+    .timeline-node.active .timeline-label { color: rgba(255,255,255,0.85); }
+
+    .timeline-year {
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: block;
+      color: #3D6B3D;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+    .timeline-label {
+      font-size: 0.65rem;
+      display: block;
+      margin-top: 2px;
+      color: #6A8A6A;
+      font-weight: 400;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .timeline-node.active .timeline-label { color: rgba(255,255,255,0.8); }
+
+    /* 节点上的小圆点装饰 */
+    .timeline-node::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: #C8E6C9;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      transition: 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .timeline-node.active::after {
+      background: #5B8C5A;
+      width: 14px;
+      height: 14px;
+      border-color: #fff;
+      box-shadow: 0 0 0 4px rgba(91,140,90,0.25);
+    }
+
+    /* ===== 详情展示区（全新卡片设计） ===== */
+    .timeline-detail {
+      background: linear-gradient(145deg, #ffffff, #F8FBF6);
+      border-radius: 28px;
+      padding: 2rem 2rem 1.8rem;
+      margin-top: 1.2rem;
+      border: 1px solid #E6F0E6;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .timeline-detail::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #5B8C5A, #A8D0A8, #5B8C5A);
+      border-radius: 28px 28px 0 0;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px dashed #DCE8DC;
+      flex-wrap: wrap;
+    }
+    .detail-header img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #E8F5E9;
+      padding: 6px;
+    }
+    .detail-header h3 {
+      font-size: 1.5rem;
+      color: #3D6B3D;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .detail-header .detail-era {
+      font-size: 0.8rem;
+      color: #8AAA8A;
+      background: #EDF5ED;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-left: auto;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .detail-text {
+      flex: 2;
+      min-width: 220px;
+      color: #2C3E2C;
+      line-height: 1.9;
+      font-size: 0.95rem;
+    }
+    .detail-text p {
+      margin-bottom: 0.9rem;
+      text-indent: 2em;
+    }
+    .detail-text p:last-child {
+      margin-bottom: 0;
+    }
+    /* 移除之前的 highlight-tag 样式，不再使用 */
+    .detail-image {
+      flex: 1.2;
+      min-width: 200px;
+      max-width: 420px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .detail-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 2px solid #EDF5ED;
+    }
+    .detail-image img:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+    .detail-image .img-caption {
+      font-size: 0.75rem;
+      color: #7A8E7A;
+      margin-top: 0.6rem;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    /* 引语区块 */
+    .heritage-quote {
+      background: linear-gradient(135deg, #F9F6EF, #F3F7F0);
+      border-radius: 28px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      margin-top: 2rem;
+      border-left: 6px solid #C9A87C;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+    .quote-mark {
+      font-size: 3rem;
+      color: #C9A87C;
+      line-height: 1;
+      font-family: serif;
+    }
+    .quote-text {
+      font-size: 1.05rem;
+      font-style: italic;
+      margin: 0.6rem 0 0.4rem;
+      color: #4A5E4A;
+      line-height: 1.8;
+    }
+    .quote-source {
+      font-size: 0.85rem;
+      color: #8EA08E;
+      letter-spacing: 1px;
+    }
+
+    /* 节气民俗增强样式 + 卡片背景图片 */
+    .customs-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: transparent;
+      border: 1px solid #5B8C5A;
+      color: #2C3E2C;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      backdrop-filter: blur(2px);
+    }
+    .tab-btn:hover {
+      background: rgba(91, 140, 90, 0.1);
+      transform: translateY(-2px);
+    }
+    .tab-btn.active {
+      background: #5B8C5A;
+      color: white;
+      border-color: #5B8C5A;
+    }
+    .customs-tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .customs-tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .customs-intro {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      border-left: 4px solid #5B8C5A;
+    }
+    .customs-intro p {
+      color: #5A6E5A;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .customs-season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+    /* 每个卡片独立背景图片 */
+    .custom-card-detailed {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 232, 212, 0.6);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .custom-card-detailed::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 245, 0.85);
+      backdrop-filter: blur(1px);
+      z-index: 0;
+    }
+    .custom-card-detailed > * {
+      position: relative;
+      z-index: 1;
+    }
+    .custom-card-detailed[data-term="立春"] { background-image: url('https://picsum.photos/id/15/400/300'); }
+    .custom-card-detailed[data-term="雨水"] { background-image: url('https://picsum.photos/id/91/400/300'); }
+    .custom-card-detailed[data-term="惊蛰"] { background-image: url('https://picsum.photos/id/96/400/300'); }
+    .custom-card-detailed[data-term="春分"] { background-image: url('https://picsum.photos/id/20/400/300'); }
+    .custom-card-detailed[data-term="清明"] { background-image: url('https://picsum.photos/id/30/400/300'); }
+    .custom-card-detailed[data-term="谷雨"] { background-image: url('https://picsum.photos/id/29/400/300'); }
+    .custom-card-detailed[data-term="立夏"] { background-image: url('https://picsum.photos/id/106/400/300'); }
+    .custom-card-detailed[data-term="小满"] { background-image: url('https://picsum.photos/id/10/400/300'); }
+    .custom-card-detailed[data-term="芒种"] { background-image: url('https://picsum.photos/id/13/400/300'); }
+    .custom-card-detailed[data-term="夏至"] { background-image: url('https://picsum.photos/id/22/400/300'); }
+    .custom-card-detailed[data-term="小暑"] { background-image: url('https://picsum.photos/id/59/400/300'); }
+    .custom-card-detailed[data-term="大暑"] { background-image: url('https://picsum.photos/id/58/400/300'); }
+    .custom-card-detailed[data-term="立秋"] { background-image: url('https://picsum.photos/id/32/400/300'); }
+    .custom-card-detailed[data-term="处暑"] { background-image: url('https://picsum.photos/id/42/400/300'); }
+    .custom-card-detailed[data-term="白露"] { background-image: url('https://picsum.photos/id/45/400/300'); }
+    .custom-card-detailed[data-term="秋分"] { background-image: url('https://picsum.photos/id/68/400/300'); }
+    .custom-card-detailed[data-term="寒露"] { background-image: url('https://picsum.photos/id/82/400/300'); }
+    .custom-card-detailed[data-term="霜降"] { background-image: url('https://picsum.photos/id/85/400/300'); }
+    .custom-card-detailed[data-term="立冬"] { background-image: url('https://picsum.photos/id/86/400/300'); }
+    .custom-card-detailed[data-term="小雪"] { background-image: url('https://picsum.photos/id/87/400/300'); }
+    .custom-card-detailed[data-term="大雪"] { background-image: url('https://picsum.photos/id/88/400/300'); }
+    .custom-card-detailed[data-term="冬至"] { background-image: url('https://picsum.photos/id/89/400/300'); }
+    .custom-card-detailed[data-term="小寒"] { background-image: url('https://picsum.photos/id/90/400/300'); }
+    .custom-card-detailed[data-term="大寒"] { background-image: url('https://picsum.photos/id/92/400/300'); }
+    .custom-card-detailed:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.15);
+    }
+    .custom-card-header {
+      padding: 0.9rem 1.2rem;
+      background: linear-gradient(135deg, rgba(91,140,90,0.2), rgba(91,140,90,0.05));
+      border-bottom: 1px solid rgba(212,232,212,0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .custom-term-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #3D6B3D;
+      letter-spacing: 2px;
+      text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+    }
+    .custom-date {
+      font-size: 0.75rem;
+      color: #7A8E7A;
+    }
+    .custom-card-body {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+    .custom-desc {
+      font-size: 0.88rem;
+      color: #2C3E2C;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+      background: rgba(255,255,240,0.7);
+      border-radius: 12px;
+      padding: 0.3rem 0.6rem;
+    }
+    .custom-desc:last-child { margin-bottom: 0; }
+    .custom-highlight {
+      font-weight: 600;
+      color: #C9A87C;
+      background: none;
+    }
+    .custom-link {
+      color: #5B8C5A;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted transparent;
+      transition: 0.2s;
+    }
+    .custom-link:hover {
+      border-bottom-color: #5B8C5A;
+    }
+    /* 诗词轮播 */
+    .poetry-slider {
+      background: rgba(255,255,240,0.6);
+      border-radius: 28px;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .slider-controls button {
+      background: #5B8C5A;
+      border: none;
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    /* 知识测验卡片 */
+    .quiz-card {
+      background: linear-gradient(135deg, #E8F5E9, #FFF8DC);
+      border-radius: 28px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .quiz-question {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #3D6B3D;
+    }
+    .quiz-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .quiz-opt {
+      background: white;
+      border: 1px solid #5B8C5A;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .quiz-opt:hover {
+      background: #5B8C5A;
+      color: white;
+    }
+    .quiz-feedback {
+      font-size: 0.9rem;
+      color: #C17817;
+      margin-top: 0.8rem;
+    }
+    /* 农耕谚语卡片 */
+    .proverbs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .proverb-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+    .proverb-card h4 {
+      color: #3D6B3D;
+      margin-bottom: 0.5rem;
+    }
+    .proverb-card ul {
+      list-style: none;
+    }
+    .proverb-card li {
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid #5B8C5A;
+    }
+    /* 页脚 */
+    .main-footer {
+      background: #2C5E2C;
+      color: rgba(255,255,255,0.85);
+      padding: 2.5rem 2rem 1rem;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .footer-brand h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .footer-links-group h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .footer-links-group ul { list-style: none; }
+    .footer-links-group a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; display: block; padding: 0.2rem 0; }
+    .footer-bottom { text-align: center; padding-top: 1.5rem; font-size: 0.8rem; opacity: 0.6; }
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: #5B8C5A;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 1rem; border-bottom: 1px solid #D4E8D4; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .timeline-track-horizontal { flex-wrap: nowrap; justify-content: flex-start; gap: 0.8rem; padding: 0.5rem 0.2rem 1rem; }
+      .timeline-track-horizontal::before { display: none; }
+      .timeline-node { flex: 0 0 auto; min-width: 72px; max-width: 100px; padding: 0.5rem 0.3rem; border-radius: 40px 40px 16px 16px; }
+      .timeline-year { font-size: 0.7rem; }
+      .timeline-label { font-size: 0.55rem; }
+      .timeline-node::after { width: 6px; height: 6px; bottom: -4px; }
+      .timeline-node.active::after { width: 10px; height: 10px; }
+      .detail-content-wrapper { flex-direction: column; }
+      .detail-image { max-width: 100%; }
+      .media-showcase { flex-direction: column; }
+      .customs-season-grid { grid-template-columns: 1fr; }
+      .custom-card-header { flex-direction: column; align-items: flex-start; }
+      .hero-title { font-size: 2rem; }
+      .hero-slide-content { bottom: 10%; left: 5%; }
+      .origin-content-wrapper { flex-direction: column; }
+      .timeline-enhanced::before { display: none; }
+      .detail-header .detail-era { margin-left: 0; width: 100%; text-align: left; font-size: 0.7rem; }
+      .heritage-quote { padding: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .timeline-node { min-width: 60px; max-width: 80px; padding: 0.4rem 0.2rem; }
+      .timeline-year { font-size: 0.6rem; }
+      .timeline-label { font-size: 0.5rem; }
+      .timeline-detail { padding: 1.2rem; }
+      .detail-header h3 { font-size: 1.1rem; }
+    }
+    .origin-timeline-mini {
+      margin: 1rem 0;
+    }
+    .mini-timeline-item {
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      border-left: 3px solid #5B8C5A;
+    }
+    .mini-year {
+      font-weight: bold;
+      color: #3D6B3D;
+      margin-right: 1rem;
+    }
+    .farming-content .farming-intro p {
+      color: #5A6E5A;
+      line-height: 2;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      text-indent: 2em;
+    }
+    .extra-title {
+      font-size: 1.2rem;
+      color: #3D6B3D;
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 600;
+    }
+    .poetry-card-item .poetry-season {
+      display: inline-block;
+      padding: 0.1rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #E8F5E9;
+      color: #3D6B3D;
+      margin-bottom: 0.5rem;
+    }
+    .poetry-card-item h4 {
+      font-size: 1.4rem;
+      color: #3D6B3D;
+      margin: 0.3rem 0;
+    }
+    .poetry-card-item .poetry-author {
+      color: #8AAA8A;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .poetry-card-item .poetry-verse {
+      font-size: 0.95rem;
+      color: #3D4A3D;
+      margin: 0.2rem 0;
+      font-style: italic;
+    }
+    /* 左上角导航悬浮球 */
+    .top-left-nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .top-left-nav-trigger {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5B8C5A, #8BBF8A);
+      border: 3px solid rgba(255,255,255,0.8);
+      box-shadow: 0 4px 20px rgba(91,140,90,0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: leftNavPulseC 3s ease-in-out infinite;
+    }
+    .top-left-nav-trigger:hover {
+      transform: scale(1.15) rotate(-10deg);
+      box-shadow: 0 8px 35px rgba(91,140,90,0.6);
+    }
+    @keyframes leftNavPulseC {
+      0%, 100% { box-shadow: 0 4px 20px rgba(91,140,90,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(91,140,90,0.7); }
+    }
+    .top-left-nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 0;
+      overflow: hidden;
+      transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .top-left-nav-menu.show {
+      max-width: 200px;
+      opacity: 1;
+    }
+    .top-left-nav-item {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: #3D6B3D;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transform: translateX(-20px);
+    }
+    .top-left-nav-menu.show .top-left-nav-item { transform: translateX(0); }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
+    .top-left-nav-item:hover {
+      background: linear-gradient(135deg, #5B8C5A, #8BBF8A);
+      color: #fff;
+      transform: translateX(5px) !important;
+      box-shadow: 0 5px 20px rgba(91,140,90,0.3);
+    }
+    .top-left-nav-item.active {
+      background: linear-gradient(135deg, #5B8C5A, #8BBF8A);
+      color: #fff;
+    }
+    .top-left-nav-hint {
+      font-size: 10px;
+      color: #3D6B3D;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
+    .top-left-nav-menu.show ~ .top-left-nav-hint {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== 左上角导航悬浮球 ========== -->
+  <div class="top-left-nav">
+    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">📚</button>
+    <div class="top-left-nav-menu" id="topLeftNavMenu">
+      <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
+      <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
+      <a href="summer.html" class="top-left-nav-item">☀️ 夏季详情</a>
+      <a href="autumn.html" class="top-left-nav-item">🍂 秋季详情</a>
+      <a href="winter.html" class="top-left-nav-item">❄️ 冬季详情</a>
+      <a href="culture.html" class="top-left-nav-item active">📚 节气文化</a>
+      <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
+    </div>
+    <span class="top-left-nav-hint">点击展开</span>
+  </div>
+  <script>
+    function toggleTopLeftNav() {
+      const menu = document.getElementById('topLeftNavMenu');
+      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
+      menu.classList.toggle('show');
+      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
+    }
+  </script>
+
+  <!-- 飘落叶子效果 -->
+  <ul class="leaf">
+    <li></li><li></li><li></li><li></li><li></li><li></li>
+    <li></li><li></li><li></li><li></li><li></li><li></li>
+  </ul>
+
+  <!-- 导航栏 -->
+  <nav class="main-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-icon">🌿</span>
+        <span class="nav-logo-text">二十四节气</span>
+      </a>
+      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== 轮播区 ========== -->
+  <section class="hero-banner">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="background-image: url('https://picsum.photos/id/15/1920/1080');">
+        <div class="hero-slide-content">
+          <span class="hero-season-tag">节气文化 · 农耕之源</span>
+          <h1 class="hero-title">春耕秋藏 · 顺应天时</h1>
+          <p class="hero-desc">二十四节气指导着华夏民族数千年的农业生产，是东方农耕文明的智慧结晶。</p>
+          <a href="#origin" class="hero-btn">探索节气起源 →</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://picsum.photos/id/104/1920/1080');">
+        <div class="hero-slide-content">
+          <span class="hero-season-tag">非遗传承 · 活态保护</span>
+          <h1 class="hero-title">世界记忆 · 文化瑰宝</h1>
+          <p class="hero-desc">2016年列入联合国教科文组织人类非物质文化遗产代表作名录，被誉为“中国的第五大发明”。</p>
+          <a href="#heritage" class="hero-btn">走进非遗传承 →</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://picsum.photos/id/120/1920/1080');">
+        <div class="hero-slide-content">
+          <span class="hero-season-tag">诗韵节气 · 意境悠远</span>
+          <h1 class="hero-title">古诗词里的节气之美</h1>
+          <p class="hero-desc">从唐诗宋词中品味节气流转，感受文人墨客的浪漫与哲思。</p>
+          <a href="#poetry" class="hero-btn">品读节气诗词 →</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+    <button class="hero-arrow hero-arrow-prev" id="prevSlide">‹</button>
+    <button class="hero-arrow hero-arrow-next" id="nextSlide">›</button>
+  </section>
+
+  <!-- 页面标题区 -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <span class="page-tag">📜 节气文化</span>
+      <h1 class="page-title">节气文化溯源</h1>
+      <p class="page-desc">千年历法 · 非遗传承 · 东方智慧</p>
+      <div class="page-divider"></div>
+    </div>
+  </section>
+
+  <!-- 媒体展示区 -->
+  <div class="section-container">
+    <div class="media-showcase">
+      <div class="media-left">
+        <h3>中国人的时间哲学</h3>
+        <p>二十四节气不仅是一套历法体系，更是中华民族特有的时间认知与生活实践。它指导着农耕、饮食、养生、节庆，体现了“天人合一”的古老智慧。</p>
+        <p>2016年，二十四节气被列入联合国教科文组织人类非物质文化遗产代表作名录，成为全人类共同的文化瑰宝。本视频将带您走进节气世界，领略四季流转之美。</p>
+      </div>
+      <div class="media-right">
+        <iframe src="https://player.bilibili.com/player.html?bvid=BV1kb4y1B7ui&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 壹 · 节气起源 ========== -->
+  <section class="culture-section" id="origin">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">壹</span>
+        <h2 class="section-title">节气起源</h2>
+        <p class="section-subtitle">观天察地 · 因时制宜</p>
+      </div>
+      <div class="origin-content-wrapper">
+        <div class="origin-text">
+          <p class="culture-paragraph">二十四节气的起源可追溯至春秋战国时期。当时，中国先民通过观察太阳周年运动，将黄道划分为二十四等份，每份约15度，对应一个节气。这是世界上最早的太阳历系统之一，体现了古人对天文现象的精准观察和深刻理解。</p>
+          <p class="culture-paragraph">《尚书·尧典》中记载的"日中星鸟，以殷仲春"等观测记录，表明早在四千年前，古人就已通过观测星辰位置来确定季节。到了汉代，《淮南子·时则训》中首次完整记载了二十四节气名称，标志着这一历法体系的正式确立。</p>
+          <p class="culture-paragraph">二十四节气以太阳在黄道上的位置为依据，精准反映了季节更替、气候变化和物候现象。它不仅是一种历法，更是古人"天人合一"哲学思想的体现，指导着农事生产、饮食起居、养生保健等方方面面。</p>
+          <div class="origin-timeline-mini">
+            <div class="mini-timeline-item"><span class="mini-year">春秋战国</span><span class="mini-text">确立仲春、仲夏、仲秋、仲冬四个节气</span></div>
+            <div class="mini-timeline-item"><span class="mini-year">秦汉时期</span><span class="mini-text">《淮南子》首次完整记载二十四节气名称</span></div>
+            <div class="mini-timeline-item"><span class="mini-year">西汉</span><span class="mini-text">《太初历》将二十四节气纳入官方历法</span></div>
+            <div class="mini-timeline-item"><span class="mini-year">现代</span><span class="mini-text">2016年列入联合国教科文组织人类非物质文化遗产</span></div>
+          </div>
+        </div>
+        <div class="origin-image">
+          <img src="https://picsum.photos/id/100/400/300" alt="圭表测影">
+          <div class="img-caption">圭表测影 · 古人通过测量日影长度确定节气</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 贰 · 非遗传承（增强时间轴） ========== -->
+  <section class="culture-section alt-bg" id="heritage">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">贰</span>
+        <h2 class="section-title">非遗传承</h2>
+        <p class="section-subtitle">千年时序 · 世界记忆</p>
+      </div>
+
+      <!-- ===== 全新增强时间轴 ===== -->
+      <div class="timeline-enhanced" id="timelineEnhanced">
+        <!-- 时间轴节点 -->
+        <div class="timeline-track-horizontal" id="timelineTrackHorizontal">
+          <!-- 节点由 JS 动态生成，便于维护 -->
+        </div>
+
+        <!-- 详情展示区 -->
+        <div class="timeline-detail" id="timelineDetail">
+          <div class="detail-header">
+            <img id="detailIcon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235B8C5A'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E" alt="icon">
+            <h3 id="detailTitle">远古 · 观象授时</h3>
+            <span class="detail-era" id="detailEra">约公元前3000年</span>
+          </div>
+          <div class="detail-content-wrapper">
+            <div class="detail-text" id="detailText">
+              <p>远古先民在长期的生产生活中，通过观测日月星辰的运行规律，逐步确立了时间观念和季节概念。他们发现太阳的东升西落、月亮的盈亏圆缺以及星辰的位置变化，都与气候、物候有着密切的联系。</p>
+              <p>这一时期，先民们已经能够根据自然现象判断时节变化，为后世历法的发展奠定了最早的实践基础。考古发现的甲骨文中已有关于“风”、“雨”、“云”等气象的记载，反映了古人对自然现象的细致观察。</p>
+            </div>
+            <div class="detail-image" id="detailImage">
+              <img src="https://picsum.photos/id/15/500/375" alt="远古观象">
+              <div class="img-caption">远古先民仰观天象 · 探索时间奥秘</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 引语 -->
+      <div class="heritage-quote">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">二十四节气是中国人认知一年中时令、气候、物候等方面变化规律的知识体系和社会实践，在国际气象界被誉为"中国的第五大发明"。</p>
+        <span class="quote-source">— 联合国教科文组织</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 肆 · 节气民俗 ========== -->
+  <section class="culture-section alt-bg" id="customs">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">肆</span>
+        <h2 class="section-title">节气民俗</h2>
+        <p class="section-subtitle">因时制宜 · 顺应自然</p>
+      </div>
+      <div class="customs-tabs">
+        <button class="tab-btn active" data-season="spring"> 春之俗</button>
+        <button class="tab-btn" data-season="summer"> 夏之俗</button>
+        <button class="tab-btn" data-season="autumn"> 秋之俗</button>
+        <button class="tab-btn" data-season="winter"> 冬之俗</button>
+      </div>
+
+      <!-- 春季 -->
+      <div class="customs-tab-content active" id="spring-content">
+        <div class="customs-intro"><p>春季是万物复苏的季节，古人有迎春、祭春、鞭春、咬春等一系列迎春纳福的仪式活动。</p></div>
+        <div class="customs-season-grid">
+          <div class="custom-card-detailed" data-term="立春"><div class="custom-card-header"><span class="custom-term-name">立春</span><span class="custom-date">2月3日—5日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜内乡打春牛习俗</span>——立春是二十四节气之首，民间称“打春”。内乡打春牛习俗传承于河南省南阳市内乡县，活动分为祭春、迎春、打春、闹春、送春等环节。立春日民众齐聚内乡县衙，鞭打纸质春牛，牛肚内五谷、干果纷纷落地，民众欢呼抢食，以期五谷丰登、吉年有余；随后游街闹春，长辈给孩子佩戴春鸡，全家吃春饼咬春。【<a href="https://www.ihchina.cn/project_details/23870.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">除鞭春牛外，北方有啃春（吃萝卜/春饼）、戴春鸡等习俗；南方流行“说春”——春官身着传统服饰，持春牛走村串户，以说唱宣讲节气农事，劝民行耕。【<a href="https://www.ihchina.cn/search_result/order/2/p/689.html" target="_blank" rel="noopener noreferrer" class="custom-link">了解更多非遗扩展项目</a>】</p></div></div>
+          <div class="custom-card-detailed" data-term="雨水"><div class="custom-card-header"><span class="custom-term-name">雨水</span><span class="custom-date">2月18日—20日</span></div><div class="custom-card-body"><p class="custom-desc">雨水节气气温回升、降水增多。北方一些地区有吃梨的习俗，梨谐音“离”，寓意远离疾病；南方则有“雨水祭龙”的习俗，通过祭拜龙王祈求一年风调雨顺、五谷丰登。四川地区还有“拉保保”（认干亲）的传统，为孩子祈福求平安。【<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">了解更多非遗民俗</a>】</p></div></div>
+          <div class="custom-card-detailed" data-term="惊蛰"><div class="custom-card-header"><span class="custom-term-name">惊蛰</span><span class="custom-date">3月5日—7日</span></div><div class="custom-card-body"><p class="custom-desc">惊蛰万物复苏，春雷始动。北方有“炒虫”习俗，将黄豆、玉米等入锅翻炒，发出噼啪声象征消灭害虫；南方则流行“吃梨”，寓意与害虫分离。民间还有祭白虎、打小人等驱邪避害的仪式，祈求一年顺遂平安。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="春分"><div class="custom-card-header"><span class="custom-term-name">春分</span><span class="custom-date">3月20日—22日</span></div><div class="custom-card-body"><p class="custom-desc">春分昼夜平分，南北半球昼夜等长。民间流行“竖蛋”游戏——在春分日将鸡蛋竖立不倒，讨个好彩头；南方则有踏青出行、放风筝的传统。岭南地区有吃春菜（野苋菜）的习俗，采回的春菜与鱼片滚汤，名曰“春汤”，祈求阖家平安。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="清明"><div class="custom-card-header"><span class="custom-term-name">清明</span><span class="custom-date">4月4日—6日</span></div><div class="custom-card-body"><p class="custom-desc">清明是节气与节日的双重身份，“气清景明，万物皆显”。北方祭祖以“扫墓添土”为核心（给祖坟添土、培坟、修补塌陷），基本在节前完成；南方更注重家族集体行动，时间灵活。此外，踏青郊游、插柳戴柳、荡秋千、放风筝等民俗活动也广为流传。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="谷雨"><div class="custom-card-header"><span class="custom-term-name">谷雨</span><span class="custom-date">4月19日—21日</span></div><div class="custom-card-body"><p class="custom-desc">谷雨为春季最后一个节气。北方陕西白水县有祭祀文祖仓颉的习俗——传说仓颉造字，上天“降下谷子雨”作为奖励，“谷雨”节因此得名；南方则有谷雨摘茶的习俗，传说这天采制的茶清火、辟邪、明目。沿海地区还有祭海仪式，祈求出海平安。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+        </div>
+      </div>
+
+      <!-- 夏季 -->
+      <div class="customs-tab-content" id="summer-content">
+        <div class="customs-intro"><p>夏季万物繁茂，伴随祭神、尝新、消暑等丰富多彩的民俗传统。</p></div>
+        <div class="customs-season-grid">
+          <div class="custom-card-detailed" data-term="立夏"><div class="custom-card-header"><span class="custom-term-name">立夏</span><span class="custom-date">5月5日—7日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜半山立夏习俗</span>——杭州半山地区世代传承送春迎夏的系列民俗活动。无论南北，立夏都有“称人”和“斗蛋”的传统：称人时从小数值移往大数值，并大声念诵吉祥话；斗蛋则是将煮熟的鸡蛋带壳装入网袋，进行碰撞游戏。【<a href="https://www.ihchina.cn/project_details/23867.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">此外，南方有“立夏尝新”的传统，品尝新上市的樱桃、青梅、新麦等时令鲜物，以此迎接夏季到来。</p></div></div>
+          <div class="custom-card-detailed" data-term="小满"><div class="custom-card-header"><span class="custom-term-name">小满</span><span class="custom-date">5月20日—22日</span></div><div class="custom-card-body"><p class="custom-desc">北方有“小满会”——人们在集会上买种子、农具，为接下来的农活做准备，孩童可在集市上买玩具和小吃；南方小满为蚕神诞辰，有些地方还会用鱼和肉祭祀水车，表示对水利排灌的重视。民间还有“食苦菜”的传统，以清热祛湿。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">了解更多非遗民俗</a></p></div></div>
+          <div class="custom-card-detailed" data-term="芒种"><div class="custom-card-header"><span class="custom-term-name">芒种</span><span class="custom-date">6月5日—7日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜梅源芒种开犁节</span>——浙江云和县梅源山区农民在芒种期间启动夏耕的民俗活动，民间也叫“牛大王节”，以芒种祭神田、犒牛、开犁仪式为核心，将二十四节气文化与地方信俗融合，具体活动包括设纽迎神、巡游祈福、演酬神戏、吃仙娘饭等。【<a href="https://www.ihchina.cn/project_details/23869.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">北方主要有农事管理，“芒种开铲”疏松土壤、去除杂草；南方则有食用青梅的习俗，制成酸梅汤、梅酱等。</p></div></div>
+          <div class="custom-card-detailed" data-term="夏至"><div class="custom-card-header"><span class="custom-term-name">夏至</span><span class="custom-date">6月21日—22日</span></div><div class="custom-card-body"><p class="custom-desc">夏至白昼最长，北半球各地昼长夜短。北方民众喜欢吃凉面（如北京的炸酱面、山东的麻汁面），有尝新麦的美好寓意；南方则喜欢食用绿豆汤、豌豆糕和荔枝解暑。民间还有“冬至饺子夏至面”的说法。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="小暑"><div class="custom-card-header"><span class="custom-term-name">小暑</span><span class="custom-date">7月6日—8日</span></div><div class="custom-card-body"><p class="custom-desc">小暑将近入伏，北方有晒伏姜、贴伏贴的习俗，以此驱寒暖胃，防治虚寒病；南方一些地区有晒衣物、书籍的习惯，去除潮气和霉味。部分地方还流行“食新”——吃新收获的米和面，祭祀祖先和五谷神。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="大暑"><div class="custom-card-header"><span class="custom-term-name">大暑</span><span class="custom-date">7月22日—24日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜送大暑船</span>——浙江台州椒江区葭沚街道一带以渔村为中心的区域，举办集送五圣仪式、民间文艺表演为一体的民俗活动，从农历四月开始到大暑日止，时间跨度长达3个月，参与民众十几万人次。【<a href="https://www.ihchina.cn/project_details/23868.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">北方则有“喝暑羊”（喝羊肉汤）的传统，一碗热羊汤让人全身大汗淋漓，可带走体内积热、排出毒素，有益健康。</p></div></div>
+        </div>
+      </div>
+
+      <!-- 秋季 -->
+      <div class="customs-tab-content" id="autumn-content">
+        <div class="customs-intro"><p>秋季天高云淡，是收获与团聚的季节，各地以庆丰收、祭秋月为主。</p></div>
+        <div class="customs-season-grid">
+          <div class="custom-card-detailed" data-term="立秋"><div class="custom-card-header"><span class="custom-term-name">立秋</span><span class="custom-date">8月7日—9日</span></div><div class="custom-card-body"><p class="custom-desc">立秋标志着秋季开始。北方流行“晒秋”——人们将玉米、辣椒、南瓜等农作物晾晒在房前屋后，形成五彩斑斓的视觉景观；南方有“啃秋”的习俗，西瓜是必不可少的“主角”，人们围坐在一起吃西瓜，寓意啃下“秋老虎”，迎接凉爽秋季的到来。各地还有“贴秋膘”的传统，以吃肉食来补充夏季的消耗。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="处暑"><div class="custom-card-header"><span class="custom-term-name">处暑</span><span class="custom-date">8月22日—24日</span></div><div class="custom-card-body"><p class="custom-desc">处暑意味着暑气开始消退。北方部分地区会举行登山望远、郊游赏秋等活动；南方沿海地区常常举办“开渔节”，举行盛大的出海仪式，祝愿渔民出海平安，期盼渔业丰收。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="白露"><div class="custom-card-header"><span class="custom-term-name">白露</span><span class="custom-date">9月7日—9日</span></div><div class="custom-card-body"><p class="custom-desc">白露天气转凉，昼夜温差加大。北方有收清露和饮白露茶的习俗，清晨收集植物上的露水用以煮茶、擦拭眼睛；南方多以饮食养生为主，如吃龙眼、饮白露米酒、食用白鳗鱼等。白露时节的鳗鱼肉质肥美，口感和营养价值最佳。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="秋分"><div class="custom-card-header"><span class="custom-term-name">秋分</span><span class="custom-date">9月22日—24日</span></div><div class="custom-card-body"><p class="custom-desc">北方有“送秋牛”的习俗——民间艺人用黄纸或红纸制成秋牛图，挨家挨户送图并念诵吉祥话；南方浙江、福建等地保留有祭月、赏月的传统。2018年起，秋分被设立为“中国农民丰收节”，庆贺五谷丰登。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="寒露"><div class="custom-card-header"><span class="custom-term-name">寒露</span><span class="custom-date">10月8日—9日</span></div><div class="custom-card-body"><p class="custom-desc">寒露天凉露重，民间有登高望远、赏红叶的习俗。北方有“寒露吃芝麻”的养生传统，认为芝麻可润燥养肺；南方则有饮菊花酒的习俗。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="霜降"><div class="custom-card-header"><span class="custom-term-name">霜降</span><span class="custom-date">10月23日—24日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜壮族霜降节</span>——广西天等县等地的壮族民众在霜降时节举办传统节庆活动，以祭祀祖先、庆祝丰收为核心内容，2014年被列入国家级非物质文化遗产扩展名录。【<a href="https://www.ihchina.cn/project_details/15066.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">民间还有吃柿子、赏红叶的习俗，霜降时节的柿子皮薄肉鲜，有“霜降吃丁柿，不会流鼻涕”的谚语。</p></div></div>
+        </div>
+      </div>
+
+      <!-- 冬季 -->
+      <div class="customs-tab-content" id="winter-content">
+        <div class="customs-intro"><p>冬季天寒地冻，习俗以迎冬、祭冬、进补和辞旧迎新为主。</p></div>
+        <div class="customs-season-grid">
+          <div class="custom-card-detailed" data-term="立冬"><div class="custom-card-header"><span class="custom-term-name">立冬</span><span class="custom-date">11月7日—8日</span></div><div class="custom-card-body"><p class="custom-desc">立冬标志着冬季开始，万物收藏规避寒冷。北方有吃饺子的习俗，饺子形似耳朵，寓意“不冻耳”；南方则流行酿黄酒、吃麻油鸡等“补冬”传统。民间还有“立冬补冬，补嘴空”的说法。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="小雪"><div class="custom-card-header"><span class="custom-term-name">小雪</span><span class="custom-date">11月22日—23日</span></div><div class="custom-card-body"><p class="custom-desc">小雪气温下降，开始降雪。北方有腌腊肉、囤冬菜的习俗；南方则有吃糍粑、晒鱼干的传统。“小雪腌菜，大雪腌肉”是民间广为流传的俗语。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="大雪"><div class="custom-card-header"><span class="custom-term-name">大雪</span><span class="custom-date">12月6日—8日</span></div><div class="custom-card-body"><p class="custom-desc">大雪时节降雪量增大，民间有观赏雪景、腌肉的习俗。“小雪封地，大雪封河”，北方河流封冻后，滑冰嬉戏成为传统娱乐项目。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="冬至"><div class="custom-card-header"><span class="custom-term-name">冬至</span><span class="custom-date">12月21日—23日</span></div><div class="custom-card-body"><p class="custom-desc"><span class="custom-highlight">国家级非遗｜三门祭冬</span>——浙江三门县保留的祭冬传统，是二十四节气扩展名录之一，2014年被列入国家级非物质文化遗产。【<a href="https://www.ihchina.cn/project_details/15064.html" target="_blank" rel="noopener noreferrer" class="custom-link">查看详情</a>】</p><p class="custom-desc">冬至大如年，北方有吃饺子的习俗，南方则有吃汤圆的传统。民间还有“数九消寒”的活动——绘制九九消寒图，每日填涂一笔，以此度过漫漫寒冬。</p></div></div>
+          <div class="custom-card-detailed" data-term="小寒"><div class="custom-card-header"><span class="custom-term-name">小寒</span><span class="custom-date">1月5日—7日</span></div><div class="custom-card-body"><p class="custom-desc">小寒正值三九前后，是一年中最冷的时段之一。民间有吃腊八粥的习俗（腊八节在小寒前后），以糯米、红豆、枣等熬制，暖身驱寒。此时梅花盛开，文人墨客还有“探梅”的雅趣。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+          <div class="custom-card-detailed" data-term="大寒"><div class="custom-card-header"><span class="custom-term-name">大寒</span><span class="custom-date">1月20日—21日</span></div><div class="custom-card-body"><p class="custom-desc">大寒是二十四节气中的最后一个节气，气温降至谷底。民间有“除尘”（大扫除）、“糊窗”（贴窗花）的传统，为春节做准备。大寒期间，家家户户开始置办年货，准备迎接新春到来。<a href="https://www.ihchina.cn/" target="_blank" rel="noopener noreferrer" class="custom-link">查看非遗名录</a></p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 陆 · 节气诗词 ========== -->
+  <section class="culture-section alt-bg" id="poetry">
+    <div class="section-container">
+      <div class="section-header"><span class="section-number">陆</span><h2 class="section-title">节气诗词</h2><p class="section-subtitle">诗韵节气 · 意境悠远</p></div>
+      <div class="poetry-slider" id="poetrySlider"><div id="sliderContent" class="poetry-card-item" style="text-align: center;"><div class="poetry-season spring">春</div><h4>《立春》</h4><span class="poetry-author">【唐】杜甫</span><p class="poetry-verse">春日春盘细生菜，忽忆两京梅发时。</p><p class="poetry-verse">盘出高门行白玉，菜传纤手送青丝。</p></div><div class="slider-controls"><button id="prevPoemBtn">◀ 上一首</button><button id="nextPoemBtn">下一首 ▶</button></div></div>
+    </div>
+  </section>
+
+  <!-- ========== 柒 · 节气与农耕 ========== -->
+  <section class="culture-section" id="farming">
+    <div class="section-container">
+      <div class="section-header"><span class="section-number">柒</span><h2 class="section-title">节气与农耕</h2><p class="section-subtitle">不误农时 · 五谷丰登</p></div>
+      <div class="farming-content">
+        <div class="farming-intro"><p>二十四节气起源于农耕文明，是古人根据太阳运行规律和物候变化总结出来的农事时间体系。每个节气都对应着特定的农事活动。</p></div>
+        <div class="farming-proverbs"><h3 class="extra-title">🌾 节气农谚</h3><div class="proverbs-grid"><div class="proverb-card"><h4>春季农谚</h4><ul><li>"立春一年端，种地早盘算"</li><li>"清明前后，种瓜点豆"</li><li>"谷雨种棉家家忙"</li></ul></div><div class="proverb-card"><h4>夏季农谚</h4><ul><li>"芒种忙种，不可强种"</li><li>"夏至不锄根边草，如同养下毒蛇咬"</li><li>"小暑大暑，灌死老鼠"</li></ul></div><div class="proverb-card"><h4>秋季农谚</h4><ul><li>"白露白茫茫，谷子满田黄"</li><li>"秋分不收葱，霜降必定空"</li><li>"寒露种麦正当时"</li></ul></div><div class="proverb-card"><h4>冬季农谚</h4><ul><li>"小雪雪满天，来年必丰年"</li><li>"冬至不过不寒"</li><li>"大雪半溶加一冰，明年虫害一扫空"</li></ul></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 知识小测验 -->
+  <div class="section-container">
+    <div class="quiz-card"><h3>📖 节气知识小测</h3><div class="quiz-question" id="quizQuestion">“惊蛰”节气的主要物候特征是什么？</div><div class="quiz-options" id="quizOptions"><div class="quiz-opt" data-answer="A">A. 桃花开，黄鹂鸣</div><div class="quiz-opt" data-answer="B">B. 鸿雁来，草木萌动</div><div class="quiz-opt" data-answer="C">C. 雷始电，玄鸟至</div></div><div class="quiz-feedback" id="quizFeedback"></div></div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand"><h3>🌿 二十四节气</h3><p>传承中华节气智慧，弘扬传统文化之美。二十四节气是古人观察自然、顺应天时的智慧结晶。</p></div>
+        <div class="footer-links-group"><h4>四季导航</h4><ul><li><a href="spring(1).html">🌸 春季篇</a></li><li><a href="#">☀️ 夏季篇</a></li><li><a href="#">🍂 秋季篇</a></li><li><a href="#">❄️ 冬季篇</a></li></ul></div>
+        <div class="footer-links-group"><h4>关于节气</h4><ul><li><a href="https://www.bilibili.com/video/BV1sA411f7Uv?t=5.1">节气起源</a></li><li><a href="http://www.npc.gov.cn/npc/c2/c30834/202501/t20250110_442343.html">非遗传承</a></li><li><a href="https://www.bilibili.com/video/BV16K4y1u7Np?t=198.6">节气诗词</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 二十四节气文化网 · 四时序歌 | 传承中华节气智慧</p></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // ============================================================
+    // 1. 基础导航 & 滚动
+    // ============================================================
+    var nav = document.getElementById('mainNav');
+    var backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+      if (window.scrollY > 500) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+
+    function toggleNav() {
+      document.querySelector('.nav-links')?.classList.toggle('open');
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ============================================================
+    // 2. 轮播
+    // ============================================================
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot');
+    let autoTimer;
+
+    function showSlide(n) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slideIndex = (n + slides.length) % slides.length;
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+      resetAutoPlay();
+    }
+
+    function nextSlide() { showSlide(slideIndex + 1); }
+
+    function prevSlide() { showSlide(slideIndex - 1); }
+
+    function goToSlide(n) { showSlide(n); }
+
+    function resetAutoPlay() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(nextSlide, 5500);
+    }
+    document.getElementById('nextSlide').addEventListener('click', nextSlide);
+    document.getElementById('prevSlide').addEventListener('click', prevSlide);
+    dots.forEach((dot, i) => { dot.addEventListener('click', () => goToSlide(i)); });
+    resetAutoPlay();
+
+    // ============================================================
+    // 3. 增强时间轴 ———— 数据 + 动画 + 交互
+    // ============================================================
+
+    // ---------- 时间轴数据（8个节点，覆盖从远古到现代） ----------
+    // 注意：已移除所有 <span class="highlight-tag"> 及其内部的 emoji 符号，只保留纯文本
+    const timelineData = {
+      'ancient': {
+        year: '约公元前3000年',
+        label: '远古·观象授时',
+        title: '远古 · 观象授时',
+        era: '约公元前3000年',
+        text: '<p>起源：远古先民在长期的生产生活中，通过观测日月星辰的运行规律，逐步确立了时间观念和季节概念。他们发现太阳的东升西落、月亮的盈亏圆缺以及星辰的位置变化，都与气候、物候有着密切的联系。</p><p>观测：这一时期，先民们已经能够根据自然现象判断时节变化，为后世历法的发展奠定了最早的实践基础。考古发现的甲骨文中已有关于"风"、"雨"、"云"等气象的记载，反映了古人对自然现象的细致观察。</p><p>意义：观象授时的传统，是中华文明最早的时间认知体系，开启了华夏民族探索自然规律、顺应天时变化的伟大征程。</p>',
+        imgSrc: 'https://picsum.photos/id/15/500/375',
+        imgCaption: '远古先民仰观天象 · 探索时间奥秘'
+      },
+      'xia_shang': {
+        year: '约公元前2000年',
+        label: '夏商·四时划分',
+        title: '夏商 · 四时划分',
+        era: '约公元前2000年',
+        text: '<p>四时：夏商时期，随着农业生产的发展，古人根据太阳在黄道上的运行位置，将一年划分为春、夏、秋、冬四季。这是二十四节气体系形成的重要前奏，标志着古人开始系统性地认知时间周期。</p><p>文献：《尚书·尧典》中记载了"日中星鸟，以殷仲春"、"日永星火，以正仲夏"等观测记录，表明当时已能通过星辰位置来确定四季。商代甲骨文中也出现了"春""秋"等字，反映了季节概念的初步确立。</p><p>影响：四季的划分为后续二十四节气的完整建立提供了框架基础，使人们能够更精准地安排农事活动。</p>',
+        imgSrc: 'https://picsum.photos/id/20/500/375',
+        imgCaption: '夏商时期 · 四时观念初步形成'
+      },
+      'spring_autumn': {
+        year: '约公元前500年',
+        label: '春秋·圭表测影',
+        title: '春秋 · 圭表测影',
+        era: '约公元前500年',
+        text: '<p>测影：春秋时期，古人发明了圭表测影的方法，通过测量正午日影的长度变化，精确确定了冬至（日影最长）和夏至（日影最短）两个关键节气，随后又确立了春分和秋分。</p><p>二分二至："二分二至"（春分、秋分、夏至、冬至）的确定为二十四节气体系奠定了核心框架。这是世界上最早通过天文观测确定节气的方法，比西方早了数百年。</p><p>智慧：圭表测影体现了古人对天文现象的精准观测和数学计算能力，是中国古代科技发展的重要里程碑。</p>',
+        imgSrc: 'https://picsum.photos/id/30/500/375',
+        imgCaption: '圭表测影 · 确立二分二至'
+      },
+      'qin_han': {
+        year: '公元前200年',
+        label: '秦汉·体系确立',
+        title: '秦汉 · 体系确立',
+        era: '公元前200年',
+        text: '<p>完整记载：西汉时期，《淮南子·时则训》首次完整记载了二十四节气的全部名称，标志着这一历法体系正式确立。书中详细描述了每个节气的物候特征和对应的农事活动。</p><p>官方历法：汉武帝时期，落下闳等人编制《太初历》，将二十四节气正式纳入官方历法体系，成为指导全国农业生产和日常生活的时间标准。</p><p>影响深远：秦汉时期二十四节气体系的完整确立，使其成为此后两千年中国农耕文明的核心时间框架，深刻影响了东亚地区的历法文化。</p>',
+        imgSrc: 'https://picsum.photos/id/40/500/375',
+        imgCaption: '《淮南子》· 二十四节气首次完整记载'
+      },
+      'sui_tang': {
+        year: '618年',
+        label: '隋唐·文化融合',
+        title: '隋唐 · 文化融合',
+        era: '618年 — 907年',
+        text: '<p>诗画节气：隋唐时期，节气文化融入诗词、绘画、音乐等艺术领域，成为文人墨客创作的重要题材。杜甫、白居易等诗人写下了大量以节气为主题的传世佳作。</p><p>民俗丰富：节气民俗活动日益丰富，立春鞭春、清明踏青、冬至祭天等习俗在民间广泛流传，形成了独具特色的节气文化景观。</p><p>文化传播：这一时期，二十四节气随着中华文化的传播，影响到了日本、朝鲜、越南等东亚国家，形成了东亚共同的节气文化圈。</p>',
+        imgSrc: 'https://picsum.photos/id/50/500/375',
+        imgCaption: '隋唐盛世 · 节气文化融入诗词书画'
+      },
+      'song_yuan': {
+        year: '960年',
+        label: '宋元·历法精进',
+        title: '宋元 · 历法精进',
+        era: '960年 — 1368年',
+        text: '<p>精确计算：宋元时期，天文学家对节气进行了更精确的计算。北宋科学家沈括在《梦溪笔谈》中详细讨论了节气与历法的关系，提出了改进历法的主张。</p><p>授时历：元代天文学家郭守敬编制《授时历》，以365.2425日为一回归年，与现行公历数值相同，但比公历早了三百年。《授时历》对节气的推算精度达到了前所未有的水平。</p><p>仪器创新：郭守敬还创制了简仪、仰仪等天文仪器，使节气观测更加精准，体现了中国古代天文学的卓越成就。</p>',
+        imgSrc: 'https://picsum.photos/id/60/500/375',
+        imgCaption: '郭守敬与《授时历》· 节气推算精益求精'
+      },
+      'ming_qing': {
+        year: '1368年',
+        label: '明清·体系完善',
+        title: '明清 · 体系完善',
+        era: '1368年 — 1912年',
+        text: '<p>农耕指南：明清时期，二十四节气体系进一步完善，与农业生产、日常生活、医疗养生等各个方面深度融合。各类农书、医书、时令书都将节气作为重要内容加以阐述。</p><p>时令养生：中医养生理论中，"顺时养生"成为重要原则，强调根据节气变化调整饮食、起居和情志。民间也形成了丰富的节气饮食文化。</p><p>节庆融合：许多传统节日与节气紧密关联，如清明祭祖、冬至团圆等，节气成为连接自然节律与社会生活的重要纽带。</p>',
+        imgSrc: 'https://picsum.photos/id/70/500/375',
+        imgCaption: '明清时期 · 节气与农耕生活深度融合'
+      },
+      'modern': {
+        year: '2016年',
+        label: '现代·非遗传承',
+        title: '现代 · 非遗传承',
+        era: '2016年至今',
+        text: '<p>申遗成功：2016年11月30日，在埃塞俄比亚首都亚的斯亚贝巴召开的联合国教科文组织保护非物质文化遗产政府间委员会第十一届常会上，二十四节气被正式列入《人类非物质文化遗产代表作名录》。</p><p>世界认可：评审委员会一致认为：二十四节气"不仅在中国，在整个东亚文化圈都具有广泛影响力，体现了人与自然和谐相处的东方哲学，对促进文化多样性具有重要意义"。</p><p>数字传承：申遗成功后，中国启动了"二十四节气保护行动计划"，运用虚拟现实、人工智能等新技术，使传统节气以更年轻、更智能的方式融入现代生活，焕发新的生机与活力。</p>',
+        imgSrc: 'https://picsum.photos/id/104/500/375',
+        imgCaption: '2016年 · 二十四节气入选联合国非遗名录'
+      }
+    };
+
+    // 节点顺序（用于渲染）
+    const nodeKeys = [
+      'ancient', 'xia_shang', 'spring_autumn', 'qin_han',
+      'sui_tang', 'song_yuan', 'ming_qing', 'modern'
+    ];
+
+    // ---------- 渲染时间轴节点 ----------
+    const track = document.getElementById('timelineTrackHorizontal');
+    track.innerHTML = '';
+    nodeKeys.forEach((key, index) => {
+      const data = timelineData[key];
+      const node = document.createElement('div');
+      node.className = 'timeline-node';
+      node.setAttribute('data-key', key);
+      // 默认激活现代节点（最后一个）
+      if (key === 'modern') node.classList.add('active');
+      node.innerHTML = `
+                <span class="timeline-year">${data.year}</span>
+                <span class="timeline-label">${data.label}</span>
+              `;
+      track.appendChild(node);
+    });
+
+    // ---------- 更新详情 ----------
+    const detailTitle = document.getElementById('detailTitle');
+    const detailEra = document.getElementById('detailEra');
+    const detailText = document.getElementById('detailText');
+    const detailImage = document.getElementById('detailImage');
+    const detailIcon = document.getElementById('detailIcon');
+
+    function updateDetail(key) {
+      const data = timelineData[key];
+      if (!data) return;
+      detailTitle.innerText = data.title;
+      detailEra.innerText = data.era;
+      detailText.innerHTML = data.text;
+      detailImage.innerHTML = `
+                <img src="${data.imgSrc}" alt="${data.imgCaption}" loading="lazy">
+                <div class="img-caption">${data.imgCaption}</div>
+              `;
+      detailIcon.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235B8C5A'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E";
+    }
+
+    // ---------- 点击节点切换 ----------
+    const allNodes = document.querySelectorAll('.timeline-node');
+    allNodes.forEach(node => {
+      node.addEventListener('click', function() {
+        allNodes.forEach(n => n.classList.remove('active'));
+        this.classList.add('active');
+        const key = this.getAttribute('data-key');
+        updateDetail(key);
+      });
+    });
+
+    // 默认显示现代节点
+    updateDetail('modern');
+
+    // ---------- 滚动动画：节点依次显现 (Intersection Observer) ----------
+    const timelineEl = document.getElementById('timelineEnhanced');
+    let animationTriggered = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animationTriggered) {
+          animationTriggered = true;
+          const nodes = document.querySelectorAll('.timeline-node');
+          nodes.forEach((node, i) => {
+            setTimeout(() => {
+              node.classList.add('visible');
+            }, i * 120);
+          });
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    observer.observe(timelineEl);
+
+    // 如果页面加载时时间轴已经在视口中，立即触发
+    setTimeout(() => {
+      const rect = timelineEl.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+      if (rect.top < winHeight * 0.8 && !animationTriggered) {
+        animationTriggered = true;
+        const nodes = document.querySelectorAll('.timeline-node');
+        nodes.forEach((node, i) => {
+          setTimeout(() => {
+            node.classList.add('visible');
+          }, i * 120);
+        });
+      }
+    }, 300);
+
+    // 滚动后备触发
+    window.addEventListener('scroll', function() {
+      if (animationTriggered) return;
+      const rect = timelineEl.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+      if (rect.top < winHeight * 0.8) {
+        animationTriggered = true;
+        const nodes = document.querySelectorAll('.timeline-node');
+        nodes.forEach((node, i) => {
+          setTimeout(() => {
+            node.classList.add('visible');
+          }, i * 120);
+        });
+      }
+    }, { passive: true });
+
+    // ============================================================
+    // 4. 民俗标签切换
+    // ============================================================
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.customs-tab-content');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const season = btn.getAttribute('data-season');
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        tabContents.forEach(content => content.classList.remove('active'));
+        if (season === 'spring') document.getElementById('spring-content').classList.add('active');
+        if (season === 'summer') document.getElementById('summer-content').classList.add('active');
+        if (season === 'autumn') document.getElementById('autumn-content').classList.add('active');
+        if (season === 'winter') document.getElementById('winter-content').classList.add('active');
+      });
+    });
+
+    // ============================================================
+    // 5. 诗词轮播
+    // ============================================================
+    const poemsList = [
+      { season: '春', title: '《立春》', author: '【唐】杜甫', lines: ['春日春盘细生菜，忽忆两京梅发时。', '盘出高门行白玉，菜传纤手送青丝。'] },
+      { season: '夏', title: '《夏至》', author: '【宋】范成大', lines: ['李核垂腰祝饐，粽丝系臂扶羸。', '节物竞随乡俗，老翁闲伴儿嬉。'] },
+      { season: '秋', title: '《秋分》', author: '【明】孙作', lines: ['秋分客尚在，竹露夕微微。', '蝉急向秋分，池清映夕晖。'] },
+      { season: '冬', title: '《冬至》', author: '【唐】杜甫', lines: ['天时人事日相催，冬至阳生春又来。', '刺绣五纹添弱线，吹葭六琯动浮灰。'] }
+    ];
+    let poemIndex = 0;
+
+    function updatePoemSlider() {
+      const p = poemsList[poemIndex];
+      const sliderDiv = document.getElementById('sliderContent');
+      sliderDiv.innerHTML =
+        `<div class="poetry-season ${p.season}">${p.season}</div><h4>${p.title}</h4><span class="poetry-author">${p.author}</span>${p.lines.map(line => `<p class="poetry-verse">${line}</p>`).join('')}`;
+    }
+    document.getElementById('prevPoemBtn').addEventListener('click', () => {
+      poemIndex = (poemIndex - 1 + poemsList.length) % poemsList.length;
+      updatePoemSlider();
+    });
+    document.getElementById('nextPoemBtn').addEventListener('click', () => {
+      poemIndex = (poemIndex + 1) % poemsList.length;
+      updatePoemSlider();
+    });
+    updatePoemSlider();
+
+    // ============================================================
+    // 6. 知识测验
+    // ============================================================
+    const quizOptions = document.querySelectorAll('.quiz-opt');
+    const quizFeedback = document.getElementById('quizFeedback');
+    quizOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const selected = opt.getAttribute('data-answer');
+        if (selected === 'A') {
+          quizFeedback.innerText = '✅ 回答正确！惊蛰时节桃始华，仓庚鸣，鹰化为鸠，正是春意盎然的景象。';
+        } else {
+          quizFeedback.innerText = '❌ 不太对哦，再想想～惊蛰的特点是桃花开、黄鹂鸣，万物复苏。';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

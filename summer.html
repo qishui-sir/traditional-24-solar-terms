@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暑气盈盛 · 二十四节气之夏季篇</title>
+  <meta name="description" content="夏季节气专题：立夏、小满、芒种、夏至、小暑、大暑，感受万物繁茂、暑气蒸腾的仲夏之美。">
+  <meta name="keywords" content="二十四节气,夏季,立夏,小满,芒种,夏至,小暑,大暑,中国传统节日">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --summer-blue: #4A90E2;
+  --summer-blue-light: #7CB0F2;
+  --summer-blue-dark: #2A70C2;
+  --summer-pink: #FF8A80;
+  --summer-pink-light: #FFC4C0;
+  --summer-pink-dark: #FF5247;
+  --summer-yellow: #FFD600;
+  --summer-yellow-light: #FFF176;
+  --summer-bg: #FFF9F5;
+  --summer-card-bg: #FFFFFF;
+  --summer-text: #2A3B4C;
+  --summer-text-light: #5D6E7F;
+  --summer-border: #E0EBF5;
+  --summer-shadow: rgba(74, 144, 226, 0.15);
+  --summer-gradient: linear-gradient(135deg, #E3F2FD 0%, #FFEBEE 50%, #FFF8E1 100%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: var(--summer-bg);
+  color: var(--summer-text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 138, 128, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(74, 144, 226, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 214, 0, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.summer-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--summer-border);
+  box-shadow: 0 2px 20px var(--summer-shadow);
+  transition: all 0.3s ease;
+}
+.summer-nav.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 4px 30px var(--summer-shadow);
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--summer-blue-dark);
+}
+.nav-logo-icon {
+  font-size: 1.8rem;
+}
+.nav-logo-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--summer-text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--summer-blue-dark);
+  background: rgba(74, 144, 226, 0.1);
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--summer-blue);
+  border-radius: 2px;
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+.nav-toggle span {
+  width: 25px;
+  height: 2px;
+  background: var(--summer-blue-dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.summer-hero {
+  position: relative;
+  margin-top: 70px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--summer-gradient);
+  overflow: hidden;
+}
+.hero-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.06;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%234A90E2'/%3E%3Cpath d='M10 35 Q15 45 10 55 Q5 45 10 35Z' fill='%23FF8A80'/%3E%3Cpath d='M50 35 Q55 45 50 55 Q45 45 50 35Z' fill='%23FFD600'/%3E%3C/svg%3E");
+  animation: patternFloat 30s linear infinite;
+}
+@keyframes patternFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-60px); }
+}
+.leaf {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: var(--summer-blue-light);
+  border-radius: 50% 0;
+  opacity: 0.6;
+  animation: leafFall linear infinite;
+}
+@keyframes leafFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(30px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-20px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(25px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(-10px);
+    opacity: 0;
+  }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+}
+.hero-season-label {
+  display: inline-block;
+  padding: 0.4rem 1.5rem;
+  background: rgba(74, 144, 226, 0.15);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 30px;
+  color: var(--summer-blue-dark);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--summer-blue-dark);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(74, 144, 226, 0.1);
+  letter-spacing: 8px;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--summer-pink-dark);
+  margin-bottom: 2rem;
+  letter-spacing: 5px;
+  font-style: italic;
+}
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--summer-text-light);
+  line-height: 2;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+.hero-scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--summer-blue);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.summer-intro {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: -5rem auto 4rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--summer-border);
+  box-shadow: 0 10px 40px var(--summer-shadow);
+}
+.intro-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--summer-blue-dark);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.intro-title::after {
+  content: '🍃';
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+.intro-text {
+  font-size: 1.05rem;
+  color: var(--summer-text-light);
+  text-indent: 2em;
+  margin-bottom: 1rem;
+}
+.intro-quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--summer-pink-dark);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-left: 3px solid var(--summer-pink);
+  border-right: 3px solid var(--summer-pink);
+}
+.term-nav {
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--summer-border);
+  padding: 1rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.term-nav::-webkit-scrollbar {
+  height: 3px;
+}
+.term-nav::-webkit-scrollbar-thumb {
+  background: var(--summer-blue-light);
+  border-radius: 3px;
+}
+.term-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.term-nav a {
+  text-decoration: none;
+  color: var(--summer-text-light);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.term-nav a:hover {
+  color: var(--summer-blue-dark);
+  background: rgba(74, 144, 226, 0.08);
+  border-color: var(--summer-border);
+}
+.term-nav a.active {
+  color: #fff;
+  background: var(--summer-blue);
+  border-color: var(--summer-blue);
+}
+.terms-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+.term-card {
+  background: var(--summer-card-bg);
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 4rem;
+  box-shadow: 0 8px 32px var(--summer-shadow);
+  border: 1px solid var(--summer-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.term-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.term-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(74, 144, 226, 0.2);
+}
+.term-card-header {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+.term-card-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.term-card:hover .term-card-header img {
+  transform: scale(1.05);
+}
+.term-card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+.term-card-overlay {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 2;
+}
+.term-number {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background: var(--summer-blue);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+.term-name-tag {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--summer-blue-dark);
+  letter-spacing: 3px;
+}
+.term-pinyin {
+  font-size: 0.85rem;
+  color: var(--summer-text-light);
+  letter-spacing: 1px;
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+.term-card-body {
+  padding: 2rem 3rem 3rem;
+}
+.term-meta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.term-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--summer-bg);
+  border-radius: 12px;
+  border: 1px solid var(--summer-border);
+  font-size: 0.9rem;
+}
+.term-meta-icon {
+  font-size: 1.2rem;
+}
+.term-meta-label {
+  color: var(--summer-text-light);
+  font-size: 0.8rem;
+}
+.term-meta-value {
+  color: var(--summer-blue-dark);
+  font-weight: 600;
+}
+.term-section {
+  margin-bottom: 2rem;
+}
+.term-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
+  color: var(--summer-blue-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--summer-border);
+}
+.term-section-icon {
+  font-size: 1.3rem;
+}
+.term-section p {
+  color: var(--summer-text-light);
+  text-indent: 2em;
+  margin-bottom: 0.5rem;
+  line-height: 2;
+}
+.phenology-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.phenology-item {
+  text-align: center;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(74,144,226,0.05), rgba(255,138,128,0.05));
+  border-radius: 16px;
+  border: 1px solid var(--summer-border);
+  transition: transform 0.3s ease;
+}
+.phenology-item:hover {
+  transform: translateY(-3px);
+}
+.phenology-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.phenology-name {
+  font-weight: 600;
+  color: var(--summer-blue-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.phenology-desc {
+  font-size: 0.85rem;
+  color: var(--summer-text-light);
+  text-indent: 0;
+}
+.custom-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.custom-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--summer-bg);
+  border-radius: 12px;
+  border: 1px solid var(--summer-border);
+}
+.custom-item-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.custom-item-text {
+  font-size: 0.95rem;
+  color: var(--summer-text-light);
+  text-indent: 0;
+}
+.custom-item-title {
+  font-weight: 600;
+  color: var(--summer-blue-dark);
+  margin-bottom: 0.3rem;
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.food-item {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, var(--summer-yellow-light), var(--summer-pink-light));
+  border-radius: 16px;
+  border: 1px solid var(--summer-border);
+  transition: transform 0.3s ease;
+}
+.food-item:hover {
+  transform: scale(1.03);
+}
+.food-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.food-name {
+  font-weight: 600;
+  color: var(--summer-blue-dark);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.food-desc {
+  font-size: 0.85rem;
+  color: var(--summer-text-light);
+  text-indent: 0;
+}
+.poem-block {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(74,144,226,0.05), rgba(255,138,128,0.08));
+  border-radius: 16px;
+  border: 1px solid var(--summer-border);
+  text-align: center;
+}
+.poem-block::before {
+  content: '📜';
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  background: var(--summer-card-bg);
+  padding: 0 0.5rem;
+}
+.poem-title {
+  font-size: 1.1rem;
+  color: var(--summer-blue-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.poem-author {
+  font-size: 0.9rem;
+  color: var(--summer-text-light);
+  margin-bottom: 1rem;
+}
+.poem-content {
+  font-size: 1.1rem;
+  color: var(--summer-text);
+  line-height: 2.2;
+  letter-spacing: 1px;
+}
+.poem-content p {
+  text-indent: 0;
+  margin-bottom: 0.3rem;
+}
+.summer-footer {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--summer-blue-dark), #1A60B2);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 3rem 2rem 1.5rem;
+  margin-top: 2rem;
+}
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.footer-brand {
+  max-width: 350px;
+}
+.footer-brand h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 2px;
+}
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.8;
+}
+.footer-links-group h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+.footer-links-group ul {
+  list-style: none;
+}
+.footer-links-group a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.3rem 0;
+  transition: color 0.3s ease;
+}
+.footer-links-group a:hover {
+  color: var(--summer-yellow);
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--summer-blue);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--summer-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.back-to-top:hover {
+  background: var(--summer-blue-dark);
+  transform: translateY(-3px);
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--summer-border);
+    box-shadow: 0 10px 30px var(--summer-shadow);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .hero-title {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .summer-intro {
+    margin: -3rem 1rem 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .term-card-header {
+    height: 250px;
+  }
+  .term-card-body {
+    padding: 1.5rem;
+  }
+  .term-meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .phenology-list {
+    grid-template-columns: 1fr;
+  }
+  .custom-list {
+    grid-template-columns: 1fr;
+  }
+  .food-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .term-nav-inner {
+    justify-content: flex-start;
+  }
+  .footer-top {
+    flex-direction: column;
+  }
+}
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+  .term-name-tag {
+    font-size: 1.2rem;
+  }
+}
+@media print {
+  .summer-nav,
+  .term-nav,
+  .back-to-top,
+  .hero-scroll-hint,
+  .leaf,
+  .hero-bg-pattern,
+  .top-left-nav {
+    display: none !important;
+  }
+  .summer-hero {
+    min-height: auto;
+    margin-top: 0;
+  }
+  .term-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* ========== 左上角季节导航 ========== */
+.top-left-nav {
+  position: fixed;
+  top: 85px;
+  left: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.top-left-nav-trigger {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4A90E2, #7CB0F2);
+  border: 3px solid rgba(255,255,255,0.8);
+  box-shadow: 0 4px 20px rgba(74,144,226,0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: leftNavPulseS 3s ease-in-out infinite;
+}
+.top-left-nav-trigger:hover {
+  transform: scale(1.15) rotate(-10deg);
+  box-shadow: 0 8px 35px rgba(74,144,226,0.6);
+}
+@keyframes leftNavPulseS {
+  0%, 100% { box-shadow: 0 4px 20px rgba(74,144,226,0.4); }
+  50% { box-shadow: 0 4px 30px rgba(74,144,226,0.7); }
+}
+.top-left-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.top-left-nav-menu.show {
+  max-width: 200px;
+  opacity: 1;
+}
+.top-left-nav-item {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 10px 18px;
+  text-decoration: none;
+  color: #2A70C2;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transform: translateX(-20px);
+}
+.top-left-nav-menu.show .top-left-nav-item {
+  transform: translateX(0);
+}
+.top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
+.top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
+.top-left-nav-item:hover {
+  background: linear-gradient(135deg, #4A90E2, #7CB0F2);
+  color: #fff;
+  transform: translateX(5px) !important;
+  box-shadow: 0 5px 20px rgba(74,144,226,0.3);
+}
+.top-left-nav-item.active {
+  background: linear-gradient(135deg, #4A90E2, #7CB0F2);
+  color: #fff;
+}
+.top-left-nav-hint {
+  font-size: 10px;
+  color: #4A90E2;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+.top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
+.top-left-nav-menu.show ~ .top-left-nav-hint {
+  opacity: 0.7;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ========== 左上角季节导航 ========== -->
+  <div class="top-left-nav">
+    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">☀️</button>
+    <div class="top-left-nav-menu" id="topLeftNavMenu">
+      <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
+      <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
+      <a href="summer.html" class="top-left-nav-item active">☀️ 夏季详情</a>
+      <a href="autumn.html" class="top-left-nav-item">🍂 秋季详情</a>
+      <a href="winter.html" class="top-left-nav-item">❄️ 冬季详情</a>
+      <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
+      <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
+    </div>
+    <span class="top-left-nav-hint">点击展开</span>
+  </div>
+  <script>
+    function toggleTopLeftNav() {
+      const menu = document.getElementById('topLeftNavMenu');
+      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
+      menu.classList.toggle('show');
+      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
+    }
+  </script>
+
+  <nav class="summer-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-icon">🌿</span>
+        <span class="nav-logo-text">二十四节气</span>
+      </a>
+      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="summer-hero" id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="leaf" style="left:5%; animation-duration:8s; animation-delay:0s; width:13px; height:13px;"></div>
+    <div class="leaf" style="left:15%; animation-duration:10s; animation-delay:1s; width:11px; height:11px;"></div>
+    <div class="leaf" style="left:25%; animation-duration:9s; animation-delay:2s;"></div>
+    <div class="leaf" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:16px; height:16px;"></div>
+    <div class="leaf" style="left:55%; animation-duration:8.5s; animation-delay:3s;"></div>
+    <div class="leaf" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:10px; height:10px;"></div>
+    <div class="leaf" style="left:75%; animation-duration:9.5s; animation-delay:2.5s;"></div>
+    <div class="leaf" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:12px; height:12px;"></div>
+    <div class="leaf" style="left:92%; animation-duration:8.8s; animation-delay:3.5s;"></div>
+    <div class="leaf" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:9px; height:9px;"></div>
+
+    <div class="hero-content">
+      <div class="hero-season-label">🌿 夏 季 篇</div>
+      <h1 class="hero-title">暑 气 盈 盛</h1>
+      <p class="hero-subtitle">万物繁茂 · 仲夏蝉鸣</p>
+      <p class="hero-desc">
+        夏，四时之盛也。自立夏至大暑，六气更迭，万物进入生长旺季，
+        天地气交，万物华实，蝉鸣阵阵，荷风送香。
+        古人观夏之节气，知农时，调起居，顺应暑热之节律。
+      </p>
+      <div class="hero-scroll-hint">
+        <span>↓</span>
+        <span>探索夏之六气</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="summer-intro" id="intro">
+    <h2 class="intro-title">夏季节气总述</h2>
+    <p class="intro-text">
+      夏季，始于立夏，终于大暑，共历六个节气。此时太阳沿黄道从45°运行至120°，
+      北半球日照最长，气温升至全年峰值，万物进入生长最旺盛的阶段。立夏标志着夏季的开始，
+      万物至此皆长大；小满时节，夏熟作物籽粒开始灌浆饱满；芒种是农事最繁忙的时节，
+      收麦种稻，忙收忙种；夏至白昼最长，阳气盛极而衰；小暑大暑，暑气蒸腾，
+      是一年中最热的时段，农作物也进入快速生长期。
+    </p>
+    <p class="intro-text">
+      夏季六节气，承载着农耕文明的智慧，既反映了季节更替的自然规律，
+      也蕴含着古人顺应天时、防暑养生的生活智慧。从立夏尝新到大暑饮伏茶，
+      每个节气都有独特的民俗与食俗，是中华文化中鲜活的夏日记忆。
+    </p>
+    <div class="intro-quote">
+      "力尽不知热，但惜夏日长。" —— 农忙仲夏，万物丰茂
+    </div>
+  </section>
+
+  <div class="term-nav" id="termNav">
+    <div class="term-nav-inner">
+      <a href="#lixia" class="active">立夏</a>
+      <a href="#xiaoman">小满</a>
+      <a href="#mangzhong">芒种</a>
+      <a href="#xiazhi">夏至</a>
+      <a href="#xiaoshu">小暑</a>
+      <a href="#dashu">大暑</a>
+    </div>
+  </div>
+
+  <div class="terms-container">
+    <!-- 立夏 -->
+    <article class="term-card" id="lixia">
+      <div class="term-card-header">
+        <img src="./立夏.jpg" alt="立夏 - 万物至此皆长大" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">7</span>
+          <span class="term-name-tag">立夏 <span class="term-pinyin">Lìxià</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item">
+            <span class="term-meta-icon">📅</span>
+            <div>
+              <div class="term-meta-label">节气时间</div>
+              <div class="term-meta-value">每年5月5日—7日</div>
+            </div>
+          </div>
+          <div class="term-meta-item">
+            <span class="term-meta-icon">📍</span>
+            <div>
+              <div class="term-meta-label">太阳黄经</div>
+              <div class="term-meta-value">45°</div>
+            </div>
+          </div>
+          <div class="term-meta-item">
+            <span class="term-meta-icon">🌡️</span>
+            <div>
+              <div class="term-meta-label">气候特征</div>
+              <div class="term-meta-value">气温显著升高，雷雨增多</div>
+            </div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>立夏，夏季的第一个节气，标志着孟夏时节的正式开始。"立"为开始，"夏"为大，意为万物至此皆长大。立夏时节，北斗七星的斗柄指向东南方，万物进入生长旺季，草木繁茂，鸟兽繁育。在传统历法中，立夏不仅是季节转换的节点，更是古人衡量农时、调整生活节奏的重要标志。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item">
+              <div class="phenology-icon">🦃</div>
+              <div class="phenology-name">一候 · 蝼蝈鸣</div>
+              <div class="phenology-desc">蝼蛄开始在田间鸣叫，预示着夏季的到来</div>
+            </li>
+            <li class="phenology-item">
+              <div class="phenology-icon">🦆</div>
+              <div class="phenology-name">二候 · 蚯蚓出</div>
+              <div class="phenology-desc">地下温度升高，蚯蚓爬出地面活动</div>
+            </li>
+            <li class="phenology-item">
+              <div class="phenology-icon">🌿</div>
+              <div class="phenology-name">三候 · 王瓜生</div>
+              <div class="phenology-desc">王瓜藤蔓快速生长，枝繁叶茂</div>
+            </li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item">
+              <span class="custom-item-icon">🍳</span>
+              <div class="custom-item-text"><div class="custom-item-title">尝新</div>品尝立夏新茶、新麦、新果，寓意尝鲜纳福</div>
+            </li>
+            <li class="custom-item">
+              <span class="custom-item-icon">⚖️</span>
+              <div class="custom-item-text"><div class="custom-item-title">称人</div>称体重，祈求夏季无病无灾，身体健康</div>
+            </li>
+            <li class="custom-item">
+              <span class="custom-item-icon">🧵</span>
+              <div class="custom-item-text"><div class="custom-item-title">挂蛋</div>将煮熟的鸡蛋挂在孩子胸前，防止疰夏</div>
+            </li>
+            <li class="custom-item">
+              <span class="custom-item-icon">🌿</span>
+              <div class="custom-item-text"><div class="custom-item-title">迎夏</div>古代帝王率百官迎夏于南郊，祭祀火神祝融</div>
+            </li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥚</div><div class="food-name">立夏蛋</div><div class="food-desc">煮茶叶蛋、咸鸭蛋，吃蛋补夏，强健身体</div></div>
+            <div class="food-item"><div class="food-emoji">🍚</div><div class="food-name">五色饭</div><div class="food-desc">用红豆、绿豆、黑豆、黄豆、糯米煮成，寓意五谷丰登</div></div>
+            <div class="food-item"><div class="food-emoji">🥩</div><div class="food-name">健脚笋</div><div class="food-desc">吃竹笋健脚力，应对夏季劳作</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《立夏》</div>
+            <div class="poem-author">【宋】陆游</div>
+            <div class="poem-content"><p>赤帜插城扉，东君整驾归。</p><p>泥新巢燕闹，花尽蜜蜂稀。</p><p>槐柳阴初密，帘栊暑尚微。</p><p>日斜汤沐罢，熟练试单衣。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- 小满 -->
+    <article class="term-card" id="xiaoman">
+      <div class="term-card-header">
+        <img src="./小满.jpg" alt="小满 - 籽粒初满，江河渐满" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">8</span>
+          <span class="term-name-tag">小满 <span class="term-pinyin">Xiǎomǎn</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item">
+            <span class="term-meta-icon">📅</span>
+            <div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年5月20日—22日</div></div>
+          </div>
+          <div class="term-meta-item">
+            <span class="term-meta-icon">📍</span>
+            <div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">60°</div></div>
+          </div>
+          <div class="term-meta-item">
+            <span class="term-meta-icon">🌡️</span>
+            <div><div class="term-meta-label">气候特征</div><div class="term-meta-value">南北温差缩小，降水增多</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>小满，夏季的第二个节气。"满"有两层含义：一是指麦类等夏熟作物籽粒开始饱满但尚未成熟，二是指此时降水增多，江河渐满。小满之名，既体现了农作物的生长状态，也反映了气候特征。此时节，南方地区雨水充沛，北方地区气温快速升高，正是田间管理的关键时期。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item"><div class="phenology-icon">🦋</div><div class="phenology-name">一候 · 苦菜秀</div><div class="phenology-desc">苦菜繁茂开花，成为夏季最早的野菜</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🌾</div><div class="phenology-name">二候 · 靡草死</div><div class="phenology-desc">喜阴的细软草类因日晒强烈而枯死</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🌞</div><div class="phenology-name">三候 · 麦秋至</div><div class="phenology-desc">麦子开始成熟，虽在夏季却有秋收之象</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🚣</span><div class="custom-item-text"><div class="custom-item-title">祭车神</div>水乡地区祭祀车神，祈求水利通畅，庄稼丰收</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">食苦菜</div>吃苦菜清热解暑，顺应节气养生之道</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">祈蚕节</div>江浙地区祭祀蚕神，祈求蚕茧丰收</div></li>
+            <li class="custom-item"><span class="custom-item-icon">💧</span><div class="custom-item-text"><div class="custom-item-title">抢水</div>黎明时分水车灌水入田，寓意抢得丰收好兆头</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name">苦菜</div><div class="food-desc">清热解毒，凉拌、清炒均可，小满必吃的时令野菜</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">小满粥</div><div class="food-desc">杂粮熬制的粥品，健脾祛湿，适应夏季气候</div></div>
+            <div class="food-item"><div class="food-emoji">🍜</div><div class="food-name">麦糕</div><div class="food-desc">新麦磨粉制作的糕点，尝新祈福</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《小满》</div>
+            <div class="poem-author">【宋】欧阳修</div>
+            <div class="poem-content"><p>夜莺啼绿柳，皓月醒长空。</p><p>最爱垄头麦，迎风笑落红。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- 芒种 -->
+    <article class="term-card" id="mangzhong">
+      <div class="term-card-header">
+        <img src="./芒种.jpg" alt="芒种 - 忙收忙种，农忙时节" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">9</span>
+          <span class="term-name-tag">芒种 <span class="term-pinyin">Mángzhòng</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月5日—7日</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">75°</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温显著升高，梅雨季节开始</div></div></div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>芒种，夏季的第三个节气，又名"忙种"。"芒"指麦类等有芒作物成熟，"种"指谷黍类作物播种。芒种时节，南方忙着收麦插秧，北方忙着收麦种豆，是一年中农事最繁忙的节气。此时节，长江中下游地区进入梅雨季节，阴雨连绵，空气湿度大，气温高，农作物生长迅速。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item"><div class="phenology-icon">🦅</div><div class="phenology-name">一候 · 螳螂生</div><div class="phenology-desc">螳螂因感受到阴气而生，开始活动</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">二候 · 鵙始鸣</div><div class="phenology-desc">伯劳鸟开始鸣叫，声传郊野</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">三候 · 反舌无声</div><div class="phenology-desc">反舌鸟停止鸣叫，万物生长进入新阶段</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">💐</span><div class="custom-item-text"><div class="custom-item-title">送花神</div>祭祀花神，饯送花神归位，期盼来年花开</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧹</span><div class="custom-item-text"><div class="custom-item-title">安苗</div>皖南地区祭祀土地神，祈求禾苗平安生长</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">煮梅</div>将青梅煮制食用，酸甜可口，解腻开胃</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧺</span><div class="custom-item-text"><div class="custom-item-title">开犁节</div>浙江地区举行开犁仪式，祈求丰收</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🫒</div><div class="food-name">青梅酒</div><div class="food-desc">芒种煮梅酿酒，酸甜解暑，健脾开胃</div></div>
+            <div class="food-item"><div class="food-emoji">🍚</div><div class="food-name">新麦饭</div><div class="food-desc">新收小麦煮成的饭食，尝新祈福</div></div>
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">麦粽</div><div class="food-desc">用新麦粉制作的粽子，芒种特色食品</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《时雨》</div>
+            <div class="poem-author">【宋】陆游</div>
+            <div class="poem-content"><p>时雨及芒种，四野皆插秧。</p><p>家家麦饭美，处处菱歌长。</p><p>老我成惰农，永日付竹床。</p><p>衰发短不栉，爱此一雨凉。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- 夏至 -->
+    <article class="term-card" id="xiazhi">
+      <div class="term-card-header">
+        <img src="./夏至.jpg" alt="夏至 - 昼晷已云极，宵漏自此长" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">10</span>
+          <span class="term-name-tag">夏至 <span class="term-pinyin">Xiàzhì</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月21日—22日</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">90°</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">白昼最长，阳气盛极而衰</div></div></div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>夏至，夏季的第四个节气，是二十四节气中最早被确定的节气之一。夏至这天，太阳直射北回归线，北半球各地白昼达到全年最长，越往北昼越长。"至"有极致之意，既指白昼最长，也指阳气盛极而衰，此后阴气开始生长。夏至过后，虽日照开始缩短，但气温仍继续升高，进入"三伏天"的前奏。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item"><div class="phenology-icon">🦩</div><div class="phenology-name">一候 · 鹿角解</div><div class="phenology-desc">鹿的角开始脱落，因阳气始衰</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">二候 · 蝉始鸣</div><div class="phenology-desc">雄性知了开始鸣叫，夏日蝉声起</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🌿</div><div class="phenology-name">三候 · 半夏生</div><div class="phenology-desc">半夏草开始生长，为夏季中药</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🍜</span><div class="custom-item-text"><div class="custom-item-title">吃面</div>北方吃凉面，南方吃馄饨，寓意长寿安康</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">祭神祀祖</div>祭祀祖先和地神，祈求消灾年丰</div></li>
+            <li class="custom-item"><span class="custom-item-icon">📏</span><div class="custom-item-text"><div class="custom-item-title">立竿见影</div>测量日影，验证夏至日影最短的现象</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">消夏避伏</div>皇家拿出冬藏冰块避暑，百姓喝凉饮消暑</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍜</div><div class="food-name">凉面</div><div class="food-desc">夏至吃凉面，清热解暑，顺应节令</div></div>
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">馄饨</div><div class="food-desc">南方夏至吃馄饨，寓意聪明伶俐</div></div>
+            <div class="food-item"><div class="food-emoji">🧉</div><div class="food-name">夏至羹</div><div class="food-desc">用糯米、红枣等熬制，补气养血</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《竹枝词》</div>
+            <div class="poem-author">【唐】刘禹锡</div>
+            <div class="poem-content"><p>杨柳青青江水平，闻郎江上唱歌声。</p><p>东边日出西边雨，道是无晴却有晴。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- 小暑 -->
+    <article class="term-card" id="xiaoshu">
+      <div class="term-card-header">
+        <img src="./小暑.jpg" alt="小暑 - 暑气初盛，盛夏开始" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">11</span>
+          <span class="term-name-tag">小暑 <span class="term-pinyin">Xiǎoshǔ</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月6日—8日</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">105°</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温升高，进入伏天前期</div></div></div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>小暑，夏季的第五个节气。"暑"为炎热，"小"表示程度，意为天气开始炎热但尚未达到最热。小暑标志着盛夏的开始，此时节，全国大部分地区进入高温时段，雷阵雨增多，所谓"小暑大暑，上蒸下煮"。小暑后不久便进入初伏，是防暑降温、农事管理的重要时期。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item"><div class="phenology-icon">🦅</div><div class="phenology-name">一候 · 温风至</div><div class="phenology-desc">风中带着热浪，气温明显升高</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🐦</div><div class="phenology-name">二候 · 蟋蟀居宇</div><div class="phenology-desc">蟋蟀离开田野，躲到屋檐下避暑</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🪹</div><div class="phenology-name">三候 · 鹰始鸷</div><div class="phenology-desc">老鹰因地面气温高而飞向高空活动</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">食新</div>吃新收获的米和面，祭祀祖先和五谷神</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">吃伏面</div>头伏吃面条，寓意"尝新"、"补伏"</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">晒伏</div>将衣物、书籍拿出来暴晒，防霉防蛀</div></li>
+            <li class="custom-item"><span class="custom-item-icon">💧</span><div class="custom-item-text"><div class="custom-item-title">喝暑羊</div>山东地区喝羊肉汤，滋补身体度炎夏</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍉</div><div class="food-name">西瓜</div><div class="food-desc">小暑吃西瓜，清热解暑，生津止渴</div></div>
+            <div class="food-item"><div class="food-emoji">🍜</div><div class="food-name">伏面</div><div class="food-desc">头伏吃凉面，既开胃又消暑</div></div>
+            <div class="food-item"><div class="food-emoji">🍵</div><div class="food-name">绿豆汤</div><div class="food-desc">煮绿豆汤饮用，清热解毒，防暑降温</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《小暑六月节》</div>
+            <div class="poem-author">【唐】元稹</div>
+            <div class="poem-content"><p>倏忽温风至，因循小暑来。</p><p>竹喧先觉雨，山暗已闻雷。</p><p>户牖深青霭，阶庭长绿苔。</p><p>鹰鹯新习学，蟋蟀莫相催。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- 大暑 -->
+    <article class="term-card" id="dashu">
+      <div class="term-card-header">
+        <img src="./大暑.jpg" alt="大暑 - 暑气至极，五谷丰登" loading="lazy">
+        <div class="term-card-overlay">
+          <span class="term-number">12</span>
+          <span class="term-name-tag">大暑 <span class="term-pinyin">Dàshǔ</span></span>
+        </div>
+      </div>
+      <div class="term-card-body">
+        <div class="term-meta">
+          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月22日—24日</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">120°</div></div></div>
+          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">全年最热时段，高温高湿</div></div></div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
+          <p>大暑，夏季的最后一个节气。"大"表示炎热达到极致，是一年中最热的节气。大暑正值中伏前后，气温最高，农作物生长最快，同时也是旱、涝、台风等气象灾害多发期。虽然天气炎热，但充足的光照和热量为农作物生长提供了有利条件，故有"大暑不热，五谷不结"之说。</p>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <ul class="phenology-list">
+            <li class="phenology-item"><div class="phenology-icon">🦎</div><div class="phenology-name">一候 · 腐草为萤</div><div class="phenology-desc">腐草化生萤火虫，夏夜萤火纷飞</div></li>
+            <li class="phenology-item"><div class="phenology-icon">🌡️</div><div class="phenology-name">二候 · 土润溽暑</div><div class="phenology-desc">土地潮湿闷热，空气湿度达到顶峰</div></li>
+            <li class="phenology-item"><div class="phenology-icon">⛈️</div><div class="phenology-name">三候 · 大雨时行</div><div class="phenology-desc">频繁出现雷雨，大雨驱散暑气</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">送大暑船</div>江浙渔村送船出海，祈求祛除瘟病、渔获丰收</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥘</span><div class="custom-item-text"><div class="custom-item-title">喝伏茶</div>民间煮草药凉茶，三伏天饮用防暑祛湿</div></li>
+            <li class="custom-item"><span class="custom-item-icon>🍅</span><div class="custom-item-text"><div class="custom-item-title">晒伏姜</div>三伏暴晒生姜，入药驱寒暖胃</div></li>
+            <li class="custom-item"><span class="custom-item-icon>🦐</span><div class="custom-item-text"><div class="custom-item-title">吃仙草</div>岭南食用仙草冻，消暑解热</div></li>
+          </ul>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍧</div><div class="food-name">仙草冻</div><div class="food-desc">大暑传统小吃，清热降火，冰凉解暑</div></div>
+            <div class="food-item"><div class="food-emoji">🦴</div><div class="food-name">羊肉汤</div><div class="food-desc">闽南大暑进补羊肉汤，温补养生</div></div>
+            <div class="food-item"><div class="food-emoji>🍑</div><div class="food-name">伏桃</div><div class="food-desc">大暑蜜桃成熟，补水润燥</div></div>
+          </div>
+        </div>
+        <div class="term-section">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《大暑》</div>
+            <div class="poem-author">【宋】曾几</div>
+            <div class="poem-content"><p>赤日几时过，清风无处寻。</p><p>经书聊枕籍，瓜李漫浮沉。</p><p>兰若静复静，茅茨深又深。</p><p>炎蒸乃如许，那更惜分阴。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <footer class="summer-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>二十四节气·夏季篇</h3>
+          <p>溯源华夏农耕文脉，品读六夏物候风光，传承传统节气民俗文化。</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>四季导航</h4>
+          <ul>
+            <li><a href="#">春季节气</a></li>
+            <li><a href="#">夏季节气</a></li>
+            <li><a href="#">秋季节气</a></li>
+            <li><a href="#">冬季节气</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 二十四节气传统文化网页 | 夏之六气</div>
+    </div>
+  </footer>
+  <button class="back-to-top">↑</button>
+
+<!-- 补齐全部JS脚本，卡片滚动显示、导航高亮全部生效 -->
+<script>
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>30){
+    mainNav.classList.add('scrolled')
+  }else{
+    mainNav.classList.remove('scrolled')
+  }
+})
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open')
+}
+const cards = document.querySelectorAll('.term-card');
+const showCard=()=>{
+  cards.forEach(item=>{
+    const rect = item.getBoundingClientRect();
+    if(rect.top < window.innerHeight-120){
+      item.classList.add('visible')
+    }
+  })
+}
+window.addEventListener('scroll',showCard)
+window.addEventListener('load',showCard)
+const topBtn = document.querySelector('.back-to-top');
+if(topBtn){
+window.addEventListener('scroll',()=>{
+  topBtn.classList.toggle('visible',window.scrollY>400)
+})
+topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'})
+}
+const navA = document.querySelectorAll('.term-nav a');
+const sections = cards;
+window.addEventListener('scroll',()=>{
+  let idx=0;
+  sections.forEach((sec,i)=>{
+    if(window.scrollY >= sec.offsetTop-200) idx=i
+  })
+  navA.forEach(a=>a.classList.remove('active'))
+  navA[idx].classList.add('active')
+})
+</script>
+
+<!-- ========== 返回首页浮动按钮 - 节气徽章浮球 ========== -->
+<style>
+.home-float-btn{position:fixed;bottom:30px;right:30px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px}
+.float-btn-main{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#7CB0F2);border:3px solid #fff;box-shadow:0 4px 20px rgba(74,144,226,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);animation:floatPulseS 3s ease-in-out infinite}
+.float-btn-main:hover{transform:scale(1.15) rotate(10deg);box-shadow:0 6px 30px rgba(74,144,226,0.6)}
+@keyframes floatPulseS{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-expand-menu{display:flex;flex-direction:column;gap:10px;max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease;opacity:0}
+.float-expand-menu.show{max-height:200px;opacity:1}
+.float-menu-item{background:rgba(255,255,255,0.95);border-radius:25px;padding:10px 18px;text-decoration:none;color:#2A70C2;font-size:14px;font-weight:600;box-shadow:0 3px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.float-menu-item:hover{background:linear-gradient(135deg,#4A90E2,#7CB0F2);color:#fff;transform:translateX(-5px)}
+.float-hint{font-size:11px;color:#4A90E2;text-align:center;opacity:0.7}
+</style>
+<div class="home-float-btn">
+  <div class="float-btn-main" onclick="toggleFloatMenu()" title="返回首页">🏠</div>
+  <div class="float-expand-menu" id="floatMenu">
+    <a href="index.html" class="float-menu-item">🌿 首页总览</a>
+    <a href="spring.html" class="float-menu-item">🌸 春季详情</a>
+    <a href="summer.html" class="float-menu-item">☀️ 夏季详情</a>
+    <a href="autumn.html" class="float-menu-item">🍂 秋季详情</a>
+    <a href="winter.html" class="float-menu-item">❄️ 冬季详情</a>
+  </div>
+  <span class="float-hint" id="floatHint">点击展开</span>
+</div>
+<script>function toggleFloatMenu(){const menu=document.getElementById('floatMenu');const hint=document.getElementById('floatHint');menu.classList.toggle('show');hint.textContent=menu.classList.contains('show')?'点击收起':'点击展开'}</script>
+
+</body>
+</html>

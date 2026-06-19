@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>风物雅集 · 二十四节气风物图鉴</title>
+  <meta name="description" content="二十四节气风物图鉴：赏花果、识民俗，探寻节气生活美学。春夏秋冬四季风物，花卉果蔬、民俗物件尽收眼底。">
+  <meta name="keywords" content="二十四节气,风物图鉴,节气花卉,节气美食,民俗传统,春夏秋冬">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="scenery.css">
+  <style>
+    /* 左上角导航悬浮球 */
+    .top-left-nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .top-left-nav-trigger {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #DDA15E, #E9C46A);
+      border: 3px solid rgba(255,255,255,0.8);
+      box-shadow: 0 4px 20px rgba(221,161,94,0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: leftNavPulseSc 3s ease-in-out infinite;
+    }
+    .top-left-nav-trigger:hover {
+      transform: scale(1.15) rotate(-10deg);
+      box-shadow: 0 8px 35px rgba(221,161,94,0.6);
+    }
+    @keyframes leftNavPulseSc {
+      0%, 100% { box-shadow: 0 4px 20px rgba(221,161,94,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(221,161,94,0.7); }
+    }
+    .top-left-nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 0;
+      overflow: hidden;
+      transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .top-left-nav-menu.show {
+      max-width: 200px;
+      opacity: 1;
+    }
+    .top-left-nav-item {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: #8B5A2B;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transform: translateX(-20px);
+    }
+    .top-left-nav-menu.show .top-left-nav-item { transform: translateX(0); }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
+    .top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
+    .top-left-nav-item:hover {
+      background: linear-gradient(135deg, #DDA15E, #E9C46A);
+      color: #fff;
+      transform: translateX(5px) !important;
+      box-shadow: 0 5px 20px rgba(221,161,94,0.3);
+    }
+    .top-left-nav-item.active {
+      background: linear-gradient(135deg, #DDA15E, #E9C46A);
+      color: #fff;
+    }
+    .top-left-nav-hint {
+      font-size: 10px;
+      color: #8B5A2B;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
+    .top-left-nav-menu.show ~ .top-left-nav-hint {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== 左上角导航悬浮球 ========== -->
+  <div class="top-left-nav">
+    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🏞️</button>
+    <div class="top-left-nav-menu" id="topLeftNavMenu">
+      <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
+      <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
+      <a href="summer.html" class="top-left-nav-item">☀️ 夏季详情</a>
+      <a href="autumn.html" class="top-left-nav-item">🍂 秋季详情</a>
+      <a href="winter.html" class="top-left-nav-item">❄️ 冬季详情</a>
+      <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
+      <a href="scenery.html" class="top-left-nav-item active">🏞️ 节气风物</a>
+    </div>
+    <span class="top-left-nav-hint">点击展开</span>
+  </div>
+  <script>
+    function toggleTopLeftNav() {
+      const menu = document.getElementById('topLeftNavMenu');
+      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
+      menu.classList.toggle('show');
+      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
+    }
+  </script>
+
+  <!-- 固定导航栏 -->
+  <nav class="scenery-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-icon">🌿</span>
+        <span class="nav-logo-text">风物雅集</span>
+      </a>
+      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero区 -->
+  <section class="scenery-hero" id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="petal" style="left:5%; animation-duration:8s; animation-delay:0s; width:13px; height:13px; background:#8FB996;"></div>
+    <div class="petal" style="left:15%; animation-duration:10s; animation-delay:1s; width:11px; height:11px; background:#DDA15E;"></div>
+    <div class="petal" style="left:25%; animation-duration:9s; animation-delay:2s; background:#E9EDC9;"></div>
+    <div class="petal" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:16px; height:16px; background:#8FB996;"></div>
+    <div class="petal" style="left:55%; animation-duration:8.5s; animation-delay:3s; background:#DDA15E;"></div>
+    <div class="petal" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:10px; height:10px; background:#386641;"></div>
+    <div class="petal" style="left:75%; animation-duration:9.5s; animation-delay:2.5s; background:#E9EDC9;"></div>
+    <div class="petal" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:12px; height:12px; background:#8FB996;"></div>
+    <div class="petal" style="left:92%; animation-duration:8.8s; animation-delay:3.5s; background:#DDA15E;"></div>
+    <div class="petal" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:9px; height:9px; background:#386641;"></div>
+
+    <div class="hero-content">
+      <div class="hero-season-label">🌸 四季风物</div>
+      <h1 class="hero-title">风 物 雅 集</h1>
+      <p class="hero-subtitle">顺时而食 · 依节而居</p>
+      <p class="hero-desc">
+        二十四节气，承载着华夏先民的智慧与生活美学。春赏花、夏观荷、
+        秋品果、冬围炉，每个节气都有独特的风物与民俗。
+        让我们一起走进四季风物图鉴，探寻节气生活的雅致与美好。
+      </p>
+      <div class="hero-scroll-hint">
+        <span>↓</span>
+        <span>探索四季风物</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 总述区 -->
+  <section class="scenery-intro" id="intro">
+    <h2 class="intro-title">四季风物总述</h2>
+    <p class="intro-text">
+      二十四节气风物，是中华传统文化中最为生动的部分。古人顺应天时，将一年分为四季二十四节气，
+      每个节气都有与之相应的花卉、果蔬、民俗物件。春有迎春报春、春笋破土、风筝翱翔；
+      夏有荷花映日、莲蓬清甜、艾草驱邪；秋有桂花飘香、柿子如灯、月饼团圆；
+      冬有腊梅傲雪、白菜越冬、春联迎新。
+    </p>
+    <p class="intro-text">
+      这些风物不仅是自然物候的反映，更蕴含着深厚的文化内涵和生活智慧。
+      从赏花品果到民俗传承，从诗词歌赋到养生之道，节气风物构成了华夏民族独特的生活美学体系，
+      值得我们细细品味与传承。
+    </p>
+    <div class="intro-quote">
+      "春有百花秋有月，夏有凉风冬有雪。若无闲事挂心头，便是人间好时节。" —— 宋·无门慧开
+    </div>
+  </section>
+
+  <!-- 四季粘性导航 -->
+  <div class="season-nav" id="seasonNav">
+    <div class="season-nav-inner">
+      <a href="./春季节气风物.jpg" class="active">🌸 春季风物</a>
+      <a href="./夏季节气风物.jpg">🌿 夏季风物</a>
+      <a href="./秋季节气风物.jpg">🍂 秋季风物</a>
+      <a href="./冬季节气风物.jpg">❄️ 冬季风物</a>
+    </div>
+  </div>
+
+  <!-- 风物内容 -->
+  <div class="goods-container">
+
+    <!-- 春季 -->
+    <article class="goods-card" id="spring">
+      <div class="goods-card-header">
+        <img class="season-banner" src="./春季节气风物.jpg" alt="春季 - 春暖花开，万物复苏" loading="lazy">
+        <div class="goods-card-overlay">
+          <span class="goods-season-icon">🌸</span>
+          <span class="goods-season-tag">春季风物</span>
+        </div>
+      </div>
+      <div class="goods-card-body">
+        <div class="goods-meta">
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">📅</span>
+            <div>
+              <div class="goods-meta-label">节气范围</div>
+              <div class="goods-meta-value">立春 — 谷雨（2月—4月）</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🌡️</span>
+            <div>
+              <div class="goods-meta-label">气候特征</div>
+              <div class="goods-meta-value">气温回升，万物复苏</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🎨</span>
+            <div>
+              <div class="goods-meta-label">风物主题</div>
+              <div class="goods-meta-value">花卉 · 果蔬 · 民俗</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🌸</span> 春季风物图鉴</h3>
+          <p>春季始于立春，终于谷雨，共历六个节气。此时大地回暖，万物复苏，百花争艳，是最富生机的季节。春日风物以花卉为先导，果蔬紧随其后，民俗活动丰富多彩，处处洋溢着新生的喜悦。</p>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🌺</span> 代表风物</h3>
+          <ul class="scenery-grid">
+            <li class="scenery-item">
+              <div class="scenery-emoji">🌼</div>
+              <div class="scenery-name">迎春花</div>
+              <div class="scenery-desc">立春代表花卉，金黄色小花率先绽放，迎春报春，预示着春天的到来</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🎋</div>
+              <div class="scenery-name">春笋</div>
+              <div class="scenery-desc">惊蛰时令果蔬，破土而出，鲜嫩可口，是春日餐桌上的珍馐</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🪁</div>
+              <div class="scenery-name">风筝</div>
+              <div class="scenery-desc">清明民俗物件，踏青放鸢，承载着人们对美好生活的向往</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《立春》</div>
+            <div class="poem-author">【唐】杜甫</div>
+            <div class="poem-content">
+              <p>春日春盘细生菜，忽忆两京梅发时。</p>
+              <p>盘出高门行白玉，菜传纤手送青丝。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🍃</span> 时令养生贴士</h3>
+          <div class="health-block">
+            <div class="health-title">🍃 春季养生</div>
+            <div class="health-content">
+              立春时节，应早睡早起，顺应阳气升发。饮食宜多吃芽菜、韭菜等辛甘发散之品，疏肝理气。
+              春捂秋冻，不宜过早减衣，注意防风保暖。适当户外踏青，舒展筋骨，调畅情志，保持心情愉悦。
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 夏季 -->
+    <article class="goods-card" id="summer">
+      <div class="goods-card-header">
+        <img class="season-banner" src="./夏季节气风物.jpg" alt="夏季 - 荷风送香，万物繁茂" loading="lazy">
+        <div class="goods-card-overlay">
+          <span class="goods-season-icon">🌿</span>
+          <span class="goods-season-tag">夏季风物</span>
+        </div>
+      </div>
+      <div class="goods-card-body">
+        <div class="goods-meta">
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">📅</span>
+            <div>
+              <div class="goods-meta-label">节气范围</div>
+              <div class="goods-meta-value">立夏 — 大暑（5月—7月）</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🌡️</span>
+            <div>
+              <div class="goods-meta-label">气候特征</div>
+              <div class="goods-meta-value">暑气蒸腾，万物繁茂</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🎨</span>
+            <div>
+              <div class="goods-meta-label">风物主题</div>
+              <div class="goods-meta-value">水生花卉 · 鲜果 · 驱邪民俗</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🌿</span> 夏季风物图鉴</h3>
+          <p>夏季始于立夏，终于大暑，共历六个节气。此时天地气交，万物华实，是最为繁盛的季节。夏日风物以水生花卉为特色，鲜果丰盛，民俗活动多与驱邪避暑相关，充满了热烈的生活气息。</p>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🪷</span> 代表风物</h3>
+          <ul class="scenery-grid">
+            <li class="scenery-item">
+              <div class="scenery-emoji">🪷</div>
+              <div class="scenery-name">荷花</div>
+              <div class="scenery-desc">小暑代表水生花卉，出淤泥而不染，濯清涟而不妖，夏日花中君子</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🫒</div>
+              <div class="scenery-name">莲蓬</div>
+              <div class="scenery-desc">大暑时令鲜果，莲子清甜，莲心虽苦却能清心去火</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🌿</div>
+              <div class="scenery-name">艾草</div>
+              <div class="scenery-desc">端午挂艾驱邪民俗，艾叶入药可温经止血、散寒止痛</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《晓出净慈寺送林子方》</div>
+            <div class="poem-author">【宋】杨万里</div>
+            <div class="poem-content">
+              <p>毕竟西湖六月中，风光不与四时同。</p>
+              <p>接天莲叶无穷碧，映日荷花别样红。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🍃</span> 时令养生贴士</h3>
+          <div class="health-block">
+            <div class="health-title">🍃 夏季养生</div>
+            <div class="health-content">
+              大暑时节，饮食宜清淡，少辛辣油腻，多食绿豆、西瓜、苦瓜等清热解暑之品。
+              注意补水祛湿，避免长时间在烈日下活动。适当午休养心，保持心态平和，
+              可饮菊花茶、薄荷茶清热消暑。
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 秋季 -->
+    <article class="goods-card" id="autumn">
+      <div class="goods-card-header">
+        <img class="season-banner" src="./秋季节气风物.jpg" alt="秋季 - 金风送爽，硕果累累" loading="lazy">
+        <div class="goods-card-overlay">
+          <span class="goods-season-icon">🍂</span>
+          <span class="goods-season-tag">秋季风物</span>
+        </div>
+      </div>
+      <div class="goods-card-body">
+        <div class="goods-meta">
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">📅</span>
+            <div>
+              <div class="goods-meta-label">节气范围</div>
+              <div class="goods-meta-value">立秋 — 霜降（8月—10月）</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🌡️</span>
+            <div>
+              <div class="goods-meta-label">气候特征</div>
+              <div class="goods-meta-value">秋高气爽，天朗气清</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🎨</span>
+            <div>
+              <div class="goods-meta-label">风物主题</div>
+              <div class="goods-meta-value">香花 · 应季鲜果 · 团圆民俗</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🍂</span> 秋季风物图鉴</h3>
+          <p>秋季始于立秋，终于霜降，共历六个节气。此时金风送爽，硕果累累，是最为丰饶的季节。秋日风物以桂花飘香为标志，鲜果丰收，民俗活动多与团圆庆丰收相关，洋溢着丰收的喜悦。</p>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🌼</span> 代表风物</h3>
+          <ul class="scenery-grid">
+            <li class="scenery-item">
+              <div class="scenery-emoji">🌼</div>
+              <div class="scenery-name">桂花</div>
+              <div class="scenery-desc">秋分标志性花卉，金桂飘香十里，可制桂花糕、桂花酒，香甜怡人</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🟠</div>
+              <div class="scenery-name">柿子</div>
+              <div class="scenery-desc">霜降应季鲜果，红彤彤如灯笼挂满枝头，软糯甘甜，寓意事事如意</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🥮</div>
+              <div class="scenery-name">月饼</div>
+              <div class="scenery-desc">中秋民俗吃食，象征团圆美满，承载着人们对亲人团聚的美好期盼</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《山行》</div>
+            <div class="poem-author">【唐】杜牧</div>
+            <div class="poem-content">
+              <p>远上寒山石径斜，白云生处有人家。</p>
+              <p>停车坐爱枫林晚，霜叶红于二月花。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🍃</span> 时令养生贴士</h3>
+          <div class="health-block">
+            <div class="health-title">🍃 秋季养生</div>
+            <div class="health-content">
+              秋分时节，养生以润燥为主，多食梨、银耳、百合、蜂蜜等润肺之品。
+              秋风起，宜早睡早起，与鸡俱兴。注意防秋燥，保持室内湿度，
+              适当食用酸味食物收敛肺气，调畅情志，避免悲秋伤感。
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 冬季 -->
+    <article class="goods-card" id="winter">
+      <div class="goods-card-header">
+        <img class="season-banner" src="./冬季节气风物.jpg" alt="冬季 - 岁寒三友，围炉取暖" loading="lazy">
+        <div class="goods-card-overlay">
+          <span class="goods-season-icon">❄️</span>
+          <span class="goods-season-tag">冬季风物</span>
+        </div>
+      </div>
+      <div class="goods-card-body">
+        <div class="goods-meta">
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">📅</span>
+            <div>
+              <div class="goods-meta-label">节气范围</div>
+              <div class="goods-meta-value">立冬 — 大寒（11月—1月）</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🌡️</span>
+            <div>
+              <div class="goods-meta-label">气候特征</div>
+              <div class="goods-meta-value">天寒地冻，万物蛰藏</div>
+            </div>
+          </div>
+          <div class="goods-meta-item">
+            <span class="goods-meta-icon">🎨</span>
+            <div>
+              <div class="goods-meta-label">风物主题</div>
+              <div class="goods-meta-value">耐寒花木 · 越冬蔬菜 · 迎新民俗</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">❄️</span> 冬季风物图鉴</h3>
+          <p>冬季始于立冬，终于大寒，共历六个节气。此时天寒地冻，万物蛰藏，是最为沉静的季节。冬日风物以耐寒花木为傲骨，越冬蔬菜为餐桌添彩，民俗活动多与迎新祈福相关，充满了温暖与期盼。</p>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🌺</span> 代表风物</h3>
+          <ul class="scenery-grid">
+            <li class="scenery-item">
+              <div class="scenery-emoji">🌸</div>
+              <div class="scenery-name">腊梅</div>
+              <div class="scenery-desc">小寒耐寒花木，凌寒独自开，暗香浮动，是冬日里最动人的风景</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🥬</div>
+              <div class="scenery-name">白菜</div>
+              <div class="scenery-desc">冬至越冬蔬菜，北方冬日当家菜，储存一冬，清甜爽口，百菜之王</div>
+            </li>
+            <li class="scenery-item">
+              <div class="scenery-emoji">🧧</div>
+              <div class="scenery-name">春联</div>
+              <div class="scenery-desc">除夕迎春民俗物件，红纸黑墨，书写美好祝愿，贴于门楣迎新纳福</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《冬至》</div>
+            <div class="poem-author">【唐】杜甫</div>
+            <div class="poem-content">
+              <p>天时人事日相催，冬至阳生春又来。</p>
+              <p>刺绣五纹添弱线，吹葭六管动飞灰。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="goods-section">
+          <h3 class="goods-section-title"><span class="goods-section-icon">🍃</span> 时令养生贴士</h3>
+          <div class="health-block">
+            <div class="health-title">🍃 冬季养生</div>
+            <div class="health-content">
+              冬至时节，宜温补进补，多食羊肉、山药、核桃、黑芝麻等温肾助阳之品。
+              早睡晚起，必待日光，注意防寒保暖，尤其是头部、背部和足部。
+              适当运动，以微微出汗为宜，不可大汗淋漓，避免阳气外泄。
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="scenery-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>风物雅集 · 二十四节气风物图鉴</h3>
+          <p>赏花果、识民俗，探寻节气生活美学。顺时而食，依节而居，传承华夏农耕文明的智慧与美好。</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>四季导航</h4>
+          <ul>
+            <li><a href="https://www.bilibili.com/video/BV1ML411K7E4?t=109.4">🌸 春季风物</a></li>
+            <li><a href="https://www.bilibili.com/video/BV1n54y1N7eS?t=313.3">🌿 夏季风物</a></li>
+            <li><a href="https://www.bilibili.com/video/BV15h411H7eb?t=110.5">🍂 秋季风物</a></li>
+            <li><a href="https://www.bilibili.com/video/BV1vXi4BbEfQ?t=13.0">❄️ 冬季风物</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>关于节气</h4>
+          <ul>
+            <li><a href="https://www.bilibili.com/video/BV1vXi4BbEfQ?t=13.0">节日起源</a></li>
+            <li><a href="https://www.bilibili.com/video/BV1fVxXeNEag?t=80.1">节气与农耕</a></li>
+            <li><a href="https://www.bilibili.com/video/BV1gm421G7Vm?t=7.8">节气养生</a></li>
+            <li><a href="https://www.bilibili.com/video/BV16K4y1u7Np?t=198.6">节气诗词</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 二十四节气风物图鉴 | 顺时而食，依节而居</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    // 导航栏滚动效果
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    });
+
+    // 移动端导航切换
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // 卡片滚动显示动画
+    const cards = document.querySelectorAll('.goods-card');
+    const showCard = () => {
+      cards.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 120) {
+          item.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', showCard);
+    window.addEventListener('load', showCard);
+
+    // 返回顶部按钮
+    const topBtn = document.getElementById('backToTop');
+    if (topBtn) {
+      window.addEventListener('scroll', () => {
+        topBtn.classList.toggle('visible', window.scrollY > 400);
+      });
+      topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 四季导航高亮
+    const seasonNavA = document.querySelectorAll('.season-nav a');
+    const seasonSections = document.querySelectorAll('.goods-card');
+    window.addEventListener('scroll', () => {
+      let idx = 0;
+      seasonSections.forEach((sec, i) => {
+        if (window.scrollY >= sec.offsetTop - 200) idx = i;
+      });
+      seasonNavA.forEach(a => a.classList.remove('active'));
+      if (seasonNavA[idx]) seasonNavA[idx].classList.add('active');
+    });
+
+    // 导航链接点击关闭移动端菜单
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
