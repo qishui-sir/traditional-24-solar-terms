@@ -3,324 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>岁暮天寒 · 二十四节气之冬季篇</title>
+  <title>冬雪皑皑 · 二十四节气之冬季篇</title>
   <meta name="description" content="冬季节气专题：立冬、小雪、大雪、冬至、小寒、大寒，感受万物闭藏、瑞雪丰年的东方智慧。">
   <meta name="keywords" content="二十四节气,冬季,立冬,小雪,大雪,冬至,小寒,大寒,中国传统节日">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/common.css">
-  <style>
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 75px;
-}
-:root {
-  --winter-green: #2A5C68;
-  --winter-green-light: #4A7C88;
-  --winter-green-dark: #1A4C58;
-  --winter-white: #E8F0F2;
-  --winter-white-light: #F5F9FB;
-  --winter-red: #C8553D;
-  --winter-red-light: #D8755D;
-  --winter-blue: #709FB0;
-  --winter-blue-light: #90BFCF;
-  --winter-bg: #F0F5F7;
-  --winter-card-bg: #FFFFFF;
-  --winter-text: #1C2E3C;
-  --winter-text-light: #4C5E6C;
-  --winter-border: #C4D4DD;
-  --winter-shadow: rgba(42, 92, 104, 0.15);
-  --winter-gradient: linear-gradient(135deg, #E8F0F2 0%, #F5F9FB 50%, #D8E4E8 100%);
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Noto Serif SC", "STSong", "SimSun", serif;
-  background: var(--winter-bg);
-  color: var(--winter-text);
-  line-height: 1.8;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:radial-gradient(circle at 10% 20%, rgba(112, 159, 176, 0.15) 0%, transparent 50%),radial-gradient(circle at 90% 80%, rgba(42, 92, 104, 0.08) 0%, transparent 50%),radial-gradient(circle at 50% 50%, rgba(200, 85, 61, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-.winter-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--winter-border);
-  box-shadow: 0 2px 20px var(--winter-shadow);
-  transition: all 0.3s ease;
-}
-.winter-nav.scrolled {
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 4px 30px var(--winter-shadow);
-}
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-}
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: var(--winter-green-dark);
-}
-.nav-logo-icon {font-size:1.8rem;}
-.nav-logo-text {font-size:1.3rem;font-weight:700;letter-spacing:2px;}
-.nav-links {display:flex;list-style:none;gap:0.5rem;}
-.nav-links a {
-  text-decoration:none;color:var(--winter-text-light);
-  padding:0.5rem 1rem;border-radius:20px;font-size:0.95rem;
-  transition:0.3s;position:relative;
-}
-.nav-links a:hover,.nav-links a.active {
-  color:var(--winter-green-dark);background:rgba(42,92,104,0.1);
-}
-.nav-links a.active::after {
-  content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);
-  width:20px;height:3px;background:var(--winter-green);border-radius:2px;
-}
-.nav-toggle {display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
-.nav-toggle span {width:25px;height:2px;background:var(--winter-green-dark);border-radius:2px;}
-.winter-hero {
-  position:relative;margin-top:70px;min-height:80vh;display:flex;
-  align-items:center;justify-content:center;background:var(--winter-gradient);overflow:hidden;
-}
-.hero-bg-pattern {
-  position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.06;
-  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%232A5C68'/%3E%3Cpath d='M10 35 Q15 45 10 55 Q5 45 10 35Z' fill='%23C8553D'/%3E%3Cpath d='M50 35 Q55 45 50 55 Q45 45 50 35Z' fill='%23709FB0'/%3E%3C/svg%3E");
-  animation:patternFloat 30s linear infinite;
-}
-@keyframes patternFloat {0%{transform:translateY(0);}100%{transform:translateY(-60px);}}
-.snowflake {
-  position:absolute;width:8px;height:8px;background:var(--winter-white);
-  border-radius:50%;opacity:0.8;animation:snowFall linear infinite;
-}
-@keyframes snowFall {
-  0%{transform:translateY(-10vh) rotate(0deg) translateX(0);opacity:0.9;}
-  25%{transform:translateY(25vh) rotate(90deg) translateX(30px);opacity:0.8;}
-  50%{transform:translateY(50vh) rotate(180deg) translateX(-20px);opacity:0.7;}
-  75%{transform:translateY(75vh) rotate(270deg) translateX(25px);opacity:0.5;}
-  100%{transform:translateY(110vh) rotate(360deg) translateX(-10px);opacity:0;}
-}
-.hero-content {position:relative;z-index:2;text-align:center;padding:2rem;max-width:800px;}
-.hero-season-label {
-  display:inline-block;padding:0.4rem 1.5rem;background:rgba(42,92,104,0.15);
-  border:1px solid rgba(42,92,104,0.3);border-radius:30px;color:var(--winter-green-dark);
-  font-size:0.9rem;letter-spacing:3px;margin-bottom:1.5rem;
-}
-.hero-title {font-size:3.5rem;font-weight:700;color:var(--winter-green-dark);margin-bottom:0.5rem;letter-spacing:8px;}
-.hero-subtitle {font-size:1.5rem;color:var(--winter-red);margin-bottom:2rem;letter-spacing:5px;font-style:italic;}
-.hero-desc {font-size:1.1rem;color:var(--winter-text-light);line-height:2;max-width:600px;margin:0 auto 2.5rem;}
-.hero-scroll-hint {display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--winter-green);font-size:0.85rem;letter-spacing:2px;animation:bounce 2s infinite;}
-@keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
-.winter-intro {
-  position:relative;z-index:1;max-width:1000px;margin:-5rem auto 4rem;padding:3rem;
-  background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);border-radius:20px;
-  border:1px solid var(--winter-border);box-shadow:0 10px 40px var(--winter-shadow);
-}
-.intro-title {text-align:center;font-size:1.8rem;color:var(--winter-green-dark);margin-bottom:1.5rem;position:relative;}
-.intro-title::after {content:'❄️';display:block;font-size:1.5rem;margin-top:0.5rem;}
-.intro-text {font-size:1.05rem;color:var(--winter-text-light);text-indent:2em;margin-bottom:1rem;}
-.intro-quote {text-align:center;font-style:italic;color:var(--winter-red);font-size:1rem;margin-top:1.5rem;padding:1rem;border-left:3px solid var(--winter-red);border-right:3px solid var(--winter-red);}
-.term-nav {
-  text-align: center;
-  position:sticky;top:70px;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--winter-border);padding:1rem 0;}
-.term-nav.term-nav.term-nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;gap:0.5rem;}
-.term-nav a {
-  text-decoration:none;color:var(--winter-text-light);padding:0.5rem 1.2rem;border-radius:20px;
-  font-size:0.9rem;white-space:nowrap;border:1px solid transparent;transition:0.3s;
-}
-.term-nav a:hover {color:var(--winter-green-dark);background:rgba(42,92,104,0.08);border-color:var(--winter-border);}
-.term-nav a.active {color:#fff;background:var(--winter-green);border-color:var(--winter-green);}
-.terms-container {position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:3rem 2rem;}
-.term-card {
-  background:var(--winter-card-bg);border-radius:24px;overflow:hidden;margin-bottom:4rem;
-  box-shadow:0 8px 32px var(--winter-shadow);border:1px solid var(--winter-border);
-  opacity:0;transform:translateY(40px);transition:0.3s;
-}
-.term-card.visible {opacity:1;transform:translateY(0);transition:0.8s;}
-.term-card:hover {transform:translateY(-5px);box-shadow:0 16px 48px rgba(42,92,104,0.2);}
-.term-card-header {position:relative;height:400px;overflow:hidden;}
-.term-card-header img {width:100%;height:100%;object-fit:cover;transition:0.6s;}
-.term-card:hover .term-card-header img {transform:scale(1.05);}
-.term-card-header::after {content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,#fff 0%,transparent 100%);}
-.term-card-overlay {position:absolute;top:2rem;left:2rem;z-index:2;}
-.term-number {
-  display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;
-  background:var(--winter-green);color:#fff;border-radius:50%;font-size:0.85rem;font-weight:700;margin-right:0.75rem;
-}
-.term-name-tag {
-  display:inline-block;padding:0.5rem 1.5rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);
-  border-radius:30px;font-size:1.6rem;font-weight:700;color:var(--winter-green-dark);letter-spacing:3px;
-}
-.term-pinyin {font-size:0.85rem;color:var(--winter-text-light);letter-spacing:1px;margin-left:0.5rem;font-weight:400;}
-.term-card-body {padding:2rem 3rem 3rem;}
-.term-meta {display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
-.term-meta-item {display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:var(--winter-bg);border-radius:12px;border:1px solid var(--winter-border);font-size:0.9rem;}
-.term-meta-icon {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-.term-meta-label {color:var(--winter-text-light);font-size:0.8rem;}
-.term-meta-value {color:var(--winter-green-dark);font-weight:600;}
-.term-section {margin-bottom:2rem;}
-.term-section-title {display:flex;align-items:center;gap:0.75rem;font-size:1.15rem;color:var(--winter-green-dark);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--winter-border);}
-.term-section-icon {font-size:1.3rem;}
-.term-section p {color:var(--winter-text-light);text-indent:2em;margin-bottom:0.5rem;line-height:2;}
-.phenology-list {list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
-.phenology-item {text-align:center;padding:1.2rem;background:linear-gradient(135deg,rgba(42,92,104,0.05),rgba(200,85,61,0.05));border-radius:16px;border:1px solid var(--winter-border);transition:0.3s;}
-.phenology-item:hover {transform:translateY(-3px);}
-.phenology-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-.phenology-name {font-weight:600;color:var(--winter-green-dark);font-size:0.95rem;margin-bottom:0.3rem;}
-.phenology-desc {font-size:0.85rem;color:var(--winter-text-light);text-indent:0;}
-.custom-list {list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
-.custom-item {display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:var(--winter-bg);border-radius:12px;border:1px solid var(--winter-border);}
-.custom-item-icon {font-size:1.5rem;flex-shrink:0;}
-.custom-item-text {font-size:0.95rem;color:var(--winter-text-light);text-indent:0;}
-.custom-item-title {font-weight:600;color:var(--winter-green-dark);margin-bottom:0.3rem;}
-.food-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.food-item {text-align:center;padding:1.5rem 1rem;background:linear-gradient(135deg,var(--winter-blue-light),var(--winter-white-light));border-radius:16px;border:1px solid var(--winter-border);transition:0.3s;}
-.food-item:hover {transform:scale(1.03);}
-.food-emoji {font-size:2.5rem;margin-bottom:0.5rem;}
-.food-name {font-weight:600;color:var(--winter-green-dark);font-size:1rem;margin-bottom:0.3rem;}
-.food-desc {font-size:0.85rem;color:var(--winter-text-light);text-indent:0;}
-.poem-block {
-  position:relative;padding:2rem;background:linear-gradient(135deg,rgba(42,92,104,0.05),rgba(200,85,61,0.08));
-  border-radius:16px;border:1px solid var(--winter-border);text-align:center;
-}
-.poem-block::before {content:'📜';position:absolute;top:-0.75rem;left:50%;transform:translateX(-50%);font-size:1.5rem;background:var(--winter-card-bg);padding:0 0.5rem;}
-.poem-title {font-size:1.1rem;color:var(--winter-green-dark);font-weight:600;margin-bottom:0.5rem;}
-.poem-author {font-size:0.9rem;color:var(--winter-text-light);margin-bottom:1rem;}
-.poem-content {font-size:1.1rem;color:var(--winter-text);line-height:2.2;letter-spacing:1px;}
-.poem-content p {text-indent:0;margin-bottom:0.3rem;}
-.winter-footer {
-  position:relative;z-index:1;background:linear-gradient(135deg,var(--winter-green-dark),#1A3C48);
-  color:rgba(255,255,255,0.85);padding:3rem 2rem 1.5rem;margin-top:2rem;
-}
-.footer-container {max-width:1100px;margin:0 auto;}
-.footer-top {display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.15);}
-.footer-brand {max-width:350px;}
-.footer-brand h3 {font-size:1.3rem;color:#fff;margin-bottom:0.75rem;letter-spacing:2px;}
-.footer-brand p {font-size:0.9rem;line-height:1.8;opacity:0.8;}
-.footer-links-group h4 {font-size:1rem;color:#fff;margin-bottom:0.75rem;letter-spacing:1px;}
-.footer-links-group ul {list-style:none;}
-.footer-links-group a {color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;display:block;padding:0.3rem 0;transition:0.3s;}
-.footer-links-group a:hover {color:var(--winter-blue);}
-.footer-bottom {text-align:center;padding-top:1.5rem;font-size:0.85rem;opacity:0.6;}
-.back-to-top {
-  position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--winter-green);color:#fff;
-  border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 16px var(--winter-shadow);
-  opacity:0;visibility:hidden;transition:0.3s;z-index:999;
-}
-.back-to-top.visible {opacity:1;visibility:visible;}
-.back-to-top:hover {background:var(--winter-green-dark);transform:translateY(-3px);}
-@media(max-width:768px){
-  .nav-links {display:none;position:absolute;top:70px;left:0;right:0;background:rgba(255,255,255,0.98);flex-direction:column;padding:1rem;border-bottom:1px solid var(--winter-border);box-shadow:0 10px 30px var(--winter-shadow);}
-  .nav-links.open {display:flex;}
-  .nav-toggle {display:flex;}
-  .hero-title {font-size:2.2rem;letter-spacing:4px;}
-  .hero-subtitle {font-size:1.1rem;}
-  .winter-intro {margin:-3rem 1rem 2rem;padding:2rem 1.5rem;}
-  .term-card-header {height:250px;}
-  .term-card-body {padding:1.5rem;}
-  .term-meta {flex-direction:column;gap:0.75rem;}
-  .phenology-list {grid-template-columns:1fr;}
-  .custom-list {grid-template-columns:1fr;}
-  .food-grid {grid-template-columns:1fr 1fr;}
-  .term-nav-inner {justify-content:flex-start;}
-  .footer-top {flex-direction:column;}
-}
-@media(max-width:480px){
-  .hero-title {font-size:1.8rem;}
-  .food-grid {grid-template-columns:1fr;}
-  .term-name-tag {font-size:1.2rem;}
-}
-@media print {
-  .winter-nav,.term-nav,.back-to-top,.hero-scroll-hint,.snowflake,.hero-bg-pattern,.top-left-nav {display:none!important;}
-  .winter-hero {min-height:auto;margin-top:0;}
-  .term-card {break-inside:avoid;box-shadow:none;border:1px solid #ddd;}
-}
+  <link rel="stylesheet" href="../css/winter.css">
 
-.top-left-nav-item:hover {
-  background: linear-gradient(135deg, #2A5C68, #709FB0);
-  color: #fff;
-  transform: translateX(5px) !important;
-  box-shadow: 0 5px 20px rgba(42,92,104,0.3);
-}
-.top-left-nav-item.active {
-  background: linear-gradient(135deg, #2A5C68, #709FB0);
-  color: #fff;
-}
-/* ============================================
-   节气点按切换 - Tab Switch
-   ============================================ */
-.term-card {
-  display: none;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.term-card.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-.term-nav a.active {
-  font-weight: 700;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-@keyframes termFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.term-card.active {
-  animation: termFadeIn 0.45s ease forwards;
-}
-
-</style>
+  <script src="../js/common.js"></script>
 </head>
-<body>
+<body class="winter-page">
 
-  <!-- ========== 左上角季节导航 ========== -->
+  <!-- ========== 左上角导航悬浮球 ========== -->
   <div class="top-left-nav">
     <div class="top-left-nav-row">
-      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">❄️</button>
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
       <span class="top-left-nav-hint">点击收起</span>
     </div>
     <div class="top-left-nav-menu show" id="topLeftNavMenu">
@@ -333,298 +30,554 @@ body::before {
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
   </div>
+  
   <script>
-    </script>
+    // ========== 节气点按切换 ==========
+    let _termCards = null;
+    let _sidebarTerms = null;
+    function _getTermCards() { if (!_termCards) _termCards = document.querySelectorAll('.term-card'); return _termCards; }
+    function _getSidebarTerms() { if (!_sidebarTerms) _sidebarTerms = document.querySelectorAll('.sidebar-term'); return _sidebarTerms; }
 
-  <nav class="winter-nav" id="mainNav">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-icon">❄️</span>
-        <span class="nav-logo-text">二十四节气</span>
-      </a>
-      <div class="nav-toggle" id="navToggle">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
+    function switchTerm(termId) {
+      _getTermCards().forEach(card => card.classList.remove('active'));
+      _getSidebarTerms().forEach(term => term.classList.remove('active'));
+
+      const targetCard = document.getElementById(termId);
+      if (targetCard) {
+        void targetCard.offsetWidth;
+        targetCard.classList.add('active');
+      }
+
+      const targetSidebar = document.querySelector('.sidebar-term[data-term="' + termId + '"]');
+      if (targetSidebar) {
+        targetSidebar.classList.add('active');
+      }
+    }
+// ========== 回到顶部 ==========
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+
+  <!-- ========== Hero 区域 ========== -->
   <section class="winter-hero" id="hero">
     <div class="hero-bg-pattern"></div>
-    <div class="snowflake" style="left:5%; animation-duration:8s; animation-delay:0s; width:6px; height:6px;"></div>
-    <div class="snowflake" style="left:15%; animation-duration:10s; animation-delay:1s; width:7px; height:7px;"></div>
+    <div class="petal" style="left:3%; animation-duration:7s; animation-delay:0s; width:6px; height:6px; background:rgba(255,255,255,0.8);"></div>
+    <div class="petal" style="left:10%; animation-duration:9s; animation-delay:1s; width:5px; height:5px; background:rgba(200,220,240,0.7);"></div>
+    <div class="petal" style="left:18%; animation-duration:8s; animation-delay:2.5s; width:7px; height:7px; background:rgba(255,255,255,0.75);"></div>
+    <div class="petal" style="left:25%; animation-duration:10s; animation-delay:0.5s; width:4px; height:4px; background:rgba(200,220,240,0.65);"></div>
+    <div class="petal" style="left:33%; animation-duration:7.5s; animation-delay:3s; width:6px; height:6px; background:rgba(255,255,255,0.85);"></div>
+    <div class="petal" style="left:41%; animation-duration:9.5s; animation-delay:1.5s; width:5px; height:5px; background:rgba(200,220,240,0.7);"></div>
+    <div class="petal" style="left:50%; animation-duration:8.5s; animation-delay:4s; width:7px; height:7px; background:rgba(255,255,255,0.8);"></div>
+    <div class="petal" style="left:58%; animation-duration:11s; animation-delay:2s; width:4px; height:4px; background:rgba(200,220,240,0.6);"></div>
+    <div class="petal" style="left:66%; animation-duration:7s; animation-delay:0s; width:6px; height:6px; background:rgba(255,255,255,0.75);"></div>
+    <div class="petal" style="left:74%; animation-duration:9s; animation-delay:5s; width:5px; height:5px; background:rgba(200,220,240,0.7);"></div>
+    <div class="petal" style="left:82%; animation-duration:8s; animation-delay:3.5s; width:7px; height:7px; background:rgba(255,255,255,0.8);"></div>
+    <div class="petal" style="left:90%; animation-duration:10.5s; animation-delay:1s; width:5px; height:5px; background:rgba(200,220,240,0.65);"></div>
+    <div class="petal" style="left:15%; animation-duration:12s; animation-delay:6s; width:6px; height:6px; background:rgba(255,255,255,0.7);"></div>
+    <div class="petal" style="left:70%; animation-duration:11s; animation-delay:4.5s; width:4px; height:4px; background:rgba(200,220,240,0.6);"></div>
+    <div class="petal" style="left:95%; animation-duration:9s; animation-delay:2s; width:6px; height:6px; background:rgba(255,255,255,0.8);"></div>
+    <!-- 飘落雪花 -->
+    <div class="snowflake" style="left:5%; animation-duration:8s; animation-delay:0s; width:10px; height:10px;"></div>
+    <div class="snowflake" style="left:15%; animation-duration:10s; animation-delay:1s; width:8px; height:8px;"></div>
     <div class="snowflake" style="left:25%; animation-duration:9s; animation-delay:2s;"></div>
-    <div class="snowflake" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:9px; height:9px;"></div>
+    <div class="snowflake" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:14px; height:14px;"></div>
     <div class="snowflake" style="left:55%; animation-duration:8.5s; animation-delay:3s;"></div>
-    <div class="snowflake" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:8px; height:8px;"></div>
+    <div class="snowflake" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:9px; height:9px;"></div>
     <div class="snowflake" style="left:75%; animation-duration:9.5s; animation-delay:2.5s;"></div>
-    <div class="snowflake" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:10px; height:10px;"></div>
+    <div class="snowflake" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:11px; height:11px;"></div>
     <div class="snowflake" style="left:92%; animation-duration:8.8s; animation-delay:3.5s;"></div>
-    <div class="snowflake" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:5px; height:5px;"></div>
+    <div class="snowflake" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px;"></div>
+
     <div class="hero-content">
-      <div class="hero-season-label">❄️ 冬 季 篇</div>
-      <h1 class="hero-title">岁 暮 天 寒</h1>
-      <p class="hero-subtitle">万物闭藏 · 瑞雪丰年</p>
+      <div class="hero-season-label">冬 季 篇</div>
+      <h1 class="hero-title">冬 雪 皑 皑</h1>
+      <p class="hero-subtitle">万物闭藏 · 休养生息</p>
       <p class="hero-desc">
-        冬，四时之终也。自立冬至大寒，六气更替，万物进入休养、收藏状态，
-        天寒地冻，水冰地坼，瑞雪兆丰年，静待春回。
-        古人以节气为尺，感知天地闭藏，体悟休养生息的东方智慧。
+        冬，四时之终也。自立冬至大寒，六气更替，天地间的生机悄然内敛，朔风凛冽，白雪皑皑，万物蛰伏，静待春回。古人观冬之节气，顺应闭藏之道，养精蓄锐，以待来年。
       </p>
-      <div class="hero-scroll-hint"><span>↓</span><span>探索冬之六气</span></div>
+      <div class="hero-scroll-hint">
+        <span>↓</span>
+        <span>探索冬之六气</span>
+      </div>
     </div>
   </section>
+
+  <!-- ========== 春季节气总述 ========== -->
   <section class="winter-intro" id="intro">
     <h2 class="intro-title">冬季节气总述</h2>
-    <p class="intro-text">
-      冬季，始于立冬，终于大寒，共历六个节气。此时太阳沿黄道从225°运行至315°，
-      北半球日照渐短，气温骤降，大地从秋日的绚烂中归于沉寂。立冬为冬季之始，
-      标志着万物收藏，规避寒冷；小雪时节，初雪飘零，天地渐白；
-      大雪封河，瑞雪兆丰年；冬至阴极之至，阳气始生，昼短夜长；
-      小寒天寒地冻，进入隆冬；大寒岁末天寒，待春将临。
-    </p>
-    <p class="intro-text">
-      冬季六节气，不仅是自然节律的精准写照，更是中华先民顺应天时、休养生息的智慧体现。
-      每一个节气都承载着独特的物候特征、民俗传统和饮食文化，
-      是人与自然和谐共生的生动诠释。
-    </p>
-    <div class="intro-quote">"瑞雪兆丰年，冬藏待春来。" —— 万物闭藏，厚积薄发</div>
-  </section>
-  <div class="term-nav" id="termNav">
-    <div class="term-nav-inner">
-      <a href="#" data-term="lidong" onclick="return switchTerm(&quot;lidong&quot;)" class="active">立冬</a>
-      <a href="#" data-term="xiaoxue" onclick="return switchTerm(&quot;xiaoxue&quot;)">小雪</a>
-      <a href="#" data-term="daxue" onclick="return switchTerm(&quot;daxue&quot;)">大雪</a>
-      <a href="#" data-term="dongzhi" onclick="return switchTerm(&quot;dongzhi&quot;)">冬至</a>
-      <a href="#" data-term="xiaohan" onclick="return switchTerm(&quot;xiaohan&quot;)">小寒</a>
-      <a href="#" data-term="dahan" onclick="return switchTerm(&quot;dahan&quot;)">大寒</a>
+    <p class="intro-text">冬季，始于立冬，终于大寒，共历六个节气。此时太阳沿黄道从225°运行至300°，北半球日照最短，气温降至全年最低。立冬水冰地冻，万物收藏；小雪大雪，瑞雪纷飞；冬至白昼最短，一阳初生；小寒大寒，寒气逼人，是一年中最冷的时段。</p>
+    <p class="intro-text">冬季六节气，承载着万物闭藏与蓄势待发的智慧，既反映了季节更替的自然规律，也蕴含着古人顺应天时、冬令进补的养生哲学。从立冬补冬到冬至数九，每个节气都有独特的民俗与食俗，是中华文化中温暖的冬日记忆。</p>
+    <div class="intro-quote">
+      “天时人事日相催，冬至阳生春又来。” —— 冬至一阳生，静待春归
     </div>
-  </div>
-  <div class="terms-container">
-    <article class="term-card" id="lidong">
-      <div class="term-card-header"><img src="../images/winter/lidong.jpg" alt="立冬"></div>
-      <div class="term-card-overlay"><span class="term-number">19</span><span class="term-name-tag">立冬 <span class="term-pinyin">Lìdōng</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年11月7日—8日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">225°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温骤降，万物收藏</div></div></div>
-        </div>
-        <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3><p>立冬，二十四节气之第十九节气，冬季的第一个节气。"立"有"开始"之意，"冬"代表终了，有万物收藏、规避寒冷的含义。立冬之日，水始冰，地始冻，雉入大水为蜃。自此日起，天地万物进入休养、收藏状态，草木凋零，蛰虫休眠，人类也顺应自然，开始进补御寒。</p></div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_ice.svg" alt="">
-              <div class="phenology-name">一候 · 水始冰</div><div class="phenology-desc">气温降至零度以下，水面开始结冰</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_frost.svg" alt="">
-              <div class="phenology-name">二候 · 地始冻</div><div class="phenology-desc">土地开始冻结，寒气渐深</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_pheasant.svg" alt="">
-              <div class="phenology-name">三候 · 雉入大水为蜃</div><div class="phenology-desc">野鸡蛰伏，海边出现大蛤</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🍲</span><div class="custom-item-text"><div class="custom-item-title">补冬</div>立冬进补羊肉，抵御严寒</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🥟</span><div class="custom-item-text"><div class="custom-item-title">吃饺子</div>立冬吃饺子防冻耳朵冻伤</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🍶</span><div class="custom-item-text"><div class="custom-item-title">冬酿</div>立冬酿造黄酒</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🧹</span><div class="custom-item-text"><div class="custom-item-title">扫疥</div>清扫居家除病害</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">饺子</div><div class="food-desc">北方立冬主食</div></div>
-            <div class="food-item"><div class="food-emoji">🍖</div><div class="food-name">羊肉汤</div><div class="food-desc">温补驱寒</div></div>
-            <div class="food-item"><div class="food-emoji">🍚</div><div class="food-name">糯米饭</div><div class="food-desc">广东立冬特色</div></div>
+  </section>
+
+  <!-- ========== 节气快速导航 ========== -->
+    <!-- ========== 侧边节气目录 + 内容区 ========== -->
+  <div class="main-content">
+    <!-- 竖排侧边栏 -->
+    <nav class="season-sidebar" id="seasonSidebar">
+      <div class="sidebar-line"></div>
+      <a href="javascript:void(0)" class="sidebar-term active" data-term="lidong" onclick="switchTerm('lidong');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>立冬</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="xiaoxue" onclick="switchTerm('xiaoxue');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>小雪</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="daxue" onclick="switchTerm('daxue');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>大雪</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="dongzhi" onclick="switchTerm('dongzhi');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>冬至</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="xiaohan" onclick="switchTerm('xiaohan');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>小寒</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="dahan" onclick="switchTerm('dahan');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>大寒</a>
+    </nav>
+
+    <!-- 内容区 -->
+        <div class="content-area" id="contentArea">
+
+    <article class="term-card active" id="lidong">
+      <div class="term-card-hero">
+        <img src="../images/winter/lidong.jpg" alt="立冬 - 冬之始也" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">19</span>
+          <h2 class="term-hero-name">立冬</h2>
+          <p class="term-hero-pinyin">Lìdōng</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年11月7日—8日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：225°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气温骤降，万物收藏</span>
           </div>
         </div>
-        <div class="term-section">
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——立冬，冬季的第一个节气。“立”为开始，“冬”为终了，有万物收藏、规避寒冷的含义。立冬之日，水始冰，地始冻。自此日起，天地万物进入休养收藏状态，草木凋零，蛰虫休眠，人类也顺应自然开始进补御寒。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_ice.svg" alt=""><span class="step-label">一候 · 水始冰</span><span class="step-desc">水面开始结冰</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_frost.svg" alt=""><span class="step-label">二候 · 地始冻</span><span class="step-desc">土壤开始冻结</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_pheasant.svg" alt=""><span class="step-label">三候 · 雉入大水为蜃</span><span class="step-desc">野鸡少见海边出现大蛤</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">冬灌保墒</div>冬小麦浇冻水防寒保墒</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">牲畜越冬</div>检修畜舍储备冬草料</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">冬耕晒垡</div>秋收后深耕翻土冻死害虫</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥟</span><div class="custom-item-text"><div class="custom-item-title">吃饺子</div>立冬吃饺子补耳朵北方习俗</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍶</span><div class="custom-item-text"><div class="custom-item-title">酿黄酒</div>立冬开始酿冬酒绍兴传统</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">祭祖</div>立冬祭祀祖先祈求保佑</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">饺子</div><div class="food-desc">立冬饺子补耳朵</div></div>
+            <div class="food-item"><div class="food-emoji">🥩</div><div class="food-name">羊肉</div><div class="food-desc">立冬吃羊肉暖身进补</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">补汤</div><div class="food-desc">当归生姜羊肉汤滋补</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>立冬后寒气渐重，养生重在养藏固肾。饮食宜温补，多食羊肉、核桃、黑芝麻等补肾之物。早卧晚起，必待日光。减少剧烈运动，以静养为主。注意足部保暖。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《立冬》</div>
-            <div class="poem-author">【宋】紫金霜</div>
-            <div class="poem-content"><p>落水荷塘满眼枯，西风吹叶雪平铺。</p><p>光阴须得消磨去，留取寒香伴夜读。</p></div>
+            <div class="poem-author">【唐】李白</div>
+            <div class="poem-content"><p>冻笔新诗懒写，寒炉美酒时温。
+醉看墨花月白，恍疑雪满前村。</p></div>
           </div>
         </div>
       </div>
     </article>
+
     <article class="term-card" id="xiaoxue">
-      <div class="term-card-header"><img src="../images/winter/xiaoxue.jpg" alt="小雪"></div>
-      <div class="term-card-overlay"><span class="term-number">20</span><span class="term-name-tag">小雪 <span class="term-pinyin">Xiǎoxuě</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">11月22—23日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">240°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">气温下降，初雪降临</div></div></div>
-        </div>
-        <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>小雪代表降雪起始，雪量偏小，民间小雪腌菜，以待寒冬。</p></div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_pheasant.svg" alt="">
-              <div class="phenology-name">虹藏不见</div><div class="phenology-desc">气温低无彩虹</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_taiji.svg" alt="">
-              <div class="phenology-name">天地阴阳不交</div><div class="phenology-desc">地气下沉阳气上升</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_frozen.svg" alt="">
-              <div class="phenology-name">闭塞成冬</div><div class="phenology-desc">天地封藏入冬</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span>美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name">腌菜</div></div>
-            <div class="food-item"><div class="food-emoji">🥩</div><div class="food-name">涮羊肉</div></div>
-            <div class="food-item"><div class="food-emoji">🍚</div><div class="food-name">糍粑</div></div>
+      <div class="term-card-hero">
+        <img src="../images/winter/xiaoxue.jpg" alt="小雪 - 寒未深雪未大" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">20</span>
+          <h2 class="term-hero-name">小雪</h2>
+          <p class="term-hero-pinyin">Xiǎoxuě</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年11月22日—23日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：240°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：降水形式由雨转雪</span>
           </div>
         </div>
-        <div class="poem-block"><div class="poem-title">小雪【唐·戴叔伦】</div><div class="poem-content"><p>花雪随风不厌看，更多还肯失林峦。愁人正在书窗下，一片飞来一片寒。</p></div></div>
       </div>
-    </article>
-    <article class="term-card" id="daxue">
-      <div class="term-card-header"><img src="../images/winter/daxue.jpg" alt="大雪"></div>
-      <div class="term-card-overlay"><span class="term-number">21</span><span class="term-name-tag">大雪 <span class="term-pinyin">Dàxuě</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">12月6—8日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">255°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">大雪纷飞，河面冰封</div></div></div>
-        </div>
-        <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>大雪气温骤寒，降雪范围扩大，民间腌腊肉、存冬粮。</p></div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_swan.svg" alt="">
-              <div class="phenology-name">鹖鴠不鸣</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_tiger.svg" alt="">
-              <div class="phenology-name">虎始交</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_bamboo.svg" alt="">
-              <div class="phenology-name">荔挺出</div></li>
-          </ul>
-        </div>
-        <div class="poem-block"><div class="poem-title">江雪 柳宗元</div><div class="poem-content"><p>千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。</p></div></div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——小雪，冬季的第二个节气。“雪”为寒冷产物，“小”表示雪量尚小。北方地区开始降雪但雪量不大，故称“小雪”。此时寒潮和强冷空气活动频繁，气温持续走低。古人云“小雪雪满天，来年必丰年”，小雪降雪有利于农作物越冬。</p>
+        <div class="lifa-line"></div>
       </div>
-    </article>
-    <article class="term-card" id="dongzhi">
-      <div class="term-card-header"><img src="../images/winter/dongzhi.jpg" alt="冬至"></div>
-      <div class="term-card-overlay"><span class="term-number">22</span><span class="term-name-tag">冬至 <span class="term-pinyin">Dōngzhì</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">12.21-23</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">270°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">特点</div><div class="term-meta-value">昼最短夜最长，一阳初生</div></div></div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_rainbow.svg" alt=""><span class="step-label">一候 · 虹藏不见</span><span class="step-desc">雨后不再出现彩虹</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_sky_qi.svg" alt=""><span class="step-label">二候 · 天气上升</span><span class="step-desc">阳气上升阴气下降</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_winter.svg" alt=""><span class="step-label">三候 · 闭塞而成冬</span><span class="step-desc">天地闭塞转入严冬</span></div>
+          </div>
         </div>
-        <div class="term-section"><p>冬至大如年，北方饺子南方汤圆，自此开始数九。</p></div>
-        <div class="poem-block"><div class="poem-title">冬至 杜甫</div><div class="poem-content"><p>天时人事日相催，冬至阳生春又来。</p></div></div>
-      </div>
-    </article>
-    <article class="term-card" id="xiaohan">
-      <div class="term-card-header"><img src="../images/winter/xiaohan.jpg" alt="小寒"></div>
-      <div class="term-card-overlay"><span class="term-number">23</span><span class="term-name-tag">小寒 <span class="term-pinyin">Xiǎohán</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.5-7</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">285°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">三九严寒，全年低温</div></div></div>
-        </div>
-        <div class="poem-block"><div class="poem-title">小寒 朱彝尊</div><div class="poem-content"><p>葵影便移长至日，梅花先趁小寒开。</p></div></div>
-      </div>
-    </article>
-    <article class="term-card" id="dahan">
-      <div class="term-card-header"><img src="../images/winter/dahan.jpg" alt="大寒"></div>
-      <div class="term-card-overlay"><span class="term-number">24</span><span class="term-name-tag">大寒 <span class="term-pinyin">Dàhán</span></span></div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.20-21</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">300°</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">寒至极点，静待立春</div></div></div>
-        </div>
-        <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>大寒是二十四节气收尾，临近新春，寒气到头，地气回暖。</p></div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_chicken.svg" alt="">
-              <div class="phenology-name">一候鸡乳</div><div class="phenology-desc">母鸡开始孵雏</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_hawk.svg" alt="">
-              <div class="phenology-name">二候征鸟厉疾</div><div class="phenology-desc">猛禽四处觅食御寒</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_marsh_ice.svg" alt="">
-              <div class="phenology-name">三候水泽腹坚</div><div class="phenology-desc">河湖冻至深处</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span>民俗</h3>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
           <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🧨</span><div class="custom-item-text"><div class="custom-item-title">赶年集</div>置办年货迎春节</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🥘</span><div class="custom-item-text"><div class="custom-item-title">吃糯饭</div>大寒进补</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">冬灌防冻</div>给越冬作物浇冻水防寒</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">果树防寒</div>果树树干涂白防冻防虫</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🏠</span><div class="custom-item-text"><div class="custom-item-title">检修暖棚</div>蔬菜大棚加固防风雪</div></li>
           </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥓</span><div class="custom-item-text"><div class="custom-item-title">腌腊肉</div>小雪腌腊肉准备过年食物</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥬</span><div class="custom-item-text"><div class="custom-item-title">腌寒菜</div>北方腌制酸菜过冬</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍚</span><div class="custom-item-text"><div class="custom-item-title">打糍粑</div>南方打糍粑祭祀牛神</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥓</div><div class="food-name">腊肉</div><div class="food-desc">小雪腌制的腊味</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">火锅</div><div class="food-desc">围炉吃火锅暖身</div></div>
+            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name">酸菜</div><div class="food-desc">北方冬储酸菜</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>小雪时节寒气加重，养生重在温阳补肾。饮食宜食羊肉、核桃、栗子等温补之物。注意保暖防寒，尤其护好头颈腰腹。早卧晚起，适当室内运动，保持心情愉悦。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《小雪》</div>
+            <div class="poem-author">【唐】戴叔伦</div>
+            <div class="poem-content"><p>花雪随风不厌看，更多还肯失林峦。
+愁人正在书窗下，一片飞来一片寒。</p></div>
+          </div>
         </div>
       </div>
     </article>
+
+    <article class="term-card" id="daxue">
+      <div class="term-card-hero">
+        <img src="../images/winter/daxue.jpg" alt="大雪 - 至此而雪盛" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">21</span>
+          <h2 class="term-hero-name">大雪</h2>
+          <p class="term-hero-pinyin">Dàxuě</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年12月6日—8日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：255°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气温骤降，降雪增多</span>
+          </div>
+        </div>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——大雪，冬季的第三个节气。“大”为盛，此时降雪量比小雪更大、范围更广。北方已是“千里冰封，万里雪飘”的严冬景象。古人云“大雪冬至后，篮装水不漏”，形容天气严寒。此时节万物潜藏，人们开始为春节做准备。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_tiger.svg" alt=""><span class="step-label">一候 · 鹖鴠不鸣</span><span class="step-desc">寒号鸟不再鸣叫</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_tiger2.svg" alt=""><span class="step-label">二候 · 虎始交</span><span class="step-desc">老虎开始求偶</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_iris.svg" alt=""><span class="step-label">三候 · 荔挺出</span><span class="step-desc">马蔺草在雪中抽出新芽</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">麦田镇压</div>冬小麦镇压防冻保墒</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">积肥造肥</div>收集农家肥为春耕备肥</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">牲畜保暖</div>加固畜舍防寒保暖</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥓</span><div class="custom-item-text"><div class="custom-item-title">腌肉</div>大雪腌肉为春节做准备</div></li>
+            <li class="custom-item"><span class="custom-item-icon">⛸️</span><div class="custom-item-text"><div class="custom-item-title">滑冰</div>北方河湖封冻后滑冰嬉戏</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🏔️</span><div class="custom-item-text"><div class="custom-item-title">赏雪</div>大雪赏雪景吟诗作画</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥩</div><div class="food-name">腌肉</div><div class="food-desc">大雪腌制的腊味</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">羊肉汤</div><div class="food-desc">大雪进补喝羊汤</div></div>
+            <div class="food-item"><div class="food-emoji">🍠</div><div class="food-name">红薯</div><div class="food-desc">烤红薯暖手暖胃</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>大雪是进补最佳时节，养生重在温补助阳。饮食宜食羊肉、牛肉、桂圆等温热之物。注意保暖，头部和足部尤须防寒。早卧晚起，适当室内运动，保持情绪稳定。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《江雪》</div>
+            <div class="poem-author">【唐】柳宗元</div>
+            <div class="poem-content"><p>千山鸟飞绝，万径人踪灭。
+孤舟蓑笠翁，独钓寒江雪。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card" id="dongzhi">
+      <div class="term-card-hero">
+        <img src="../images/winter/dongzhi.jpg" alt="冬至 - 日南至" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">22</span>
+          <h2 class="term-hero-name">冬至</h2>
+          <p class="term-hero-pinyin">Dōngzhì</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年12月21日—23日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：270°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：白昼最短，数九开始</span>
+          </div>
+        </div>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——冬至，冬季的第四个节气，是二十四节气中最重要的节气之一。“至”为极致，此日太阳直射南回归线，北半球白昼最短、黑夜最长。但“冬至一阳生”，自此后阳气回升，白昼渐长。民间有“冬至大如年”之说，是重要的传统节日。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_earthworm2.svg" alt=""><span class="step-label">一候 · 蚯蚓结</span><span class="step-desc">蚯蚓在土中蜷缩成结</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_elk.svg" alt=""><span class="step-label">二候 · 麋角解</span><span class="step-desc">麋鹿的角开始脱落</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_spring.svg" alt=""><span class="step-label">三候 · 水泉动</span><span class="step-desc">地下泉水开始涌动</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">冬小麦管理</div>镇压保墒追施腊肥</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">清沟理墒</div>清理沟渠防冻防渍</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">护畜过冬</div>加强牲畜防寒保暖</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥟</span><div class="custom-item-text"><div class="custom-item-title">吃饺子</div>冬至不端饺子碗冻掉耳朵没人管</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍡</span><div class="custom-item-text"><div class="custom-item-title">吃汤圆</div>南方冬至吃汤圆团团圆圆</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">祭天祭祖</div>冬至祭天祀祖传承孝道</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">饺子</div><div class="food-desc">北方冬至饺子</div></div>
+            <div class="food-item"><div class="food-emoji">🍡</div><div class="food-name">汤圆</div><div class="food-desc">南方冬至汤圆</div></div>
+            <div class="food-item"><div class="food-emoji">🐑</div><div class="food-name">羊肉</div><div class="food-desc">冬至吃羊肉暖身</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>冬至是一年中阴气最盛之日，养生重在护阳养阴。饮食宜温补，食用羊肉、当归、生姜等。早卧晚起，必待日光。注意保暖避免受寒。保持心情平和，静待春来。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《冬至》</div>
+            <div class="poem-author">【唐】杜甫</div>
+            <div class="poem-content"><p>天时人事日相催，冬至阳生春又来。
+刺绣五纹添弱线，吹葭六琯动浮灰。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card" id="xiaohan">
+      <div class="term-card-hero">
+        <img src="../images/winter/xiaohan.jpg" alt="小寒 - 三九严寒" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">23</span>
+          <h2 class="term-hero-name">小寒</h2>
+          <p class="term-hero-pinyin">Xiǎohán</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年1月5日—7日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：285°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：全年最冷时段，三九严寒</span>
+          </div>
+        </div>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——小寒，冬季的第五个节气。“寒”即寒冷，“小”表示程度。小寒时节正值“三九”前后，是一年中最寒冷的时段之一。民间有“小寒胜大寒，常见不稀罕”之说，意为小寒往往比大寒更冷。此时北方冰天雪地，南方也寒意袭人。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_goose2.svg" alt=""><span class="step-label">一候 · 雁北乡</span><span class="step-desc">大雁开始向北迁移</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_magpie.svg" alt=""><span class="step-label">二候 · 鹊始巢</span><span class="step-desc">喜鹊开始筑巢</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_pheasant2.svg" alt=""><span class="step-label">三候 · 雉始鸲</span><span class="step-desc">野鸡开始鸣叫求偶</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">防冻保苗</div>检查麦田防冻覆盖物</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">大棚管理</div>蔬菜大棚增温补光</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">牲畜防寒</div>加强畜舍保温防寒</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">探梅</div>小寒腊梅盛开踏雪寻梅</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍚</span><div class="custom-item-text"><div class="custom-item-title">吃腊八粥</div>腊月初八喝腊八粥</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧹</span><div class="custom-item-text"><div class="custom-item-title">备年货</div>小寒开始准备春节年货</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍚</div><div class="food-name">腊八粥</div><div class="food-desc">杂粮干果熬制的暖粥</div></div>
+            <div class="food-item"><div class="food-emoji">🥘</div><div class="food-name">火锅</div><div class="food-desc">围炉吃火锅暖身驱寒</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">羊肉汤</div><div class="food-desc">喝羊汤温补助阳</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>小寒是极寒之时，养生重在温阳散寒。饮食宜食羊肉、生姜、桂圆等温补驱寒之物。注意保暖防寒，尤其护好头颈、腰腹、足部。适当室内运动，避免大汗耗阳。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《小寒》</div>
+            <div class="poem-author">【明】朱彝尊</div>
+            <div class="poem-content"><p>葵影便移长至日，梅花先趁小寒开。
+八神表日占和岁，六管飞葭动细灰。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card" id="dahan">
+      <div class="term-card-hero">
+        <img src="../images/winter/dahan.jpg" alt="大寒 - 寒气逆极" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">24</span>
+          <h2 class="term-hero-name">大寒</h2>
+          <p class="term-hero-pinyin">Dàhán</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年1月20日—21日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：300°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：寒气逆极，静待立春</span>
+          </div>
+        </div>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——大寒，冬季的最后一个节气，也是二十四节气的收尾。“大”表示寒气达到极致。大寒时节虽冷到极点，但物极必反，寒气至极则阳气渐生。大寒过后便是立春，新一轮节气循环即将开始。民间有“大寒迎年”之说，正是辞旧迎新准备春节的忙碌时节。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_chicken.svg" alt=""><span class="step-label">一候 · 鸡始乳</span><span class="step-desc">母鸡开始孵小鸡</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_hawk2.svg" alt=""><span class="step-label">二候 · 征鸟厉疾</span><span class="step-desc">猛禽盘旋觅食御寒</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/winter/pheno_marsh_ice.svg" alt=""><span class="step-label">三候 · 水泽腹坚</span><span class="step-desc">河湖冰冻至最深处</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">防冻保墒</div>检查麦田覆盖物防冻</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">备耕准备</div>检修农具准备春耕</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">积肥送粪</div>将农家肥运到田间待春耕</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧹</span><div class="custom-item-text"><div class="custom-item-title">除尘</div>大寒大扫除辞旧迎新</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🏮</span><div class="custom-item-text"><div class="custom-item-title">备年货</div>置办年货迎接春节</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">尾牙祭</div>商家年终祭土地公</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">年糕</div><div class="food-desc">大寒吃年糕步步高升</div></div>
+            <div class="food-item"><div class="food-emoji">🐔</div><div class="food-name">炖鸡</div><div class="food-desc">大寒炖鸡滋补暖身</div></div>
+            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name">八宝饭</div><div class="food-desc">大寒吃八宝饭迎春</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>大寒是全年最冷节气之一，养生重在温补固肾。饮食宜食羊肉、鸡肉、核桃等。注意保暖防寒，尤其护好关节。早卧晚起，适当运动。大寒过后即立春，注意顺应时令过渡。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《大寒》</div>
+            <div class="poem-author">【宋】陆游</div>
+            <div class="poem-content"><p>大寒雪未消，闭户不能出。
+可怜切云冠，局此容膝室。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    </div>
   </div>
+  <!-- ========== 页脚 ========== -->
   <footer class="winter-footer">
     <div class="footer-container">
       <div class="footer-top">
-        <div class="footer-brand"><h3>二十四节气·冬季专题</h3><p>立足传统节气文化，展现冬日物候民俗与饮食诗词。</p></div>
-        <div class="footer-links-group"><h4>四季导航</h4><ul><li><a href="#">春季</a></li><li><a href="#">夏季</a></li><li><a href="#">秋季</a></li><li><a href="#">冬季</a></li></ul></div>
+        <div class="footer-brand">
+          <h3>❄️ 二十四节气</h3>
+          <p>传承千年智慧，感受节气之美。以古人观天察地之心，领略四时流转的韵律与诗意。</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>四季详情</h4>
+          <ul>
+            <li><a href="winter.html">❄️ 冬季</a></li>
+            <li><a href="summer.html">☀️ 夏季</a></li>
+            <li><a href="autumn.html">🍂 秋季</a></li>
+            <li><a href="winter.html">❄️ 冬季</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>探索更多</h4>
+          <ul>
+            <li><a href="index.html">🏠 首页总览</a></li>
+            <li><a href="culture.html">📚 节气文化</a></li>
+            <li><a href="scenery.html">🏞️ 节气风物</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-bottom">©2025 二十四节气传统文化</div>
+      <div class="footer-bottom">
+        <p>© 2025 二十四节气 · 传承中华传统文化</p>
+      </div>
     </div>
   </footer>
-  <button class="back-to-top">↑</button>
-<script>
-    // ========== 节气点按切换 ==========
-    const termCards = document.querySelectorAll('.term-card');
-    const termNavLinks = document.querySelectorAll('.term-nav a');
 
-    function switchTerm(termId) {
-      termCards.forEach(card => card.classList.remove('active'));
-      const target = document.getElementById(termId);
-      if (target) {
-        void target.offsetWidth;
-        target.classList.add('active');
-      }
-      termNavLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-term') === termId) link.classList.add('active');
-      });
-      if (target) {
-        const rect = target.getBoundingClientRect();
-        if (rect.top < 0 || rect.top > window.innerHeight - 100) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-      return false;
-    }
+  <!-- ========== 回到顶部 ========== -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (termCards.length > 0 && !document.querySelector('.term-card.active')) {
-        termCards[0].classList.add('active');
-      }
-    });
-  </script>
-
-<!-- ========== 返回首页浮动按钮 - 节气徽章浮球 ========== -->
-<style>
-.home-float-btn{position:fixed;bottom:30px;right:30px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px}
-.float-btn-main{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2A5C68,#709FB0);border:3px solid #fff;box-shadow:0 4px 20px rgba(42,92,104,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);animation:floatPulseW 3s ease-in-out infinite}
-.float-btn-main:hover{transform:scale(1.15) rotate(10deg);box-shadow:0 6px 30px rgba(42,92,104,0.6)}
-@keyframes floatPulseW{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.float-expand-menu{display:flex;flex-direction:column;gap:10px;max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease;opacity:0}
-.float-expand-menu.show{max-height:200px;opacity:1}
-.float-menu-item{background:rgba(255,255,255,0.95);border-radius:25px;padding:10px 18px;text-decoration:none;color:#2A5C68;font-size:14px;font-weight:600;box-shadow:0 3px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.float-menu-item:hover{background:linear-gradient(135deg,#2A5C68,#709FB0);color:#fff;transform:translateX(-5px)}
-.float-hint{font-size:11px;color:#2A5C68;text-align:center;opacity:0.7}
-</style>
-<div class="home-float-btn">
-  <div class="float-btn-main" onclick="toggleFloatMenu()" title="返回首页">🏠</div>
-  <div class="float-expand-menu" id="floatMenu">
-    <a href="index.html" class="float-menu-item">🌿 首页总览</a>
-    <a href="spring.html" class="float-menu-item">🌸 春季详情</a>
-    <a href="summer.html" class="float-menu-item">☀️ 夏季详情</a>
-    <a href="autumn.html" class="float-menu-item">🍂 秋季详情</a>
-    <a href="winter.html" class="float-menu-item">❄️ 冬季详情</a>
-  </div>
-  <span class="float-hint" id="floatHint">点击展开</span>
-</div>
-<script>function toggleFloatMenu(){const menu=document.getElementById('floatMenu');const hint=document.getElementById('floatHint');menu.classList.toggle('show');hint.textContent=menu.classList.contains('show')?'点击收起':'点击展开'}</script>
-
-  <script src="../js/common.js"></script>
 </body>
 </html>

@@ -33,12 +33,14 @@
   
   <script>
     // ========== 节气点按切换 ==========
-    const termCards = document.querySelectorAll('.term-card');
-    const sidebarTerms = document.querySelectorAll('.sidebar-term');
+    let _termCards = null;
+    let _sidebarTerms = null;
+    function _getTermCards() { if (!_termCards) _termCards = document.querySelectorAll('.term-card'); return _termCards; }
+    function _getSidebarTerms() { if (!_sidebarTerms) _sidebarTerms = document.querySelectorAll('.sidebar-term'); return _sidebarTerms; }
 
     function switchTerm(termId) {
-      termCards.forEach(card => card.classList.remove('active'));
-      sidebarTerms.forEach(term => term.classList.remove('active'));
+      _getTermCards().forEach(card => card.classList.remove('active'));
+      _getSidebarTerms().forEach(term => term.classList.remove('active'));
 
       const targetCard = document.getElementById(termId);
       if (targetCard) {
@@ -51,14 +53,7 @@
         targetSidebar.classList.add('active');
       }
     }
-
-    // ========== 移动端导航 ==========
-    function toggleNav() {
-      document.getElementById('navToggle').classList.toggle('open');
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-
-    // ========== 回到顶部 ==========
+// ========== 回到顶部 ==========
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
       window.addEventListener('scroll', function() {
@@ -74,35 +69,20 @@
     }
   </script>
 
-  <!-- ========== 导航栏 ========== -->
-  <nav class="spring-nav" id="mainNav">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-icon">🌸</span>
-        <span class="nav-logo-text">二十四节气</span>
-      </a>
-      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav>
-
   <!-- ========== Hero 区域 ========== -->
   <section class="spring-hero" id="hero">
     <div class="hero-bg-pattern"></div>
     <!-- 飘落花瓣 -->
-    <div class="petal" style="left:5%; animation-duration:8s; animation-delay:0s; width:10px; height:10px;"></div>
-    <div class="petal" style="left:15%; animation-duration:10s; animation-delay:1s; width:8px; height:8px;"></div>
-    <div class="petal" style="left:25%; animation-duration:9s; animation-delay:2s;"></div>
-    <div class="petal" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:14px; height:14px;"></div>
-    <div class="petal" style="left:55%; animation-duration:8.5s; animation-delay:3s;"></div>
-    <div class="petal" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:9px; height:9px;"></div>
-    <div class="petal" style="left:75%; animation-duration:9.5s; animation-delay:2.5s;"></div>
-    <div class="petal" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:11px; height:11px;"></div>
-    <div class="petal" style="left:92%; animation-duration:8.8s; animation-delay:3.5s;"></div>
-    <div class="petal" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px;"></div>
+    <div class="petal" style="left:5%; animation-duration:8s; animation-delay:0s; width:10px; height:10px; background:#7DB87D;"></div>
+    <div class="petal" style="left:15%; animation-duration:10s; animation-delay:1s; width:8px; height:8px; background:#4A7C4F;"></div>
+    <div class="petal" style="left:25%; animation-duration:9s; animation-delay:2s; background:#A8D5A8;"></div>
+    <div class="petal" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:14px; height:14px; background:#2D5A2D;"></div>
+    <div class="petal" style="left:55%; animation-duration:8.5s; animation-delay:3s; background:#7DB87D;"></div>
+    <div class="petal" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:9px; height:9px; background:#4A7C4F;"></div>
+    <div class="petal" style="left:75%; animation-duration:9.5s; animation-delay:2.5s; background:#A8D5A8;"></div>
+    <div class="petal" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:11px; height:11px; background:#2D5A2D;"></div>
+    <div class="petal" style="left:92%; animation-duration:8.8s; animation-delay:3.5s; background:#7DB87D;"></div>
+    <div class="petal" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px; background:#4A7C4F;"></div>
 
     <div class="hero-content">
       <div class="hero-season-label">春 季 篇</div>
@@ -146,12 +126,12 @@
     <!-- 竖排侧边栏 -->
     <nav class="season-sidebar" id="seasonSidebar">
       <div class="sidebar-line"></div>
-      <a class="sidebar-term active" data-term="lichun" onclick="return switchTerm('lichun')"><span class="dot"></span>立春</a>
-      <a class="sidebar-term" data-term="yushui" onclick="return switchTerm('yushui')"><span class="dot"></span>雨水</a>
-      <a class="sidebar-term" data-term="jingzhe" onclick="return switchTerm('jingzhe')"><span class="dot"></span>惊蛰</a>
-      <a class="sidebar-term" data-term="chunfen" onclick="return switchTerm('chunfen')"><span class="dot"></span>春分</a>
-      <a class="sidebar-term" data-term="qingming" onclick="return switchTerm('qingming')"><span class="dot"></span>清明</a>
-      <a class="sidebar-term" data-term="guyu" onclick="return switchTerm('guyu')"><span class="dot"></span>谷雨</a>
+      <a href="javascript:void(0)" class="sidebar-term active" data-term="lichun" onclick="switchTerm('lichun');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>立春</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="yushui" onclick="switchTerm('yushui');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>雨水</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="jingzhe" onclick="switchTerm('jingzhe');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>惊蛰</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="chunfen" onclick="switchTerm('chunfen');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>春分</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="qingming" onclick="switchTerm('qingming');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>清明</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="guyu" onclick="switchTerm('guyu');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>谷雨</a>
     </nav>
 
     <!-- 内容区 -->

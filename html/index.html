@@ -167,14 +167,15 @@
 
     /* ========== 二十四节气总述 + 视频卡片布局（从首页1.html整合） ========== */
     .intro-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 2rem;
-      align-items: stretch;
+      align-items: center;
     }
     .intro-text-block {
-      flex: 1.2;
-      min-width: 250px;
+      width: 100%;
     }
     .intro-text {
       color: var(--text2);
@@ -193,80 +194,33 @@
     .stat-item {
       text-align: center;
       background: var(--bg-card);
-      padding: 1rem 2rem;
+      padding: 1.1rem 2.2rem;
       border-radius: 36px;
       border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: default;
+    }
+    .stat-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(91,140,90,0.12);
+      border-color: var(--green);
     }
     .stat-number {
-      font-size: 2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--green);
+      transition: color 0.3s;
       display: block;
     }
-    .intro-video-card {
-      flex: 0.9;
-      min-width: 280px;
-      background: var(--bg-card);
-      border-radius: 28px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s;
-    }
-    .intro-video-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow2);
-    }
-    .video-cover {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 */
-      background: linear-gradient(135deg, #2C5E2C, #4A7A49);
-      cursor: pointer;
-      overflow: hidden;
-    }
-    .video-play-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .video-play-icon {
-      width: 64px;
-      height: 64px;
-      background: rgba(91, 140, 90, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: white;
-      transition: 0.2s;
-    }
-    .video-play-overlay:hover .video-play-icon {
-      transform: scale(1.1);
-      background: var(--green);
-    }
-    .video-info {
-      padding: 1.2rem;
-      text-align: center;
-    }
-    .video-info h4 {
-      font-size: 1.1rem;
-      color: var(--green-d);
-      margin-bottom: 0.3rem;
-    }
-    .video-info p {
-      font-size: 0.8rem;
-      color: var(--text3);
-    }
+    
+    
+    
+    
+    
+    .video-play-overlay:hover 
+    
+    
+    
 
     /* ========== 日历区 ========== */
     .calendar-section{background:linear-gradient(180deg,var(--bg) 0%,rgba(91,140,90,.04) 100%);padding:2rem 0}
@@ -476,16 +430,16 @@
 <section class="hero-banner">
   <div class="hero-slides" id="heroSlides">
     <div class="hero-slide active spring-slide" style="background-image:url('../images/spring/spring.jpg')">
-      <div class="hero-slide-content"><span class="hero-season-tag">春 · 生</span><h1 class="hero-title">万物复苏 · 春耕始萌</h1><p class="hero-desc">立春雨水惊蛰春分清明谷雨，大地从沉寂中苏醒</p><a href="https://www.bilibili.com/video/BV1n46nBoE2C?t=42.3" target="_blank" class="hero-btn">春风有信，花开有期</a></div>
+      <div class="hero-slide-content"><span class="hero-season-tag">春 · 生</span><h1 class="hero-title">万物复苏 · 春耕始萌</h1><p class="hero-desc">立春雨水惊蛰春分清明谷雨，大地从沉寂中苏醒</p><a href="spring.html" class="hero-btn">🌸 春和景明 →</a></div>
     </div>
     <div class="hero-slide summer-slide" style="background-image:url('../images/summer/summer.jpg')">
-      <div class="hero-slide-content"><span class="hero-season-tag">夏 · 长</span><h1 class="hero-title">万物繁茂 · 暑气渐盛</h1><p class="hero-desc">立夏小满芒种夏至小暑大暑，生命蓬勃生长</p><a href="https://www.bilibili.com/video/BV15TmjYFEzG?t=25.0" target="_blank" class="hero-btn">蝉鸣入夏，风遇晴光</a></div>
+      <div class="hero-slide-content"><span class="hero-season-tag">夏 · 长</span><h1 class="hero-title">万物繁茂 · 暑气渐盛</h1><p class="hero-desc">立夏小满芒种夏至小暑大暑，生命蓬勃生长</p><a href="summer.html" class="hero-btn">☀️ 夏木阴阴 →</a></div>
     </div>
     <div class="hero-slide autumn-slide" style="background-image:url('../images/autumn/autumn.jpg')">
-      <div class="hero-slide-content"><span class="hero-season-tag">秋 · 收</span><h1 class="hero-title">天高云淡 · 硕果丰收</h1><p class="hero-desc">立秋处暑白露秋分寒露霜降，收获满满</p><a href="https://www.bilibili.com/video/BV1Tu4y1e7GN?t=55.3" target="_blank" class="hero-btn">才感盛夏，忽而已秋</a></div>
+      <div class="hero-slide-content"><span class="hero-season-tag">秋 · 收</span><h1 class="hero-title">天高云淡 · 硕果丰收</h1><p class="hero-desc">立秋处暑白露秋分寒露霜降，收获满满</p><a href="autumn.html" class="hero-btn">🍂 秋月寒江 →</a></div>
     </div>
     <div class="hero-slide winter-slide" style="background-image:url('../images/winter/winter.jpg')">
-      <div class="hero-slide-content"><span class="hero-season-tag">冬 · 藏</span><h1 class="hero-title">万物闭藏 · 休养生息</h1><p class="hero-desc">立冬小雪大雪冬至小寒大寒，静待春来</p><a href="https://www.bilibili.com/video/BV1AQ4y1S7Xn?t=128.2" target="_blank" class="hero-btn">冬雪为笺，岁月安暖</a></div>
+      <div class="hero-slide-content"><span class="hero-season-tag">冬 · 藏</span><h1 class="hero-title">万物闭藏 · 休养生息</h1><p class="hero-desc">立冬小雪大雪冬至小寒大寒，静待春来</p><a href="winter.html" class="hero-btn">❄️ 冬雪皑皑 →</a></div>
     </div>
   </div>
   <!-- 当前节气徽章 -->
@@ -498,7 +452,7 @@
   <button class="hero-arrow hero-arrow-next" id="nextSlide">&#8250;</button>
 </section>
 
-<!-- ========== 二十四节气总述 + 视频卡片（替换自首页1.html） ========== -->
+<!-- ========== 二十四节气总述 ========== -->
 <section class="intro-section" id="intro">
   <div class="section-container">
     <h2 class="section-title">二十四节气</h2>
@@ -525,19 +479,7 @@
           <div class="stat-item"><span class="stat-number">2016</span><span class="stat-label">列入非遗</span></div>
         </div>
       </div>
-      <!-- 右侧视频卡片 (B站风格) -->
-      <div class="intro-video-card" id="introVideoCard">
-        <div class="video-cover" id="introVideoCover" onclick="loadIntroVideo()">
-          <div class="video-play-overlay">
-            <div class="video-play-icon">▶</div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h4>二十四节气 · 中华时间智慧</h4>
-          <p>B站 ｜ 节气文化宣传片</p>
-        </div>
-        <div id="introVideoContainer" style="display: none; width: 100%; height: 0; padding-top: 56.25%; position: relative;"></div>
-      </div>
+      
     </div>
   </div>
 </section>
@@ -895,19 +837,6 @@ if(savedTheme==='dark')document.body.style.cssText+='--bg:#121212;--bg2:#1E2A1E;
 themeToggle.addEventListener('click',()=>{const isDark=document.body.style.getPropertyValue('--bg').trim()==='#121212';if(isDark){document.body.style.cssText='';localStorage.setItem('theme','light')}else{document.body.style.cssText+='--bg:#121212;--bg2:#1E2A1E;--bg-card:rgba(30,42,30,0.95);--text:#E6EDE6;--text2:#B8C7B8;--text3:#8EA08E;--border:#2F4530;--green:#8BBF8A;--green-d:#6E9F6D;--green-l:#5F9E5E;--shadow:0 8px 24px rgba(0,0,0,.3);--shadow2:0 12px 32px rgba(0,0,0,.4);--nav-bg:rgba(18,24,18,0.95);--footer-bg:#0F1F0F';localStorage.setItem('theme','dark')}});
 
 // ========== 简介旁视频卡片加载（从首页.html整合） ==========
-var introVideoLoaded = false;
-function loadIntroVideo() {
-  if (introVideoLoaded) return;
-  var coverDiv = document.getElementById('introVideoCover');
-  var container = document.getElementById('introVideoContainer');
-  var embedUrl = 'https://player.bilibili.com/player.html?bvid=BV1HA411y7oc&page=1&autoplay=1&start=40&high_quality=1&danmaku=0';
-  container.style.display = 'block';
-  container.style.height = 'auto';
-  container.innerHTML = '<iframe src="' + embedUrl + '" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"></iframe>';
-  coverDiv.style.display = 'none';
-  introVideoLoaded = true;
-}
-
 // ========== 农历算法（原index.html完整） ==========
 const lunarInfo=[0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,0x06ca0,0x0b550,0x15355,0x04da0,0x0a5b0,0x14573,0x052b0,0x0a9a8,0x0e950,0x06aa0,0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b6a0,0x195a6,0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x05ac0,0x0ab60,0x096d5,0x092e0,0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,0x05aa0,0x076a3,0x096d0,0x04afb,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0,0x14b63,0x09370,0x049f8,0x04970,0x064b0,0x168a6,0x0ea50,0x06b20,0x1a6c4,0x0aae0,0x092e0,0x0d2e3,0x0c960,0x0d557,0x0d4a0,0x0da50,0x05d55,0x056a0,0x0a6d0,0x055d4,0x052d0,0x0a9b8,0x0a950,0x0b4a0,0x0b6a6,0x0ad50,0x055a0,0x0aba4,0x0a5b0,0x052b0,0x0b273,0x06930,0x07337,0x06aa0,0x0ad50,0x14b55,0x04b60,0x0a570,0x054e4,0x0d160,0x0e968,0x0d520,0x0daa0,0x16aa6,0x056d0,0x04ae0,0x0a9d4,0x0a4d0,0x0d150,0x0f252,0x0d520];
 const Gan=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];

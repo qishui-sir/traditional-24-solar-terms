@@ -368,18 +368,36 @@ body::before {
   margin-bottom: 4rem;
   box-shadow: 0 8px 32px var(--scenery-shadow);
   border: 1px solid var(--scenery-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s ease;
+  cursor: pointer;
+}
+.goods-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(107,144,128,0.25);
+}
+.goods-card.scroll-hidden {
   opacity: 0;
   transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,0.61,0.36,1);
 }
-.goods-card.visible {
+.goods-card.scroll-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .goods-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 48px rgba(107, 144, 128, 0.2);
+}
+
+/* 滚动渐显动画 */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,0.61,0.36,1);
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 卡片头部 - 季节 Banner */
@@ -671,19 +689,30 @@ body::before {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   background: var(--spring-green);
   color: #fff;
   border: none;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  box-shadow: 0 4px 16px var(--scenery-shadow);
+  box-shadow: 0 4px 20px var(--scenery-shadow);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.22,0.61,0.36,1);
   z-index: 999;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--spring-green-dark);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 28px rgba(107,144,128,0.35);
 }
 .back-to-top.visible {
   opacity: 1;

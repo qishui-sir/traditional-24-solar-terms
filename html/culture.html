@@ -62,73 +62,16 @@
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
-    /* 导航栏 */
-    .main-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #D4E8D4;
-      transition: all 0.3s;
-    }
-    .main-nav.scrolled {
-      box-shadow: 0 8px 24px rgba(91, 140, 90, 0.12);
-      background: rgba(255, 255, 255, 0.97);
-    }
-    .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #3D6B3D;
-    }
-    .nav-logo-icon { font-size: 1.4rem; }
-    .nav-logo-text { letter-spacing: 1px; }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 0.8rem;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #5A6E5A;
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      font-size: 0.95rem;
-      transition: 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: rgba(91, 140, 90, 0.15);
-      color: #3D6B3D;
-    }
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .nav-toggle span {
-      width: 25px;
-      height: 2px;
-      background: #2C3E2C;
-      border-radius: 2px;
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /* ========== 轮播区 ========== */
     .hero-banner {
       position: relative;
@@ -977,8 +920,8 @@
     /* 响应式 */
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 1rem; border-bottom: 1px solid #D4E8D4; }
-      .nav-links.open { display: flex; }
-      .nav-toggle { display: flex; }
+      
+      
       .timeline-track-horizontal { flex-wrap: nowrap; justify-content: flex-start; gap: 0.8rem; padding: 0.5rem 0.2rem 1rem; }
       .timeline-track-horizontal::before { display: none; }
       .timeline-node { flex: 0 0 auto; min-width: 72px; max-width: 100px; padding: 0.5rem 0.3rem; border-radius: 40px 40px 16px 16px; }
@@ -1070,7 +1013,67 @@
       background: linear-gradient(135deg, #5B8C5A, #8BBF8A);
       color: #fff;
     }
-    </style>
+    
+    /* ============================================
+       增强：滚动渐显动画
+       ============================================ */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,0.61,0.36,1);
+    }
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* ============================================
+       增强：卡片悬停效果
+       ============================================ */
+    .proverb-card {
+      transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+    .proverb-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(91,140,90,0.18);
+    }
+    .custom-card-detailed {
+      transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+    .custom-card-detailed:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(91,140,90,0.15);
+    }
+    /* ============================================
+       增强：互动反馈
+       ============================================ */
+    .tab-btn {
+      transition: all 0.3s cubic-bezier(0.22,0.61,0.36,1);
+      cursor: pointer;
+    }
+    .tab-btn:hover {
+      transform: translateY(-2px);
+    }
+    .tab-btn:active {
+      transform: scale(0.96);
+    }
+    .quiz-opt {
+      transition: all 0.3s cubic-bezier(0.22,0.61,0.36,1);
+      cursor: pointer;
+    }
+    .quiz-opt:hover {
+      transform: translateX(4px);
+      border-color: #5B8C5A;
+    }
+    .timeline-node {
+      transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s ease;
+    }
+    .timeline-node:hover {
+      transform: scale(1.15);
+    }
+
+</style>
 </head>
 <body>
 
@@ -1099,18 +1102,7 @@
     <li></li><li></li><li></li><li></li><li></li><li></li>
   </ul>
 
-  <!-- 导航栏 -->
-  <nav class="main-nav" id="mainNav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-icon">🌿</span>
-        <span class="nav-logo-text">二十四节气</span>
-      </a>
-      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
+  
 
   <!-- ========== 轮播区 ========== -->
   <section class="hero-banner">
@@ -1364,13 +1356,7 @@
       else nav.classList.remove('scrolled');
       if (window.scrollY > 500) backToTop.classList.add('visible');
       else backToTop.classList.remove('visible');
-    });
-
-    function toggleNav() {
-      document.querySelector('.nav-links')?.classList.toggle('open');
-    }
-
-    function scrollToTop() {
+    });function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1661,5 +1647,24 @@
   </script>
 
   <script src="../js/common.js"></script>
+
+  <script>
+    // 滚动渐显
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      
+      document.querySelectorAll('.culture-section, .custom-card-detailed, .proverb-card, .quiz-card, .page-header').forEach(function(el) {
+        el.classList.add('scroll-reveal');
+        observer.observe(el);
+      });
+    })();
+  </script>
+
 </body>
 </html>

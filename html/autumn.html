@@ -1,985 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>秋之节气｜秋韵丰收</title>
-  <meta name="description" content="秋季节气专题：立秋、处暑、白露、秋分、寒露、霜降，感受天高云淡、硕果盈仓的中式浪漫。">
+  <title>秋月寒江 · 二十四节气之秋季篇</title>
+  <meta name="description" content="秋季节气专题：立秋、处暑、白露、秋分、寒露、霜降，感受天高云淡、硕果盈仓的东方智慧。">
   <meta name="keywords" content="二十四节气,秋季,立秋,处暑,白露,秋分,寒露,霜降,中国传统节日">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/common.css">
-  <style>
-/* ============================================
-   秋季节气专题页 - 内联样式
-   色系：金橙 #D4883A、枫红 #C0392B、秋黄 #F5C542
-   ============================================ */
+  <link rel="stylesheet" href="../css/autumn.css">
 
-/* --- CSS 变量 --- */
-:root {
-  --autumn-orange: #D4883A;
-  --autumn-orange-light: #E8A860;
-  --autumn-orange-dark: #B06A20;
-  --autumn-red: #C0392B;
-  --autumn-red-light: #E74C3C;
-  --autumn-red-dark: #96281B;
-  --autumn-yellow: #F5C542;
-  --autumn-yellow-light: #FFF3CD;
-  --autumn-bg: #FFF9F0;
-  --autumn-card-bg: #FFFFFF;
-  --autumn-text: #3E2723;
-  --autumn-text-light: #6D4C41;
-  --autumn-border: #E0C8A8;
-  --autumn-shadow: rgba(212, 136, 58, 0.15);
-  --autumn-gradient: linear-gradient(135deg, #FFF3CD 0%, #FDEBD0 50%, #FADBD8 100%);
-}
-
-/* --- 全局重置 --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
-  background: var(--autumn-bg);
-  color: var(--autumn-text);
-  line-height: 1.8;
-  overflow-x: hidden;
-}
-
-/* --- 背景装饰 --- */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(245, 197, 66, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(192, 57, 43, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(212, 136, 58, 0.08) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* --- 导航栏 --- */
-.spring-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--autumn-border);
-  box-shadow: 0 2px 20px var(--autumn-shadow);
-  transition: all 0.3s ease;
-}
-
-.spring-nav.scrolled {
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 4px 30px var(--autumn-shadow);
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: var(--autumn-orange-dark);
-}
-
-.nav-logo-icon {
-  font-size: 1.8rem;
-}
-
-.nav-logo-text {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 0.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--autumn-text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--autumn-orange-dark);
-  background: rgba(212, 136, 58, 0.1);
-}
-
-.nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: var(--autumn-orange);
-  border-radius: 2px;
-}
-
-/* 移动端菜单 */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.nav-toggle span {
-  width: 25px;
-  height: 2px;
-  background: var(--autumn-orange-dark);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* --- Hero 区域 --- */
-.spring-hero {
-  position: relative;
-  margin-top: 70px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--autumn-gradient);
-  overflow: hidden;
-}
-
-.hero-bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.06;
-  background-image:
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%23D4883A'/%3E%3Cpath d='M10 35 Q15 45 10 55 Q5 45 10 35Z' fill='%23C0392B'/%3E%3Cpath d='M50 35 Q55 45 50 55 Q45 45 50 35Z' fill='%23F5C542'/%3E%3C/svg%3E");
-  animation: patternFloat 30s linear infinite;
-}
-
-@keyframes patternFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-60px); }
-}
-
-/* 飘落枫叶动画 */
-.petal {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: var(--autumn-orange);
-  border-radius: 50% 0 50% 50%;
-  opacity: 0.6;
-  animation: petalFall linear infinite;
-}
-
-@keyframes petalFall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg) translateX(0);
-    opacity: 0.7;
-  }
-  25% {
-    transform: translateY(25vh) rotate(90deg) translateX(30px);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(50vh) rotate(180deg) translateX(-20px);
-    opacity: 0.5;
-  }
-  75% {
-    transform: translateY(75vh) rotate(270deg) translateX(25px);
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg) translateX(-10px);
-    opacity: 0;
-  }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 800px;
-}
-
-.hero-season-label {
-  display: inline-block;
-  padding: 0.4rem 1.5rem;
-  background: rgba(212, 136, 58, 0.15);
-  border: 1px solid rgba(212, 136, 58, 0.3);
-  border-radius: 30px;
-  color: var(--autumn-orange-dark);
-  font-size: 0.9rem;
-  letter-spacing: 3px;
-  margin-bottom: 1.5rem;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--autumn-orange-dark);
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(212, 136, 58, 0.1);
-  letter-spacing: 8px;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--autumn-red);
-  margin-bottom: 2rem;
-  letter-spacing: 5px;
-  font-style: italic;
-}
-
-.hero-desc {
-  font-size: 1.1rem;
-  color: var(--autumn-text-light);
-  line-height: 2;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-}
-
-.hero-scroll-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--autumn-orange);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-/* --- 总述区域 --- */
-.spring-intro {
-  position: relative;
-  z-index: 1;
-  max-width: 1000px;
-  margin: -5rem auto 4rem;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid var(--autumn-border);
-  box-shadow: 0 10px 40px var(--autumn-shadow);
-}
-
-.intro-title {
-  text-align: center;
-  font-size: 1.8rem;
-  color: var(--autumn-orange-dark);
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.intro-title::after {
-  content: '🍂';
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.intro-text {
-  font-size: 1.05rem;
-  color: var(--autumn-text-light);
-  text-indent: 2em;
-  margin-bottom: 1rem;
-}
-
-.intro-quote {
-  text-align: center;
-  font-style: italic;
-  color: var(--autumn-red);
-  font-size: 1rem;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-left: 3px solid var(--autumn-orange);
-  border-right: 3px solid var(--autumn-orange);
-}
-
-/* --- 节气导航锚点 --- */
-.term-nav {
-  text-align: center;
-  position: sticky;
-  top: 70px;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--autumn-border);
-  padding: 1rem 0;
-  }
-
-.term-nav.term-nav.term-nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.term-nav a {
-  text-decoration: none;
-  color: var(--autumn-text-light);
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.term-nav a:hover {
-  color: var(--autumn-orange-dark);
-  background: rgba(212, 136, 58, 0.08);
-  border-color: var(--autumn-border);
-}
-
-.term-nav a.active {
-  color: #fff;
-  background: var(--autumn-orange);
-  border-color: var(--autumn-orange);
-}
-
-/* --- 节气卡片区域 --- */
-.terms-container {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-}
-
-/* --- 单个节气卡片 --- */
-.term-card {
-  background: var(--autumn-card-bg);
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 4rem;
-  box-shadow: 0 8px 32px var(--autumn-shadow);
-  border: 1px solid var(--autumn-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.term-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.term-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(212, 136, 58, 0.2);
-}
-
-/* 卡片头部 - 配图 */
-.term-card-header {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #FDEBD0, #FADBD8);
-}
-
-.term-card-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.term-card:hover .term-card-header img {
-  transform: scale(1.05);
-}
-
-.term-card-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-}
-
-/* 节气名称覆盖层 */
-.term-card-overlay {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  z-index: 2;
-}
-
-.term-number {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  background: var(--autumn-orange);
-  color: #fff;
-  border-radius: 50%;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-right: 0.75rem;
-}
-
-.term-name-tag {
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 30px;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--autumn-orange-dark);
-  letter-spacing: 3px;
-}
-
-.term-pinyin {
-  font-size: 0.85rem;
-  color: var(--autumn-text-light);
-  letter-spacing: 1px;
-  margin-left: 0.5rem;
-  font-weight: 400;
-}
-
-/* 卡片主体 */
-.term-card-body {
-  padding: 2rem 3rem 3rem;
-}
-
-/* 时间与含义 */
-.term-meta {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.term-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--autumn-bg);
-  border-radius: 12px;
-  border: 1px solid var(--autumn-border);
-  font-size: 0.9rem;
-}
-
-.term-meta-icon {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
-.term-meta-label {
-  color: var(--autumn-text-light);
-  font-size: 0.8rem;
-}
-
-.term-meta-value {
-  color: var(--autumn-orange-dark);
-  font-weight: 600;
-}
-
-/* 内容区块 */
-.term-section {
-  margin-bottom: 2rem;
-}
-
-.term-section-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.15rem;
-  color: var(--autumn-orange-dark);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--autumn-border);
-}
-
-.term-section-icon {
-  font-size: 1.3rem;
-}
-
-.term-section p {
-  color: var(--autumn-text-light);
-  text-indent: 2em;
-  margin-bottom: 0.5rem;
-  line-height: 2;
-}
-
-/* 物候特征 - 三候 */
-.phenology-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.phenology-item {
-  text-align: center;
-  padding: 1.2rem;
-  background: linear-gradient(135deg, rgba(212,136,58,0.05), rgba(192,57,43,0.05));
-  border-radius: 16px;
-  border: 1px solid var(--autumn-border);
-  transition: transform 0.3s ease;
-}
-
-.phenology-item:hover {
-  transform: translateY(-3px);
-}
-
-.phenology-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
-.phenology-name {
-  font-weight: 600;
-  color: var(--autumn-orange-dark);
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
-}
-
-.phenology-desc {
-  font-size: 0.85rem;
-  color: var(--autumn-text-light);
-  text-indent: 0;
-}
-
-/* 民俗列表 */
-.custom-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.custom-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: var(--autumn-bg);
-  border-radius: 12px;
-  border: 1px solid var(--autumn-border);
-}
-
-.custom-item-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.custom-item-text {
-  font-size: 0.95rem;
-  color: var(--autumn-text-light);
-  text-indent: 0;
-}
-
-.custom-item-title {
-  font-weight: 600;
-  color: var(--autumn-orange-dark);
-  margin-bottom: 0.3rem;
-}
-
-/* 美食卡片 */
-.food-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.food-item {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, var(--autumn-yellow-light), #FDEBD0);
-  border-radius: 16px;
-  border: 1px solid var(--autumn-border);
-  transition: transform 0.3s ease;
-}
-
-.food-item:hover {
-  transform: scale(1.03);
-}
-
-.food-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.food-name {
-  font-weight: 600;
-  color: var(--autumn-orange-dark);
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-.food-name a {
-  text-decoration: none;
-  color: var(--autumn-orange-dark);
-  cursor: pointer;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.food-name a:hover {
-  color: var(--autumn-red);
-  text-decoration: underline;
-}
-
-.food-desc {
-  font-size: 0.85rem;
-  color: var(--autumn-text-light);
-  text-indent: 0;
-}
-
-/* 诗词区块 */
-.poem-block {
-  position: relative;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(212,136,58,0.05), rgba(192,57,43,0.08));
-  border-radius: 16px;
-  border: 1px solid var(--autumn-border);
-  text-align: center;
-}
-
-.poem-block::before {
-  content: '📜';
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  background: var(--autumn-card-bg);
-  padding: 0 0.5rem;
-}
-
-.poem-title {
-  font-size: 1.1rem;
-  color: var(--autumn-orange-dark);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.poem-author {
-  font-size: 0.9rem;
-  color: var(--autumn-text-light);
-  margin-bottom: 1rem;
-}
-
-.poem-content {
-  font-size: 1.1rem;
-  color: var(--autumn-text);
-  line-height: 2.2;
-  letter-spacing: 1px;
-}
-
-.poem-content p {
-  text-indent: 0;
-  margin-bottom: 0.3rem;
-}
-
-/* --- 页脚 --- */
-.spring-footer {
-  position: relative;
-  z-index: 1;
-  background: linear-gradient(135deg, var(--autumn-orange-dark), #8B4513);
-  color: rgba(255, 255, 255, 0.85);
-  padding: 3rem 2rem 1.5rem;
-  margin-top: 2rem;
-}
-
-.footer-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.footer-brand {
-  max-width: 350px;
-}
-
-.footer-brand h3 {
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 0.75rem;
-  letter-spacing: 2px;
-}
-
-.footer-brand p {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  opacity: 0.8;
-}
-
-.footer-links-group h4 {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 0.75rem;
-  letter-spacing: 1px;
-}
-
-.footer-links-group ul {
-  list-style: none;
-}
-
-.footer-links-group a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 0.9rem;
-  display: block;
-  padding: 0.3rem 0;
-  transition: color 0.3s ease;
-}
-
-.footer-links-group a:hover {
-  color: var(--autumn-yellow);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 1.5rem;
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-
-/* --- 回到顶部 --- */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
-  background: var(--autumn-orange);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 16px var(--autumn-shadow);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover {
-  background: var(--autumn-orange-dark);
-  transform: translateY(-3px);
-}
-
-/* --- 响应式设计 --- */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    padding: 1rem;
-    border-bottom: 1px solid var(--autumn-border);
-    box-shadow: 0 10px 30px var(--autumn-shadow);
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .hero-title {
-    font-size: 2.2rem;
-    letter-spacing: 4px;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .spring-intro {
-    margin: -3rem 1rem 2rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .term-card-header {
-    height: 250px;
-  }
-
-  .term-card-body {
-    padding: 1.5rem;
-  }
-
-  .term-meta {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .phenology-list {
-    grid-template-columns: 1fr;
-  }
-
-  .custom-list {
-    grid-template-columns: 1fr;
-  }
-
-  .food-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .term-nav-inner {
-    justify-content: flex-start;
-  }
-
-  .footer-top {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .food-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .term-name-tag {
-    font-size: 1.2rem;
-  }
-}
-
-/* --- 打印样式 --- */
-@media print {
-  .spring-nav,
-  .term-nav,
-  .back-to-top,
-  .hero-scroll-hint,
-  .petal,
-  .hero-bg-pattern {
-    display: none !important;
-  }
-
-  .spring-hero {
-    min-height: auto;
-    margin-top: 0;
-  }
-
-  .term-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #ddd;
-  }
-}
-    /* ========== 左上角悬浮球导航 ========== */
-    
-    .top-left-nav-item:hover {
-      background: linear-gradient(135deg, #D4883A, #C0392B);
-      color: #fff;
-      transform: translateX(5px) !important;
-      box-shadow: 0 5px 20px rgba(212,136,58,0.3);
-    }
-    .top-left-nav-item.active {
-      background: linear-gradient(135deg, #D4883A, #C0392B);
-      color: #fff;
-    }
-    /* ============================================
-   节气点按切换 - Tab Switch
-   ============================================ */
-.term-card {
-  display: none;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.term-card.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-.term-nav a.active {
-  font-weight: 700;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-@keyframes termFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.term-card.active {
-  animation: termFadeIn 0.45s ease forwards;
-}
-
-</style>
+  <script src="../js/common.js"></script>
 </head>
-<body>
+<body class="autumn-page">
 
-  <!-- ========== 左上角悬浮球导航 ========== -->
+  <!-- ========== 左上角导航悬浮球 ========== -->
   <div class="top-left-nav">
     <div class="top-left-nav-row">
-      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🍂</button>
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
       <span class="top-left-nav-hint">点击收起</span>
     </div>
     <div class="top-left-nav-menu show" id="topLeftNavMenu">
@@ -992,45 +30,77 @@ body::before {
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
   </div>
+  
+  <script>
+    // ========== 节气点按切换 ==========
+    let _termCards = null;
+    let _sidebarTerms = null;
+    function _getTermCards() { if (!_termCards) _termCards = document.querySelectorAll('.term-card'); return _termCards; }
+    function _getSidebarTerms() { if (!_sidebarTerms) _sidebarTerms = document.querySelectorAll('.sidebar-term'); return _sidebarTerms; }
 
-  <!-- ========== 导航栏 ========== -->
-  <nav class="spring-nav" id="mainNav">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-icon">🍂</span>
-        <span class="nav-logo-text">二十四节气</span>
-      </a>
-      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav>
+    function switchTerm(termId) {
+      _getTermCards().forEach(card => card.classList.remove('active'));
+      _getSidebarTerms().forEach(term => term.classList.remove('active'));
+
+      const targetCard = document.getElementById(termId);
+      if (targetCard) {
+        void targetCard.offsetWidth;
+        targetCard.classList.add('active');
+      }
+
+      const targetSidebar = document.querySelector('.sidebar-term[data-term="' + termId + '"]');
+      if (targetSidebar) {
+        targetSidebar.classList.add('active');
+      }
+    }
+// ========== 回到顶部 ==========
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
 
   <!-- ========== Hero 区域 ========== -->
-  <section class="spring-hero" id="hero">
+  <section class="autumn-hero" id="hero">
     <div class="hero-bg-pattern"></div>
-    <!-- 飘落枫叶 -->
-    <div class="petal" style="left:5%; animation-duration:8s; animation-delay:0s; width:10px; height:10px; background:#D4883A;"></div>
-    <div class="petal" style="left:15%; animation-duration:10s; animation-delay:1s; width:8px; height:8px; background:#C0392B;"></div>
-    <div class="petal" style="left:25%; animation-duration:9s; animation-delay:2s; background:#F5C542;"></div>
-    <div class="petal" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:14px; height:14px; background:#D4883A;"></div>
-    <div class="petal" style="left:55%; animation-duration:8.5s; animation-delay:3s; background:#C0392B;"></div>
-    <div class="petal" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:9px; height:9px; background:#F5C542;"></div>
-    <div class="petal" style="left:75%; animation-duration:9.5s; animation-delay:2.5s; background:#D4883A;"></div>
-    <div class="petal" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:11px; height:11px; background:#C0392B;"></div>
-    <div class="petal" style="left:92%; animation-duration:8.8s; animation-delay:3.5s; background:#F5C542;"></div>
-    <div class="petal" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px; background:#D4883A;"></div>
+    <div class="petal" style="left:4%; animation-duration:10s; animation-delay:0s; width:18px; height:18px; background:#B85C1A;"></div>
+    <div class="petal" style="left:14%; animation-duration:12s; animation-delay:2s; width:15px; height:15px; background:#D4A04A;"></div>
+    <div class="petal" style="left:24%; animation-duration:9s; animation-delay:4s; width:20px; height:20px; background:#8A4A12;"></div>
+    <div class="petal" style="left:33%; animation-duration:13s; animation-delay:1s; width:16px; height:16px; background:#E8C8A0;"></div>
+    <div class="petal" style="left:42%; animation-duration:10.5s; animation-delay:5s; width:19px; height:19px; background:#B85C1A;"></div>
+    <div class="petal" style="left:51%; animation-duration:11s; animation-delay:3s; width:14px; height:14px; background:#D4A04A;"></div>
+    <div class="petal" style="left:60%; animation-duration:8.5s; animation-delay:0s; width:17px; height:17px; background:#8A4A12;"></div>
+    <div class="petal" style="left:69%; animation-duration:12.5s; animation-delay:6s; width:15px; height:15px; background:#E8C8A0;"></div>
+    <div class="petal" style="left:78%; animation-duration:9.5s; animation-delay:2.5s; width:18px; height:18px; background:#B85C1A;"></div>
+    <div class="petal" style="left:87%; animation-duration:10s; animation-delay:4.5s; width:16px; height:16px; background:#D4A04A;"></div>
+    <div class="petal" style="left:94%; animation-duration:11.5s; animation-delay:1.5s; width:19px; height:19px; background:#8A4A12;"></div>
+    <!-- 飘落秋叶 -->
+    <div class="leaf" style="left:5%; animation-duration:8s; animation-delay:0s; width:10px; height:10px;"></div>
+    <div class="leaf" style="left:15%; animation-duration:10s; animation-delay:1s; width:8px; height:8px;"></div>
+    <div class="leaf" style="left:25%; animation-duration:9s; animation-delay:2s;"></div>
+    <div class="leaf" style="left:40%; animation-duration:11s; animation-delay:0.5s; width:14px; height:14px;"></div>
+    <div class="leaf" style="left:55%; animation-duration:8.5s; animation-delay:3s;"></div>
+    <div class="leaf" style="left:65%; animation-duration:10.5s; animation-delay:1.5s; width:9px; height:9px;"></div>
+    <div class="leaf" style="left:75%; animation-duration:9.5s; animation-delay:2.5s;"></div>
+    <div class="leaf" style="left:85%; animation-duration:11.5s; animation-delay:0.8s; width:11px; height:11px;"></div>
+    <div class="leaf" style="left:92%; animation-duration:8.8s; animation-delay:3.5s;"></div>
+    <div class="leaf" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px;"></div>
 
     <div class="hero-content">
-      <div class="hero-season-label">🍂 秋 季 篇</div>
-      <h1 class="hero-title">秋 韵 丰 收</h1>
-      <p class="hero-subtitle">天高云淡 · 硕果盈仓</p>
+      <div class="hero-season-label">秋 季 篇</div>
+      <h1 class="hero-title">秋 月 寒 江</h1>
+      <p class="hero-subtitle">天高云淡 · 硕果丰收</p>
       <p class="hero-desc">
-        秋风起，桂飘香，白露凝霜，四时之秋承载农耕丰收与千年民俗，
-        藏于草木风霜、人间烟火。
-        从立秋到霜降，六气更替，暑去凉生，草木由盛转敛，谷物次第成熟。
+        秋，四时之收也。自立秋至霜降，六气更替，天地间的色彩由浓绿转为金黄，天高云淡，北雁南飞，稻谷飘香，硕果盈枝。古人观秋之节气，感物候之变，品丰收之喜，悟生命轮回。
       </p>
       <div class="hero-scroll-hint">
         <span>↓</span>
@@ -1039,456 +109,471 @@ body::before {
     </div>
   </section>
 
-  <!-- ========== 秋季节气总述 ========== -->
-  <section class="spring-intro" id="intro">
-    <h2 class="intro-title">秋日总论</h2>
-    <p class="intro-text">
-      秋季始于立秋，终于霜降，历经六序，暑去凉生，草木由盛转敛，谷物次第成熟。从伏末余暑到寒霜覆草，气温逐层回落，鸿雁南迁、桂花盛放、瓜果满仓，是天地收敛之气，亦是华夏农耕庆贺丰收之时。
-    </p>
-    <p class="intro-text">
-      古人循节气耕作、祭祖、尝新，把秋日风物化作饮食、诗词与民俗，沉淀成独属于金秋的中式浪漫。
-    </p>
+  <!-- ========== 春季节气总述 ========== -->
+  <section class="autumn-intro" id="intro">
+    <h2 class="intro-title">秋季节气总述</h2>
+    <p class="intro-text">秋季，始于立秋，终于霜降，共历六个节气。此时太阳沿黄道从135°运行至210°，北半球日照渐短，气温从炎热过渡到寒凉。立秋虽至，暑气未消；处暑暑止，秋意渐浓；白露凝霜，寒气初现；秋分昼夜平分；寒露霜降，秋意深沉，万木凋零。</p>
+    <p class="intro-text">秋季六节气，承载着丰收的喜悦与收敛的智慧。从立秋啃秋到霜降赏菊，每个节气都有独特的民俗与食俗，是中华文化中醇厚的秋日记忆。</p>
     <div class="intro-quote">
-      "自古逢秋悲寂寥，我言秋日胜春朝。" —— 刘禹锡
+      “自古逢秋悲寂寥，我言秋日胜春朝。” —— 金秋时节，硕果盈仓
     </div>
   </section>
 
   <!-- ========== 节气快速导航 ========== -->
-  <div class="term-nav" id="termNav">
-    <div class="term-nav-inner">
-      <a href="#" data-term="liqiu" onclick="return switchTerm(&quot;liqiu&quot;)" class="active">立秋</a>
-      <a href="#" data-term="chushu" onclick="return switchTerm(&quot;chushu&quot;)">处暑</a>
-      <a href="#" data-term="bailu" onclick="return switchTerm(&quot;bailu&quot;)">白露</a>
-      <a href="#" data-term="qiufen" onclick="return switchTerm(&quot;qiufen&quot;)">秋分</a>
-      <a href="#" data-term="hanlu" onclick="return switchTerm(&quot;hanlu&quot;)">寒露</a>
-      <a href="#" data-term="shuangjiang" onclick="return switchTerm(&quot;shuangjiang&quot;)">霜降</a>
-    </div>
-  </div>
+    <!-- ========== 侧边节气目录 + 内容区 ========== -->
+  <div class="main-content">
+    <!-- 竖排侧边栏 -->
+    <nav class="season-sidebar" id="seasonSidebar">
+      <div class="sidebar-line"></div>
+      <a href="javascript:void(0)" class="sidebar-term active" data-term="liqiu" onclick="switchTerm('liqiu');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>立秋</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="chushu" onclick="switchTerm('chushu');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>处暑</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="bailu" onclick="switchTerm('bailu');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>白露</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="qiufen" onclick="switchTerm('qiufen');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>秋分</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="hanlu" onclick="switchTerm('hanlu');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>寒露</a>
+      <a href="javascript:void(0)" class="sidebar-term" data-term="shuangjiang" onclick="switchTerm('shuangjiang');return false"><svg class="sidebar-arrow" width="12" height="12" viewBox="0 0 12 12"><path d="M3.5 3 L7.5 6 L3.5 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>霜降</a>
+    </nav>
 
-  <!-- ========== 节气卡片容器 ========== -->
-  <div class="terms-container">
+    <!-- 内容区 -->
+        <div class="content-area" id="contentArea">
 
-    <!-- ==================== 1. 立秋 ==================== -->
-    <article class="term-card" id="liqiu">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/autumn,maple,leaves?lock=1" alt="立秋 - 暑去秋来，万物始敛" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">01</span>
-          <span class="term-name-tag">立秋 <span class="term-pinyin">Lìqiū</span></span>
+    <article class="term-card active" id="liqiu">
+      <div class="term-card-hero">
+        <img src="../images/autumn/liqiu.jpg" alt="立秋 - 秋之始也" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">13</span>
+          <h2 class="term-hero-name">立秋</h2>
+          <p class="term-hero-pinyin">Lìqiū</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年8月7日—9日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：135°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：暑去凉来，秋老虎余威</span>
+          </div>
         </div>
       </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item">
-            <img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt="">
-            <div>
-              <div class="term-meta-label">公历时间</div>
-              <div class="term-meta-value">8月7~9日</div>
-            </div>
-          </div>
-          <div class="term-meta-item">
-            <img class="term-meta-icon" src="../images/icons/meta_book.svg" alt="">
-            <div>
-              <div class="term-meta-label">节气内涵</div>
-              <div class="term-meta-value">暑去秋来，万物始敛</div>
-            </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——立秋，秋季的第一个节气，标志着秋季的开始。“立”为开始，“秋”为禾谷成熟。立秋时节，虽暑气未消，但阳气渐收、阴气渐长，万物开始从繁茂趋向成熟。立秋之日，凉风至，白露降，寒蝉鸣。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_cool_wind.svg" alt=""><span class="step-label">一候 · 凉风至</span><span class="step-desc">偏北风带来丝丝凉意</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_dew.svg" alt=""><span class="step-label">二候 · 白露降</span><span class="step-desc">清晨叶上有露珠凝结</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_cicada.svg" alt=""><span class="step-label">三候 · 寒蝉鸣</span><span class="step-desc">秋蝉感知寒气开始鸣叫</span></div>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>立秋并非立刻入凉，尚有末伏余热，俗称"秋老虎"，日间燥热、晨昏渐凉，雨水慢慢减少，空气趋于干爽。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item">
-              <img class="phenology-icon" src="../images/autumn/pheno_cool_wind.svg" alt="">
-              <div class="phenology-name">一候 · 凉风至</div>
-              <div class="phenology-desc">秋风送爽，暑气消退</div>
-            </li>
-            <li class="phenology-item">
-              <img class="phenology-icon" src="../images/autumn/pheno_dew.svg" alt="">
-              <div class="phenology-name">二候 · 白露降</div>
-              <div class="phenology-desc">晨起水汽凝于草木</div>
-            </li>
-            <li class="phenology-item">
-              <img class="phenology-icon" src="../images/autumn/pheno_cicada.svg" alt="">
-              <div class="phenology-name">三候 · 寒蝉鸣</div>
-              <div class="phenology-desc">秋蝉畏寒，鸣声凄切</div>
-            </li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
           <ul class="custom-list">
-            <li class="custom-item">
-              <span class="custom-item-icon">🥩</span>
-              <div class="custom-item-text"><div class="custom-item-title">贴秋膘</div>夏日苦夏消瘦，立秋吃肉进补</div>
-            </li>
-            <li class="custom-item">
-              <span class="custom-item-icon">🍉</span>
-              <div class="custom-item-text"><div class="custom-item-title">啃秋</div>吃瓜啃桃，祛除暑气</div>
-            </li>
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">秋收准备</div>检修农具谷仓做好秋收准备</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">秋菜播种</div>播种白菜萝卜等秋冬蔬菜</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">积肥沤粪</div>收集秸秆杂草沤制有机肥</div></li>
           </ul>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🍉</span><div class="custom-item-text"><div class="custom-item-title">啃秋</div>立秋吃西瓜防秋燥又称咬秋</div></li>
+            <li class="custom-item"><span class="custom-item-icon">⚖️</span><div class="custom-item-text"><div class="custom-item-title">贴秋膘</div>称体重后吃肉补偿夏季消耗</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">晒秋</div>山区农家晾晒农作物庆丰收</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
           <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🥘</div><div class="food-name"><a href="https://baike.baidu.com/item/红烧肉" target="_blank" rel="noopener">红烧肉</a></div><div class="food-desc">贴秋膘经典肉食</div></div>
-            <div class="food-item"><div class="food-emoji">🍉</div><div class="food-name"><a href="https://baike.baidu.com/item/西瓜" target="_blank" rel="noopener">秋瓜</a></div><div class="food-desc">啃秋解暑润燥</div></div>
-            <div class="food-item"><div class="food-emoji">🍑</div><div class="food-name"><a href="https://baike.baidu.com/item/桃子" target="_blank" rel="noopener">鲜桃</a></div><div class="food-desc">立秋尝鲜果</div></div>
+            <div class="food-item"><div class="food-emoji">🍉</div><div class="food-name">西瓜</div><div class="food-desc">啃秋必备防秋燥</div></div>
+            <div class="food-item"><div class="food-emoji">🥘</div><div class="food-name">红烧肉</div><div class="food-desc">贴秋膘经典肉食</div></div>
+            <div class="food-item"><div class="food-emoji">🍑</div><div class="food-name">鲜桃</div><div class="food-desc">立秋尝鲜果</div></div>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📜</span>节气诗词</h3>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>立秋后天气由热转凉，养生重在养肺防燥。饮食宜食梨、百合、银耳等润肺生津之物。早卧早起，与鸡俱兴。适当秋冻，不宜过早添衣过厚。保持心情平和，避免悲秋。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《立秋》</div>
-            <div class="poem-author">刘翰</div>
-            <div class="poem-content"><p>乳鸦啼散玉屏空，一枕新凉一扇风。</p><p>睡起秋声无觅处，满阶梧桐月明中。</p></div>
+            <div class="poem-author">【宋】刘翰</div>
+            <div class="poem-content"><p>乳鸦啼散玉屏空，一枕新凉一扇风。
+睡起秋声无觅处，满阶梧桐月明中。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 2. 处暑 ==================== -->
     <article class="term-card" id="chushu">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/autumn,sky?lock=31" alt="处暑 - 暑气终止，出暑入秋" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">02</span>
-          <span class="term-name-tag">处暑 <span class="term-pinyin">Chǔshǔ</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">公历时间</div><div class="term-meta-value">8月22~24日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_book.svg" alt=""><div><div class="term-meta-label">节气内涵</div><div class="term-meta-value">暑气终止，出暑入秋</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>伏天彻底结束，气温稳步下降，燥热消散，昼暖夜凉。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_hawk.svg" alt="">
-              <div class="phenology-name">一候 · 鹰乃祭鸟</div><div class="phenology-desc">老鹰开始大量捕猎鸟类</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_solemn.svg" alt="">
-              <div class="phenology-name">二候 · 天地始肃</div><div class="phenology-desc">天地万物开始凋零</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_wheat_wilt.svg" alt="">
-              <div class="phenology-name">三候 · 禾乃登</div><div class="phenology-desc">五谷成熟，秋收开始</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🚣</span><div class="custom-item-text"><div class="custom-item-title">放河灯</div>水灯随波漂流，缅怀先人</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🦆</span><div class="custom-item-text"><div class="custom-item-title">吃鸭子</div>处暑吃鸭，滋阴润燥</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name"><a href="https://baike.baidu.com/item/老鸭汤" target="_blank" rel="noopener">老鸭汤</a></div><div class="food-desc">滋阴清热，秋日滋补</div></div>
-            <div class="food-item"><div class="food-emoji">🍇</div><div class="food-name"><a href="https://baike.baidu.com/item/葡萄" target="_blank" rel="noopener">葡萄</a></div><div class="food-desc">处暑时节正当熟</div></div>
-            <div class="food-item"><div class="food-emoji">🫐</div><div class="food-name"><a href="https://baike.baidu.com/item/菱角" target="_blank" rel="noopener">菱角</a></div><div class="food-desc">水乡时令佳品</div></div>
+      <div class="term-card-hero">
+        <img src="../images/autumn/chushu.jpg" alt="处暑 - 暑气终止" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">14</span>
+          <h2 class="term-hero-name">处暑</h2>
+          <p class="term-hero-pinyin">Chǔshǔ</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年8月22日—24日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：150°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：暑气消退，秋高气爽</span>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📜</span>节气诗词</h3>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——处暑，秋季的第二个节气。“处”有终止之意，处暑即暑气终止。三伏天彻底结束，气温稳步下降，昼夜温差加大。古人云“处暑无三日，新凉直万金”。此时节秋老虎虽偶有余威，但秋意已浓，是出游赏秋的好时节。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_hawk.svg" alt=""><span class="step-label">一候 · 鹰乃祭鸟</span><span class="step-desc">老鹰开始大量捕猎鸟类</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_solemn.svg" alt=""><span class="step-label">二候 · 天地始肃</span><span class="step-desc">天地万物开始凋零</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_grain.svg" alt=""><span class="step-label">三候 · 禾乃登</span><span class="step-desc">五谷开始成熟</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">收割中稻</div>处暑前后中稻成熟收割</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">秋播备耕</div>准备冬小麦播种整地施肥</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">棉花采摘</div>棉花吐絮进入采摘盛期</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🏮</span><div class="custom-item-text"><div class="custom-item-title">放河灯</div>中元节放河灯普渡水中孤魂</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌊</span><div class="custom-item-text"><div class="custom-item-title">开渔节</div>处暑后渔船出海举办庆典</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">煎药茶</div>处暑煎凉茶清热祛湿防秋燥</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🦆</div><div class="food-name">处暑鸭</div><div class="food-desc">处暑吃鸭防秋燥</div></div>
+            <div class="food-item"><div class="food-emoji">🍐</div><div class="food-name">秋梨</div><div class="food-desc">润肺生津防秋燥</div></div>
+            <div class="food-item"><div class="food-emoji">🍯</div><div class="food-name">蜂蜜</div><div class="food-desc">处暑喝蜂蜜水润燥</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>处暑时节秋燥渐起，养生重在润肺防燥。饮食宜食梨、银耳、蜂蜜等润燥之物。早卧早起，收敛神气。适当运动增强肺活量。注意早晚温差，适时增减衣物。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《处暑后风雨》</div>
-            <div class="poem-author">仇远</div>
-            <div class="poem-content"><p>疾风驱急雨，残暑扫除空。</p><p>因识炎凉态，都来顷刻中。</p></div>
+            <div class="poem-title">《处暑》</div>
+            <div class="poem-author">【宋】陆游</div>
+            <div class="poem-content"><p>四时俱可喜，最好新秋时。
+柴门傍野水，邻叟闲相期。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 3. 白露 ==================== -->
     <article class="term-card" id="bailu">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/dew,morning,nature?lock=3" alt="白露 - 晨露凝白，秋燥渐盛" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">03</span>
-          <span class="term-name-tag">白露 <span class="term-pinyin">Báilù</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">公历时间</div><div class="term-meta-value">9月7~9日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_book.svg" alt=""><div><div class="term-meta-label">节气内涵</div><div class="term-meta-value">晨露凝白，秋燥渐盛</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>昼夜温差拉大，夜间降温水汽凝结成白色露珠，秋燥明显。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_swan.svg" alt="">
-              <div class="phenology-name">一候 · 鸿雁来</div><div class="phenology-desc">大雁从北方飞来南方</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_shrike.svg" alt="">
-              <div class="phenology-name">二候 · 玄鸟归</div><div class="phenology-desc">燕子飞回南方过冬</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_cricket.svg" alt="">
-              <div class="phenology-name">三候 · 群鸟养羞</div><div class="phenology-desc">百鸟储备食物过冬</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🍶</span><div class="custom-item-text"><div class="custom-item-title">饮白露酒</div>白露时节酿酒，温中散寒</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">白露茶</div>白露采摘的秋茶，清香甘醇</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🍶</div><div class="food-name"><a href="https://baike.baidu.com/item/米酒" target="_blank" rel="noopener">白露米酒</a></div><div class="food-desc">温中散寒，传统佳酿</div></div>
-            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name"><a href="https://baike.baidu.com/item/莲藕" target="_blank" rel="noopener">莲藕</a></div><div class="food-desc">清热生津，秋令鲜蔬</div></div>
-            <div class="food-item"><div class="food-emoji">🍯</div><div class="food-name"><a href="https://baike.baidu.com/item/银耳羹" target="_blank" rel="noopener">银耳羹</a></div><div class="food-desc">滋阴润肺，秋燥良方</div></div>
+      <div class="term-card-hero">
+        <img src="../images/autumn/bailu.jpg" alt="白露 - 寒气凝露" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">15</span>
+          <h2 class="term-hero-name">白露</h2>
+          <p class="term-hero-pinyin">Báilù</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年9月7日—9日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：165°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气温骤降，露水凝结</span>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📜</span>节气诗词</h3>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——白露，秋季的第三个节气。此时气温下降，夜间水汽在草木上凝结成白色露珠，故名“白露”。白露是反映自然界寒气增长的重要节气，古人云“白露秋分夜，一夜凉一夜”。白露过后候鸟南迁，万物随寒气增长而逐渐萧落。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_swan.svg" alt=""><span class="step-label">一候 · 鸿雁来</span><span class="step-desc">大雁开始从北方向南迁徙</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_swallow.svg" alt=""><span class="step-label">二候 · 玄鸟归</span><span class="step-desc">燕子南飞回到温暖南方</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_bird_food.svg" alt=""><span class="step-label">三候 · 群鸟养羞</span><span class="step-desc">百鸟开始储存过冬食物</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">收割晚稻</div>南方晚稻进入成熟收割期</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">冬麦播种</div>北方冬小麦适期播种</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">采摘棉花</div>棉花吐絮高峰抓紧采摘</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">饮白露茶</div>白露茶香气浓郁爱茶人珍藏</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍶</span><div class="custom-item-text"><div class="custom-item-title">酿白露米酒</div>南方农家酿制米酒待客</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">祭禹王</div>太湖地区白露祭祀治水大禹</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍠</div><div class="food-name">红薯</div><div class="food-desc">白露吃薯健脾暖胃</div></div>
+            <div class="food-item"><div class="food-emoji">🍵</div><div class="food-name">白露茶</div><div class="food-desc">经夏茶叶醇厚香浓</div></div>
+            <div class="food-item"><div class="food-emoji">🫘</div><div class="food-name">龙眼</div><div class="food-desc">白露吃龙眼补气血</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>白露时节寒气渐重，养生重在防寒润燥。饮食宜温补，食红枣、桂圆、红薯等。注意足部保暖，民间有“白露不露身”之说。适当锻炼增强体质，预防秋燥咳嗽。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《白露》</div>
-            <div class="poem-author">杜甫</div>
-            <div class="poem-content"><p>白露团甘子，清晨散马蹄。</p><p>圃开连石树，船渡入江溪。</p></div>
+            <div class="poem-title">《月夜忆舍弟》</div>
+            <div class="poem-author">【唐】杜甫</div>
+            <div class="poem-content"><p>戍鼓断人行，边秋一雁声。
+露从今夜白，月是故乡明。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 4. 秋分 ==================== -->
     <article class="term-card" id="qiufen">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/harvest,field,gold?lock=34" alt="秋分 - 昼夜均分，金秋丰收" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">04</span>
-          <span class="term-name-tag">秋分 <span class="term-pinyin">Qiūfēn</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">公历时间</div><div class="term-meta-value">9月22~24日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_book.svg" alt=""><div><div class="term-meta-label">节气内涵</div><div class="term-meta-value">昼夜均分，金秋丰收</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>昼夜等长，此后昼短夜长，气温匀速走低，全国秋收。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_lightning.svg" alt="">
-              <div class="phenology-name">一候 · 雷始收声</div><div class="phenology-desc">秋分后不再打雷</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_insect.svg" alt="">
-              <div class="phenology-name">二候 · 蛰虫坯户</div><div class="phenology-desc">虫子开始封堵洞口</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_dry_water.svg" alt="">
-              <div class="phenology-name">三候 · 水始涸</div><div class="phenology-desc">河流湖泊水量减少</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">竖鸡蛋</div>秋分竖蛋，趣味民俗</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🙏</span><div class="custom-item-text"><div class="custom-item-title">祭秋月</div>秋分祭月，感恩丰收</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🦀</div><div class="food-name"><a href="https://baike.baidu.com/item/大闸蟹" target="_blank" rel="noopener">大闸蟹</a></div><div class="food-desc">秋分蟹肥，膏满黄丰</div></div>
-            <div class="food-item"><div class="food-emoji">🍅</div><div class="food-name"><a href="https://baike.baidu.com/item/柿子" target="_blank" rel="noopener">脆柿子</a></div><div class="food-desc">秋日甜蜜，柿柿如意</div></div>
-            <div class="food-item"><div class="food-emoji">🍰</div><div class="food-name"><a href="https://baike.baidu.com/item/桂花糕" target="_blank" rel="noopener">桂花糕</a></div><div class="food-desc">金桂飘香，软糯甜美</div></div>
+      <div class="term-card-hero">
+        <img src="../images/autumn/qiufen.jpg" alt="秋分 - 昼夜平分" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">16</span>
+          <h2 class="term-hero-name">秋分</h2>
+          <p class="term-hero-pinyin">Qiūfēn</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年9月22日—24日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：180°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：昼夜等长，秋意正浓</span>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📜</span>节气诗词</h3>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——秋分，秋季的第四个节气。此日太阳直射赤道，全球昼夜等长。“分”即平分，既指昼夜平分，也指秋季过半。秋分曾是传统的“祭月节”，中秋节即由此演变而来。此后北半球昼短夜长，“一场秋雨一场寒”。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_thunder.svg" alt=""><span class="step-label">一候 · 雷始收声</span><span class="step-desc">雷声逐渐消失</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_hibernate.svg" alt=""><span class="step-label">二候 · 蛰虫坯户</span><span class="step-desc">虫类开始筑巢准备冬眠</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_dry_water.svg" alt=""><span class="step-label">三候 · 水始涸</span><span class="step-desc">降水减少河湖水位下降</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">秋收扫尾</div>抢收晚秋作物确保颗粒归仓</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">冬麦播种</div>北方冬小麦播种关键期</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">秋耕整地</div>秋收后深耕翻土冻垡杀虫</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥮</span><div class="custom-item-text"><div class="custom-item-title">祭月赏月</div>秋分曾是祭月节后演变为中秋</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">竖蛋</div>秋分竖蛋祈求好运</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🪁</span><div class="custom-item-text"><div class="custom-item-title">放风筝</div>秋分放风筝祈福消灾</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥮</div><div class="food-name">月饼</div><div class="food-desc">秋分前后中秋月饼</div></div>
+            <div class="food-item"><div class="food-emoji">🦀</div><div class="food-name">螃蟹</div><div class="food-desc">秋分蟹肥菊黄时</div></div>
+            <div class="food-item"><div class="food-emoji">🌰</div><div class="food-name">秋栗</div><div class="food-desc">秋分栗子香糯可口</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>秋分是阴阳平衡之时，养生重在调和阴阳。饮食宜温润，多食芝麻、核桃、糯米等。早卧早起，与鸡俱兴。保持心情平和，培养乐观情绪。适当秋冻增强耐寒能力。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《秋分后顿凄冷有感》</div>
-            <div class="poem-author">陆游</div>
-            <div class="poem-content"><p>今年秋气早，木落不待黄。</p></div>
+            <div class="poem-title">《秋词》</div>
+            <div class="poem-author">【唐】刘禹锡</div>
+            <div class="poem-content"><p>自古逢秋悲寂寥，我言秋日胜春朝。
+晴空一鹤排云上，便引诗情到碧霄。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 5. 寒露 ==================== -->
     <article class="term-card" id="hanlu">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/cold,dew,autumn?lock=5" alt="寒露 - 露气转寒，深秋已至" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">05</span>
-          <span class="term-name-tag">寒露 <span class="term-pinyin">Hánlù</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">公历时间</div><div class="term-meta-value">10月8~9日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_book.svg" alt=""><div><div class="term-meta-label">节气内涵</div><div class="term-meta-value">露气转寒，深秋已至</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>气温大幅下降，露水带寒意，北方近初霜。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_swan.svg" alt="">
-              <div class="phenology-name">一候 · 鸿雁来宾</div><div class="phenology-desc">最后一批大雁南飞</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_clam.svg" alt="">
-              <div class="phenology-name">二候 · 雀入大水为蛤</div><div class="phenology-desc">雀鸟隐没，蛤蜊出现</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_chrysanthemum.svg" alt="">
-              <div class="phenology-name">三候 · 菊有黄华</div><div class="phenology-desc">菊花盛开，满地金黄</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🌼</span><div class="custom-item-text"><div class="custom-item-title">赏菊</div>寒露赏菊，秋日雅事</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">饮寒露茶</div>寒露时节饮茶，润燥养生</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🌰</div><div class="food-name"><a href="https://baike.baidu.com/item/板栗" target="_blank" rel="noopener">板栗</a></div><div class="food-desc">寒露板栗，香甜软糯</div></div>
-            <div class="food-item"><div class="food-emoji">🍠</div><div class="food-name"><a href="https://baike.baidu.com/item/红薯" target="_blank" rel="noopener">红薯</a></div><div class="food-desc">暖胃充饥，秋日佳品</div></div>
-            <div class="food-item"><div class="food-emoji">🍂</div><div class="food-name"><a href="https://baike.baidu.com/item/菊花酒" target="_blank" rel="noopener">菊花酒</a></div><div class="food-desc">重阳佳节，饮菊延寿</div></div>
+      <div class="term-card-hero">
+        <img src="../images/autumn/hanlu.jpg" alt="寒露 - 寒气渐生" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">17</span>
+          <h2 class="term-hero-name">寒露</h2>
+          <p class="term-hero-pinyin">Hánlù</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年10月8日—9日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：195°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气温骤降，露水更冷</span>
           </div>
         </div>
       </div>
-    </article>
-
-    <!-- ==================== 6. 霜降 ==================== -->
-    <article class="term-card" id="shuangjiang">
-      <div class="term-card-header">
-        <img src="https://loremflickr.com/1200/700/frost,autumn,nature?lock=6" alt="霜降 - 气凝为霜，秋尽入冬" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">06</span>
-          <span class="term-name-tag">霜降 <span class="term-pinyin">Shuāngjiàng</span></span>
-        </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——寒露，秋季的第五个节气。“寒”表示寒冷，“露”表示露水，此时露水更多更冷，即将凝结成霜。寒露标志着天气由凉爽向寒冷过渡，北方已进入深秋甚至初冬。古人云“寒露过三朝，过水要寻桥”，意指天气已冷不可涉水。</p>
+        <div class="lifa-line"></div>
       </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">公历时间</div><div class="term-meta-value">10月23~24日</div></div></div>
-          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_book.svg" alt=""><div><div class="term-meta-label">节气内涵</div><div class="term-meta-value">气凝为霜，秋尽入冬</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌤️</span>气候特点</h3>
-          <p>气温骤降，开始结霜，深秋落幕，万物预备越冬。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌾</span>物候三候</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_jackal.svg" alt="">
-              <div class="phenology-name">一候 · 豺乃祭兽</div><div class="phenology-desc">豺狼开始陈列猎物</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_leaf_fall.svg" alt="">
-              <div class="phenology-name">二候 · 草木黄落</div><div class="phenology-desc">草木枯黄，落叶纷飞</div></li>
-            <li class="phenology-item"><img class="phenology-icon" src="../images/autumn/pheno_snake.svg" alt="">
-              <div class="phenology-name">三候 · 蜇虫咸俯</div><div class="phenology-desc">蛰虫全部躲入洞穴</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🏮</span>传统民俗</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🥩</span><div class="custom-item-text"><div class="custom-item-title">吃羊肉</div>霜降进补，羊肉暖身</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌼</span><div class="custom-item-text"><div class="custom-item-title">赏菊</div>晚菊傲霜，秋末雅赏</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍠</span>时令美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🍲</div><div class="food-name"><a href="https://baike.baidu.com/item/羊肉汤" target="_blank" rel="noopener">羊肉汤</a></div><div class="food-desc">温阳散寒，霜降滋补</div></div>
-            <div class="food-item"><div class="food-emoji">🥕</div><div class="food-name"><a href="https://baike.baidu.com/item/萝卜" target="_blank" rel="noopener">萝卜</a></div><div class="food-desc">霜降萝卜，赛过梨子</div></div>
-            <div class="food-item"><div class="food-emoji">🍅</div><div class="food-name"><a href="https://baike.baidu.com/item/柿子" target="_blank" rel="noopener">霜降柿</a></div><div class="food-desc">经霜柿子，格外甘甜</div></div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_swan2.svg" alt=""><span class="step-label">一候 · 鸿雁来宾</span><span class="step-desc">最后一批大雁南迁</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_clam.svg" alt=""><span class="step-label">二候 · 雀入大水为蛤</span><span class="step-desc">雀鸟少见海边蛤蜊增多</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_chrysanthemum.svg" alt=""><span class="step-label">三候 · 菊有黄华</span><span class="step-desc">菊花遍地盛开</span></div>
           </div>
         </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📜</span>节气诗词</h3>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">晚稻收割</div>南方晚稻收割进入尾声</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">油菜移栽</div>油菜苗移栽大田</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">秸秆还田</div>秋收后秸秆粉碎还田增肥</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🏔️</span><div class="custom-item-text"><div class="custom-item-title">登高</div>寒露登高望远重阳节习俗</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌼</span><div class="custom-item-text"><div class="custom-item-title">赏菊</div>寒露菊花盛开饮酒赏菊</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🎣</span><div class="custom-item-text"><div class="custom-item-title">秋钓</div>寒露鱼肥正是秋钓好时节</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🦀</div><div class="food-name">河蟹</div><div class="food-desc">寒露蟹肥膏满</div></div>
+            <div class="food-item"><div class="food-emoji">🍊</div><div class="food-name">柿子</div><div class="food-desc">寒露柿子红似火</div></div>
+            <div class="food-item"><div class="food-emoji">🌰</div><div class="food-name">板栗</div><div class="food-desc">寒露板栗香糯</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>寒露时节寒气加重，养生重在防寒润燥。饮食宜温润，多食芝麻、核桃、山药等。注意足部保暖，睡前热水泡脚。早卧早起，适当运动增强体质，预防呼吸道疾病。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《霜降》</div>
-            <div class="poem-author">吕本中</div>
-            <div class="poem-content"><p>九月霜降后，残暑扫无踪。</p></div>
+            <div class="poem-title">《池上》</div>
+            <div class="poem-author">【唐】白居易</div>
+            <div class="poem-content"><p>袅袅凉风动，凄凄寒露零。
+兰衰花始白，荷破叶犹青。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-  </div>
+    <article class="term-card" id="shuangjiang">
+      <div class="term-card-hero">
+        <img src="../images/autumn/shuangjiang.jpg" alt="霜降 - 秋之末也" loading="lazy">
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">18</span>
+          <h2 class="term-hero-name">霜降</h2>
+          <p class="term-hero-pinyin">Shuāngjiàng</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年10月23日—24日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：210°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：天气渐冷，初霜出现</span>
+          </div>
+        </div>
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——霜降，秋季的最后一个节气。“霜”是水汽凝结的冰晶，“降”即降落。黄河流域已出现初霜，北方进入秋冬过渡。霜降并非“降霜”，而是表示气温骤降、昼夜温差大。此后秋意殆尽，寒冬将至。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_jackal.svg" alt=""><span class="step-label">一候 · 豺乃祭兽</span><span class="step-desc">豺狼将捕获的猎物陈列</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_leaf_fall.svg" alt=""><span class="step-label">二候 · 草木黄落</span><span class="step-desc">树叶枯黄凋落</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/autumn/pheno_snake.svg" alt=""><span class="step-label">三候 · 蛰虫咸俯</span><span class="step-desc">虫类全部蛰伏冬眠</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">秋收收官</div>大秋作物全部收割归仓</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">秋播扫尾</div>冬小麦播种基本完成</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧊</span><div class="custom-item-text"><div class="custom-item-title">防霜防冻</div>关注霜冻预警保护越冬作物</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌼</span><div class="custom-item-text"><div class="custom-item-title">赏菊饮酒</div>霜降菊花盛开饮酒赏菊会</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🏔️</span><div class="custom-item-text"><div class="custom-item-title">登高远眺</div>霜降登高祈福来年好运</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍂</span><div class="custom-item-text"><div class="custom-item-title">扫墓祭祖</div>霜降前后扫墓慎终追远</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍅</div><div class="food-name">柿子</div><div class="food-desc">霜降吃柿子不流鼻涕</div></div>
+            <div class="food-item"><div class="food-emoji">🦆</div><div class="food-name">老鸭汤</div><div class="food-desc">霜降喝鸭汤滋补润燥</div></div>
+            <div class="food-item"><div class="food-emoji">🥩</div><div class="food-name">牛肉</div><div class="food-desc">霜降进补牛肉暖身</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>霜降是秋季到冬季的过渡，养生重在御寒润燥。饮食宜温补，食牛肉、鸭肉、萝卜等。注意保暖防寒，尤其护好腰腹和关节。早卧晚起，适当减少户外运动。</p>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
+          <div class="poem-block">
+            <div class="poem-title">《枫桥夜泊》</div>
+            <div class="poem-author">【唐】张继</div>
+            <div class="poem-content"><p>月落乌啼霜满天，江枫渔火对愁眠。
+姑苏城外寒山寺，夜半钟声到客船。</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
 
+    </div>
+  </div>
   <!-- ========== 页脚 ========== -->
-  <footer class="spring-footer">
+  <footer class="autumn-footer">
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <h3>🍂 二十四节气 · 秋韵丰收</h3>
-          <p>立足于中华传统节气文化，展示立秋至霜降六大秋日节气的气候、民俗与风物美食。秋之篇章，承载着丰收的喜悦与金色的浪漫。</p>
+          <h3>🍂 二十四节气</h3>
+          <p>传承千年智慧，感受节气之美。以古人观天察地之心，领略四时流转的韵律与诗意。</p>
         </div>
         <div class="footer-links-group">
-          <h4>四季导航</h4>
+          <h4>四季详情</h4>
           <ul>
-            <li><a href="#">🌸 春季篇</a></li>
-            <li><a href="#">☀️ 夏季篇</a></li>
-            <li><a href="#">🍂 秋季篇</a></li>
-            <li><a href="#">❄️ 冬季篇</a></li>
+            <li><a href="autumn.html">🍂 秋季</a></li>
+            <li><a href="summer.html">☀️ 夏季</a></li>
+            <li><a href="autumn.html">🍂 秋季</a></li>
+            <li><a href="winter.html">❄️ 冬季</a></li>
           </ul>
         </div>
         <div class="footer-links-group">
-          <h4>关于节气</h4>
+          <h4>探索更多</h4>
           <ul>
-            <li><a href="#">节气起源</a></li>
-            <li><a href="#">历法知识</a></li>
-            <li><a href="#">非遗传承</a></li>
-            <li><a href="#">联系我们</a></li>
+            <li><a href="index.html">🏠 首页总览</a></li>
+            <li><a href="culture.html">📚 节气文化</a></li>
+            <li><a href="scenery.html">🏞️ 节气风物</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 二十四节气传统文化网站 | 秋之篇章</p>
+        <p>© 2025 二十四节气 · 传承中华传统文化</p>
       </div>
     </div>
   </footer>
 
   <!-- ========== 回到顶部 ========== -->
-  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="回到顶部">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
 
-  <!-- ========== JavaScript ========== -->
-  <script>
-    // ========== 节气点按切换 ==========
-    const termCards = document.querySelectorAll('.term-card');
-    const termNavLinks = document.querySelectorAll('.term-nav a');
-
-    function switchTerm(termId) {
-      termCards.forEach(card => card.classList.remove('active'));
-      const target = document.getElementById(termId);
-      if (target) {
-        void target.offsetWidth;
-        target.classList.add('active');
-      }
-      termNavLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-term') === termId) link.classList.add('active');
-      });
-      if (target) {
-        const rect = target.getBoundingClientRect();
-        if (rect.top < 0 || rect.top > window.innerHeight - 100) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-      return false;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      if (termCards.length > 0 && !document.querySelector('.term-card.active')) {
-        termCards[0].classList.add('active');
-      }
-    });
-  
-    </script>
-
-  <script src="../js/common.js"></script>
 </body>
 </html>
