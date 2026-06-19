@@ -163,6 +163,17 @@ body::before {
   background: var(--spring-gradient);
   overflow: hidden;
 }
+.spring-hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(
+        rgba(255,255,255,.15),
+        rgba(255,255,255,.35)
+      );
+    z-index:1;
+}
 
 .hero-bg-pattern {
   position: absolute;
@@ -235,13 +246,12 @@ body::before {
   margin-bottom: 1.5rem;
 }
 
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--spring-green-dark);
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(91, 140, 90, 0.1);
-  letter-spacing: 8px;
+.hero-title{
+    font-size: clamp(3rem,8vw,5rem);
+    font-weight: 800;
+    text-shadow:
+      0 8px 30px rgba(91,140,90,.15),
+      0 2px 8px rgba(255,255,255,.8);
 }
 
 .hero-subtitle {
@@ -481,8 +491,10 @@ body::before {
 }
 
 /* 卡片主体 */
-.term-card-body {
-  padding: 2rem 3rem 3rem;
+.term-card-body{
+    display:grid;
+    grid-template-columns:1fr 320px;
+    gap:40px;
 }
 
 /* 时间与含义 */
