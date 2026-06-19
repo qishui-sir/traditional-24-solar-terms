@@ -7,1027 +7,20 @@
   <meta name="description" content="春季节气专题：立春、雨水、惊蛰、春分、清明、谷雨，感受万物复苏、春耕始萌的东方智慧。">
   <meta name="keywords" content="二十四节气,春季,立春,雨水,惊蛰,春分,清明,谷雨,中国传统节日">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-/* ============================================
-   春季节气专题页 - 内联样式
-   色系：柳绿 #5B8C5A、浅粉 #F5C6C6、鹅黄 #F5E6A8
-   ============================================ */
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/spring.css">
 
-/* --- CSS 变量 --- */
-:root {
-  --spring-green: #5B8C5A;
-  --spring-green-light: #7DB87D;
-  --spring-green-dark: #3D6B3D;
-  --spring-pink: #F5C6C6;
-  --spring-pink-light: #FDE8E8;
-  --spring-pink-dark: #E8A0A0;
-  --spring-yellow: #F5E6A8;
-  --spring-yellow-light: #FFF8DC;
-  --spring-bg: #FAFFF5;
-  --spring-card-bg: #FFFFFF;
-  --spring-text: #2C3E2C;
-  --spring-text-light: #5A6E5A;
-  --spring-border: #D4E8D4;
-  --spring-shadow: rgba(91, 140, 90, 0.15);
-  --spring-gradient: linear-gradient(135deg, #E8F5E9 0%, #FDE8E8 50%, #FFF8DC 100%);
-}
-
-/* --- 全局重置 --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
-  background: var(--spring-bg);
-  color: var(--spring-text);
-  line-height: 1.8;
-  overflow-x: hidden;
-}
-
-/* --- 背景装饰 --- */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(245, 198, 198, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(91, 140, 90, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(245, 230, 168, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* --- 导航栏 --- */
-.spring-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--spring-border);
-  box-shadow: 0 2px 20px var(--spring-shadow);
-  transition: all 0.3s ease;
-}
-
-.spring-nav.scrolled {
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 4px 30px var(--spring-shadow);
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: var(--spring-green-dark);
-}
-
-.nav-logo-icon {
-  font-size: 1.8rem;
-}
-
-.nav-logo-text {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 0.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--spring-text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--spring-green-dark);
-  background: rgba(91, 140, 90, 0.1);
-}
-
-.nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: var(--spring-green);
-  border-radius: 2px;
-}
-
-/* 移动端菜单 */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.nav-toggle span {
-  width: 25px;
-  height: 2px;
-  background: var(--spring-green-dark);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* --- Hero 区域 --- */
-.spring-hero {
-  position: relative;
-  margin-top: 70px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--spring-gradient);
-  overflow: hidden;
-}
-
-.hero-bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.06;
-  background-image:
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%235B8C5A'/%3E%3Cpath d='M10 35 Q15 45 10 55 Q5 45 10 35Z' fill='%23F5C6C6'/%3E%3Cpath d='M50 35 Q55 45 50 55 Q45 45 50 35Z' fill='%23F5E6A8'/%3E%3C/svg%3E");
-  animation: patternFloat 30s linear infinite;
-}
-
-@keyframes patternFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-60px); }
-}
-
-/* 飘落花瓣动画 */
-.petal {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: var(--spring-pink);
-  border-radius: 50% 0 50% 50%;
-  opacity: 0.6;
-  animation: petalFall linear infinite;
-}
-
-@keyframes petalFall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg) translateX(0);
-    opacity: 0.7;
-  }
-  25% {
-    transform: translateY(25vh) rotate(90deg) translateX(30px);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(50vh) rotate(180deg) translateX(-20px);
-    opacity: 0.5;
-  }
-  75% {
-    transform: translateY(75vh) rotate(270deg) translateX(25px);
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg) translateX(-10px);
-    opacity: 0;
-  }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 800px;
-}
-
-.hero-season-label {
-  display: inline-block;
-  padding: 0.4rem 1.5rem;
-  background: rgba(91, 140, 90, 0.15);
-  border: 1px solid rgba(91, 140, 90, 0.3);
-  border-radius: 30px;
-  color: var(--spring-green-dark);
-  font-size: 0.9rem;
-  letter-spacing: 3px;
-  margin-bottom: 1.5rem;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--spring-green-dark);
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(91, 140, 90, 0.1);
-  letter-spacing: 8px;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--spring-pink-dark);
-  margin-bottom: 2rem;
-  letter-spacing: 5px;
-  font-style: italic;
-}
-
-.hero-desc {
-  font-size: 1.1rem;
-  color: var(--spring-text-light);
-  line-height: 2;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-}
-
-.hero-scroll-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--spring-green);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-/* --- 总述区域 --- */
-.spring-intro {
-  position: relative;
-  z-index: 1;
-  max-width: 1000px;
-  margin: -5rem auto 4rem;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid var(--spring-border);
-  box-shadow: 0 10px 40px var(--spring-shadow);
-}
-
-.intro-title {
-  text-align: center;
-  font-size: 1.8rem;
-  color: var(--spring-green-dark);
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.intro-title::after {
-  content: '🌿';
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.intro-text {
-  font-size: 1.05rem;
-  color: var(--spring-text-light);
-  text-indent: 2em;
-  margin-bottom: 1rem;
-}
-
-.intro-quote {
-  text-align: center;
-  font-style: italic;
-  color: var(--spring-pink-dark);
-  font-size: 1rem;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-left: 3px solid var(--spring-pink);
-  border-right: 3px solid var(--spring-pink);
-}
-
-/* --- 节气导航锚点 --- */
-.term-nav {
-  position: sticky;
-  top: 70px;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--spring-border);
-  padding: 1rem 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.term-nav::-webkit-scrollbar {
-  height: 3px;
-}
-
-.term-nav::-webkit-scrollbar-thumb {
-  background: var(--spring-green-light);
-  border-radius: 3px;
-}
-
-.term-nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.term-nav a {
-  text-decoration: none;
-  color: var(--spring-text-light);
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.term-nav a:hover {
-  color: var(--spring-green-dark);
-  background: rgba(91, 140, 90, 0.08);
-  border-color: var(--spring-border);
-}
-
-.term-nav a.active {
-  color: #fff;
-  background: var(--spring-green);
-  border-color: var(--spring-green);
-}
-
-/* --- 节气卡片区域 --- */
-.terms-container {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-}
-
-/* --- 单个节气卡片 --- */
-.term-card {
-  background: var(--spring-card-bg);
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 4rem;
-  box-shadow: 0 8px 32px var(--spring-shadow);
-  border: 1px solid var(--spring-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.term-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.term-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(91, 140, 90, 0.2);
-}
-
-/* 卡片头部 - 配图 */
-.term-card-header {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-}
-
-.term-card-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.term-card:hover .term-card-header img {
-  transform: scale(1.05);
-}
-
-.term-card-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-}
-
-/* 节气名称覆盖层 */
-.term-card-overlay {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  z-index: 2;
-}
-
-.term-number {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  background: var(--spring-green);
-  color: #fff;
-  border-radius: 50%;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-right: 0.75rem;
-}
-
-.term-name-tag {
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 30px;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--spring-green-dark);
-  letter-spacing: 3px;
-}
-
-.term-pinyin {
-  font-size: 0.85rem;
-  color: var(--spring-text-light);
-  letter-spacing: 1px;
-  margin-left: 0.5rem;
-  font-weight: 400;
-}
-
-/* 卡片主体 */
-.term-card-body {
-  padding: 2rem 3rem 3rem;
-}
-
-/* 时间与含义 */
-.term-meta {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.term-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--spring-bg);
-  border-radius: 12px;
-  border: 1px solid var(--spring-border);
-  font-size: 0.9rem;
-}
-
-.term-meta-icon {
-  font-size: 1.2rem;
-}
-
-.term-meta-label {
-  color: var(--spring-text-light);
-  font-size: 0.8rem;
-}
-
-.term-meta-value {
-  color: var(--spring-green-dark);
-  font-weight: 600;
-}
-
-/* 内容区块 */
-.term-section {
-  margin-bottom: 2rem;
-}
-
-.term-section-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.15rem;
-  color: var(--spring-green-dark);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--spring-border);
-}
-
-.term-section-icon {
-  font-size: 1.3rem;
-}
-
-.term-section p {
-  color: var(--spring-text-light);
-  text-indent: 2em;
-  margin-bottom: 0.5rem;
-  line-height: 2;
-}
-
-/* 物候特征 - 三候 */
-.phenology-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.phenology-item {
-  text-align: center;
-  padding: 1.2rem;
-  background: linear-gradient(135deg, rgba(91,140,90,0.05), rgba(245,198,198,0.05));
-  border-radius: 16px;
-  border: 1px solid var(--spring-border);
-  transition: transform 0.3s ease;
-}
-
-.phenology-item:hover {
-  transform: translateY(-3px);
-}
-
-.phenology-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.phenology-name {
-  font-weight: 600;
-  color: var(--spring-green-dark);
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
-}
-
-.phenology-desc {
-  font-size: 0.85rem;
-  color: var(--spring-text-light);
-  text-indent: 0;
-}
-
-/* 民俗列表 */
-.custom-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.custom-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: var(--spring-bg);
-  border-radius: 12px;
-  border: 1px solid var(--spring-border);
-}
-
-.custom-item-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.custom-item-text {
-  font-size: 0.95rem;
-  color: var(--spring-text-light);
-  text-indent: 0;
-}
-
-.custom-item-title {
-  font-weight: 600;
-  color: var(--spring-green-dark);
-  margin-bottom: 0.3rem;
-}
-
-/* 美食卡片 */
-.food-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.food-item {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, var(--spring-yellow-light), var(--spring-pink-light));
-  border-radius: 16px;
-  border: 1px solid var(--spring-border);
-  transition: transform 0.3s ease;
-}
-
-.food-item:hover {
-  transform: scale(1.03);
-}
-
-.food-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.food-name {
-  font-weight: 600;
-  color: var(--spring-green-dark);
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-.food-desc {
-  font-size: 0.85rem;
-  color: var(--spring-text-light);
-  text-indent: 0;
-}
-
-/* 诗词区块 */
-.poem-block {
-  position: relative;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(91,140,90,0.05), rgba(245,198,198,0.08));
-  border-radius: 16px;
-  border: 1px solid var(--spring-border);
-  text-align: center;
-}
-
-.poem-block::before {
-  content: '📜';
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  background: var(--spring-card-bg);
-  padding: 0 0.5rem;
-}
-
-.poem-title {
-  font-size: 1.1rem;
-  color: var(--spring-green-dark);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.poem-author {
-  font-size: 0.9rem;
-  color: var(--spring-text-light);
-  margin-bottom: 1rem;
-}
-
-.poem-content {
-  font-size: 1.1rem;
-  color: var(--spring-text);
-  line-height: 2.2;
-  letter-spacing: 1px;
-}
-
-.poem-content p {
-  text-indent: 0;
-  margin-bottom: 0.3rem;
-}
-
-/* --- 页脚 --- */
-.spring-footer {
-  position: relative;
-  z-index: 1;
-  background: linear-gradient(135deg, var(--spring-green-dark), #2D5A2D);
-  color: rgba(255, 255, 255, 0.85);
-  padding: 3rem 2rem 1.5rem;
-  margin-top: 2rem;
-}
-
-.footer-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.footer-brand {
-  max-width: 350px;
-}
-
-.footer-brand h3 {
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 0.75rem;
-  letter-spacing: 2px;
-}
-
-.footer-brand p {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  opacity: 0.8;
-}
-
-.footer-links-group h4 {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 0.75rem;
-  letter-spacing: 1px;
-}
-
-.footer-links-group ul {
-  list-style: none;
-}
-
-.footer-links-group a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 0.9rem;
-  display: block;
-  padding: 0.3rem 0;
-  transition: color 0.3s ease;
-}
-
-.footer-links-group a:hover {
-  color: var(--spring-yellow);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 1.5rem;
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-
-/* --- 回到顶部 --- */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
-  background: var(--spring-green);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 16px var(--spring-shadow);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover {
-  background: var(--spring-green-dark);
-  transform: translateY(-3px);
-}
-
-/* --- 响应式设计 --- */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    padding: 1rem;
-    border-bottom: 1px solid var(--spring-border);
-    box-shadow: 0 10px 30px var(--spring-shadow);
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .hero-title {
-    font-size: 2.2rem;
-    letter-spacing: 4px;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .spring-intro {
-    margin: -3rem 1rem 2rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .term-card-header {
-    height: 250px;
-  }
-
-  .term-card-body {
-    padding: 1.5rem;
-  }
-
-  .term-meta {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .phenology-list {
-    grid-template-columns: 1fr;
-  }
-
-  .custom-list {
-    grid-template-columns: 1fr;
-  }
-
-  .food-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .term-nav-inner {
-    justify-content: flex-start;
-  }
-
-  .footer-top {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .food-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .term-name-tag {
-    font-size: 1.2rem;
-  }
-}
-
-/* --- 打印样式 --- */
-@media print {
-  .spring-nav,
-  .term-nav,
-  .back-to-top,
-  .hero-scroll-hint,
-  .petal,
-  .hero-bg-pattern {
-    display: none !important;
-  }
-
-  .spring-hero {
-    min-height: auto;
-    margin-top: 0;
-  }
-
-  .term-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #ddd;
-  }
-}
-.top-left-nav {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.top-left-nav-trigger {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #E89AB5, #F4B8D0);
-  border: 3px solid rgba(255,255,255,0.8);
-  box-shadow: 0 4px 20px rgba(232,154,181,0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: leftNavPulseSp 3s ease-in-out infinite;
-}
-.top-left-nav-trigger:hover {
-  transform: scale(1.15) rotate(-10deg);
-  box-shadow: 0 8px 35px rgba(232,154,181,0.6);
-}
-@keyframes leftNavPulseSp {
-  0%, 100% { box-shadow: 0 4px 20px rgba(232,154,181,0.4); }
-  50% { box-shadow: 0 4px 30px rgba(232,154,181,0.7); }
-}
-.top-left-nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-width: 0;
-  overflow: hidden;
-  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  opacity: 0;
-}
-.top-left-nav-menu.show {
-  max-width: 200px;
-  opacity: 1;
-}
-.top-left-nav-item {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  padding: 10px 18px;
-  text-decoration: none;
-  color: #C97394;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  transform: translateX(-20px);
-}
-.top-left-nav-menu.show .top-left-nav-item {
-  transform: translateX(0);
-}
-.top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
-.top-left-nav-item:hover {
-  background: linear-gradient(135deg, #E89AB5, #F4B8D0);
-  color: #fff;
-  transform: translateX(5px) !important;
-  box-shadow: 0 5px 20px rgba(232,154,181,0.3);
-}
-.top-left-nav-item.active {
-  background: linear-gradient(135deg, #E89AB5, #F4B8D0);
-  color: #fff;
-}
-.top-left-nav-hint {
-  font-size: 10px;
-  color: #C97394;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-  margin-top: 4px;
-}
-.top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
-.top-left-nav-menu.show ~ .top-left-nav-hint {
-  opacity: 0.7;
-}
-
-  </style>
+  <script src="../js/common.js"></script>
 </head>
-<body>
+<body class="spring-page">
 
   <!-- ========== 左上角导航悬浮球 ========== -->
   <div class="top-left-nav">
-    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
-    <div class="top-left-nav-menu" id="topLeftNavMenu">
+    <div class="top-left-nav-row">
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
+      <span class="top-left-nav-hint">点击收起</span>
+    </div>
+    <div class="top-left-nav-menu show" id="topLeftNavMenu">
       <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
       <a href="spring.html" class="top-left-nav-item active">🌸 春季详情</a>
       <a href="summer.html" class="top-left-nav-item">☀️ 夏季详情</a>
@@ -1036,17 +29,50 @@ body::before {
       <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
-    <span class="top-left-nav-hint">点击展开</span>
   </div>
+  
   <script>
-    function toggleTopLeftNav() {
-      const menu = document.getElementById('topLeftNavMenu');
-      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
-      menu.classList.toggle('show');
-      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
+    // ========== 节气点按切换 ==========
+    const termCards = document.querySelectorAll('.term-card');
+    const sidebarTerms = document.querySelectorAll('.sidebar-term');
+
+    function switchTerm(termId) {
+      termCards.forEach(card => card.classList.remove('active'));
+      sidebarTerms.forEach(term => term.classList.remove('active'));
+
+      const targetCard = document.getElementById(termId);
+      if (targetCard) {
+        void targetCard.offsetWidth;
+        targetCard.classList.add('active');
+      }
+
+      const targetSidebar = document.querySelector('.sidebar-term[data-term="' + termId + '"]');
+      if (targetSidebar) {
+        targetSidebar.classList.add('active');
+      }
+    }
+
+    // ========== 移动端导航 ==========
+    function toggleNav() {
+      document.getElementById('navToggle').classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // ========== 回到顶部 ==========
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
   </script>
-
 
   <!-- ========== 导航栏 ========== -->
   <nav class="spring-nav" id="mainNav">
@@ -1079,7 +105,7 @@ body::before {
     <div class="petal" style="left:35%; animation-duration:10.2s; animation-delay:4s; width:7px; height:7px;"></div>
 
     <div class="hero-content">
-      <div class="hero-season-label">🌸 春 季 篇</div>
+      <div class="hero-season-label">春 季 篇</div>
       <h1 class="hero-title">春 和 景 明</h1>
       <p class="hero-subtitle">万物复苏 · 春耕始萌</p>
       <p class="hero-desc">
@@ -1115,226 +141,210 @@ body::before {
   </section>
 
   <!-- ========== 节气快速导航 ========== -->
-  <div class="term-nav" id="termNav">
-    <div class="term-nav-inner">
-      <a href="#lichun" class="active">立春</a>
-      <a href="#yushui">雨水</a>
-      <a href="#jingzhe">惊蛰</a>
-      <a href="#chunfen">春分</a>
-      <a href="#qingming">清明</a>
-      <a href="#guyu">谷雨</a>
-    </div>
-  </div>
+    <!-- ========== 侧边节气目录 + 内容区 ========== -->
+  <div class="main-content">
+    <!-- 竖排侧边栏 -->
+    <nav class="season-sidebar" id="seasonSidebar">
+      <div class="sidebar-line"></div>
+      <a class="sidebar-term active" data-term="lichun" onclick="return switchTerm('lichun')"><span class="dot"></span>立春</a>
+      <a class="sidebar-term" data-term="yushui" onclick="return switchTerm('yushui')"><span class="dot"></span>雨水</a>
+      <a class="sidebar-term" data-term="jingzhe" onclick="return switchTerm('jingzhe')"><span class="dot"></span>惊蛰</a>
+      <a class="sidebar-term" data-term="chunfen" onclick="return switchTerm('chunfen')"><span class="dot"></span>春分</a>
+      <a class="sidebar-term" data-term="qingming" onclick="return switchTerm('qingming')"><span class="dot"></span>清明</a>
+      <a class="sidebar-term" data-term="guyu" onclick="return switchTerm('guyu')"><span class="dot"></span>谷雨</a>
+    </nav>
 
-  <!-- ========== 节气卡片容器 ========== -->
-  <div class="terms-container">
+    <!-- 内容区 -->
+        <div class="content-area" id="contentArea">
 
-    <!-- ==================== 1. 立春 ==================== -->
-    <article class="term-card" id="lichun">
-      <div class="term-card-header">
+    <article class="term-card active" id="lichun">
+      <div class="term-card-hero">
         <img src="../images/spring/lichun.jpg" alt="立春 - 春回大地，万物复苏" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">1</span>
-          <span class="term-name-tag">立春 <span class="term-pinyin">Lìchūn</span></span>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">01</span>
+          <h2 class="term-hero-name">立春</h2>
+          <p class="term-hero-pinyin">Lichun</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年2月3日—5日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：315°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气温回升，日照渐长</span>
+          </div>
         </div>
       </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item">
-            <span class="term-meta-icon">📅</span>
-            <div>
-              <div class="term-meta-label">节气时间</div>
-              <div class="term-meta-value">每年2月3日—5日</div>
-            </div>
-          </div>
-          <div class="term-meta-item">
-            <span class="term-meta-icon">📍</span>
-            <div>
-              <div class="term-meta-label">太阳黄经</div>
-              <div class="term-meta-value">315°</div>
-            </div>
-          </div>
-          <div class="term-meta-item">
-            <span class="term-meta-icon">🌡️</span>
-            <div>
-              <div class="term-meta-label">气候特征</div>
-              <div class="term-meta-value">气温回升，日照渐长</div>
-            </div>
-          </div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>立春，二十四节气之首，标志着春季的开始。"立"有"开始"之意，"春"代表温暖与生长。立春之日，东风解冻，蛰虫始振，鱼陟负冰。自此日起，白昼渐长，气温渐升，大地回春，万物萌发。在中国传统历法中，立春不仅是一个节气，更被视为新年的真正起点。</p>
-        </div>
-        <div class="term-section">
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——立春，二十四节气之首，标志着春季的开始。“立”有“开始”之意，“春”代表温暖与生长。立春之日，东风解冻，蛰虫始振，鱼陟负冰。自此日起，白昼渐长，气温渐升，大地回春，万物萌发。在中国传统历法中，立春不仅是一个节气，更被视为新年的真正起点。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item">
-              <div class="phenology-icon">🌬️</div>
-              <div class="phenology-name">一候 · 东风解冻</div>
-              <div class="phenology-desc">春风送暖，冰封的河面开始消融</div>
-            </li>
-            <li class="phenology-item">
-              <div class="phenology-icon">🐛</div>
-              <div class="phenology-name">二候 · 蛰虫始振</div>
-              <div class="phenology-desc">冬眠的虫子感受到暖意，开始苏醒活动</div>
-            </li>
-            <li class="phenology-item">
-              <div class="phenology-icon">🐟</div>
-              <div class="phenology-name">三候 · 鱼陟负冰</div>
-              <div class="phenology-desc">鱼儿游到水面，如同负着碎冰一般</div>
-            </li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item">
-              <span class="custom-item-icon">🥬</span>
-              <div class="custom-item-text"><div class="custom-item-title">咬春</div>吃春饼、春卷、萝卜等，寓意迎新纳福，祈求健康</div>
-            </li>
-            <li class="custom-item">
-              <span class="custom-item-icon">🐂</span>
-              <div class="custom-item-text"><div class="custom-item-title">打春牛</div>用泥塑春牛，以鞭打之，象征催耕迎春，祈求丰收</div>
-            </li>
-            <li class="custom-item">
-              <span class="custom-item-icon">🌸</span>
-              <div class="custom-item-text"><div class="custom-item-title">迎春</div>祭祀祖先，迎春接福，设春宴，亲朋好友共庆新春</div>
-            </li>
-            <li class="custom-item">
-              <span class="custom-item-icon">💌</span>
-              <div class="custom-item-text"><div class="custom-item-title">贴春字</div>在门楣张贴"迎春"、"春来福到"等吉祥字句</div>
-            </li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🫓</div><div class="food-name">春饼</div><div class="food-desc">薄如蝉翼的面饼，卷以时令蔬菜，咬春必备</div></div>
-            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">春卷</div><div class="food-desc">外酥里嫩，馅料丰富，金黄诱人的春日佳肴</div></div>
-            <div class="food-item"><div class="food-emoji">🥕</div><div class="food-name">萝卜</div><div class="food-desc">立春吃萝卜，谓之"咬春"，可解春困助消化</div></div>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_wind.svg" alt=""><span class="step-label">一候 · 东风解冻</span><span class="step-desc">春风送暖，冰封的河面开始消融</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_insect.svg" alt=""><span class="step-label">二候 · 蛰虫始振</span><span class="step-desc">冬眠的虫类开始苏醒活动</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_fish.svg" alt=""><span class="step-label">三候 · 鱼陟负冰</span><span class="step-desc">鱼儿游近冰面，仿佛背负碎冰</span></div>
           </div>
         </div>
-        <div class="term-section">
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🧹</span><div class="custom-item-text"><div class="custom-item-title">迎春备耕</div>整理农具，修缮田埂，做好春耕准备</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">积肥送粪</div>将沤制农家肥运到田间，为春播打底</div></li>
+            <li class="custom-item"><span class="custom-item-icon">💧</span><div class="custom-item-text"><div class="custom-item-title">顶凌耙地</div>北方趁土壤夜冻昼消时耙地保墒</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🐂</span><div class="custom-item-text"><div class="custom-item-title">打春牛</div>鞭打泥塑春牛，五谷从牛腹流出，民众争抢以祈丰收</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥞</span><div class="custom-item-text"><div class="custom-item-title">咬春</div>吃春饼、啃萝卜，寓意迎新纳吉</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🧒</span><div class="custom-item-text"><div class="custom-item-title">戴春鸡</div>给孩子佩戴布制春鸡，祈求健康成长</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥞</div><div class="food-name">春饼</div><div class="food-desc">薄饼卷时蔬，咬春必备</div></div>
+            <div class="food-item"><div class="food-emoji">🥕</div><div class="food-name">萝卜</div><div class="food-desc">立春啃萝卜，顺气养生</div></div>
+            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">春卷</div><div class="food-desc">酥脆金黄，春之滋味</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>立春阳气初生，养生重在生发。宜早睡早起，晨起散步舒展筋骨。饮食宜辛甘发散，多吃韭菜、豆芽、春笋等时令蔬菜，少食酸味。保持心情舒畅，戒怒戒躁。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《京中正月七日立春》</div>
-            <div class="poem-author">【唐】罗隐</div>
-            <div class="poem-content"><p>一二三四五六七，</p><p>万木生芽是今日。</p><p>远天归雁拂云飞，</p><p>近水游鱼迸冰出。</p></div>
+            <div class="poem-title">《立春》</div>
+            <div class="poem-author">【宋】王镃</div>
+            <div class="poem-content"><p>泥牛鞭散六街尘，生菜挑来叶叶春。</p><p>从此雪消风自软，梅花合让柳条新。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 2. 雨水 ==================== -->
     <article class="term-card" id="yushui">
-      <div class="term-card-header">
+      <div class="term-card-hero">
         <img src="../images/spring/yushui.jpg" alt="雨水 - 春雨润物，大地返青" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">2</span>
-          <span class="term-name-tag">雨水 <span class="term-pinyin">Yǔshuǐ</span></span>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">02</span>
+          <h2 class="term-hero-name">雨水</h2>
+          <p class="term-hero-pinyin">Yushui</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年2月18日—20日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：330°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：降水增多，乍暖还寒</span>
+          </div>
         </div>
       </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item">
-            <span class="term-meta-icon">📅</span>
-            <div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年2月18日—20日</div></div>
-          </div>
-          <div class="term-meta-item">
-            <span class="term-meta-icon">📍</span>
-            <div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">330°</div></div>
-          </div>
-          <div class="term-meta-item">
-            <span class="term-meta-icon">🌡️</span>
-            <div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温回升，冰雪融化，降雨渐增</div></div>
-          </div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>雨水，春季的第二个节气。"雨水"二字，意为春雨始降，润泽万物。此时气温回升，冰雪消融，降水形式由雪转为雨。正所谓"好雨知时节，当春乃发生"，春雨如油，滋润大地，唤醒沉睡的种子，催促草木萌发，为农事活动带来勃勃生机。</p>
-        </div>
-        <div class="term-section">
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——雨水，春季的第二个节气。“雨水”二字，意为春雨始降，润泽万物。此时气温回升，冰雪消融，降水形式由雪转为雨。正所谓“好雨知时节，当春乃发生”，春雨如油，滋润大地，唤醒沉睡的种子，催促草木萌发，为农事活动带来勃勃生机。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦌</div><div class="phenology-name">一候 · 獭祭鱼</div><div class="phenology-desc">水獭开始捕鱼，将鱼陈列岸边如祭祀</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🦆</div><div class="phenology-name">二候 · 鸿雁来</div><div class="phenology-desc">大雁从南方飞回北方，排成人字或一字形</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌳</div><div class="phenology-name">三候 · 草木萌动</div><div class="phenology-desc">草木感受到春雨滋润，开始发芽抽绿</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">👶</span><div class="custom-item-text"><div class="custom-item-title">接寿</div>女婿给岳父母送礼，感谢养育之恩，增进亲情</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🫖</span><div class="custom-item-text"><div class="custom-item-title">回娘屋</div>出嫁的女儿携礼回娘家探望，又称"走娘家"</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🧥</span><div class="custom-item-text"><div class="custom-item-title">撞拜寄</div>找干爹干妈，为孩子祈福求平安的传统习俗</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">拉保保</div>四川地区特色民俗，为孩子认干亲保平安</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🥣</div><div class="food-name">蜂蜜水</div><div class="food-desc">雨水时节饮蜂蜜，润肺养胃，滋补养生</div></div>
-            <div class="food-item"><div class="food-emoji">🥜</div><div class="food-name">龙须饼</div><div class="food-desc">细如龙须的炸面食，酥脆可口，雨水节气传统小吃</div></div>
-            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name">爆米花</div><div class="food-desc">雨水日爆米花，象征"雨水花开"，祈求丰收</div></div>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_otter.svg" alt=""><span class="step-label">一候 · 獭祭鱼</span><span class="step-desc">水獭捕鱼陈列岸边，犹如祭祀</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_goose.svg" alt=""><span class="step-label">二候 · 鸿雁来</span><span class="step-desc">大雁从南方飞回北方</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_sprout.svg" alt=""><span class="step-label">三候 · 草木萌动</span><span class="step-desc">草木在春雨滋润中开始发芽</span></div>
           </div>
         </div>
-        <div class="term-section">
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">春灌追肥</div>冬小麦返青，追施返青肥，浇灌返青水</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🪴</span><div class="custom-item-text"><div class="custom-item-title">选种育苗</div>精选稻种、棉种，准备春播育苗</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🔧</span><div class="custom-item-text"><div class="custom-item-title">检修水利</div>清理沟渠，检修排灌设施，迎接春雨</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">👨‍👧</span><div class="custom-item-text"><div class="custom-item-title">回娘屋</div>出嫁女儿带礼物回娘家看望父母</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🤝</span><div class="custom-item-text"><div class="custom-item-title">拉保保</div>四川民俗，为儿女认干爹干妈求平安</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🔮</span><div class="custom-item-text"><div class="custom-item-title">占稻色</div>爆炒糯米，以米花多少占卜收成</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🫘</div><div class="food-name">罐罐肉</div><div class="food-desc">雨水炖肉，孝敬长辈</div></div>
+            <div class="food-item"><div class="food-emoji">🍯</div><div class="food-name">蜂蜜</div><div class="food-desc">春蜜润燥，雨水时节佳品</div></div>
+            <div class="food-item"><div class="food-emoji">🌿</div><div class="food-name">荠菜</div><div class="food-desc">雨水荠菜最鲜美，清肝明目</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>雨水时节湿气渐重，养生重在调脾祛湿。宜食山药、薏米、红枣等健脾食物。春捂秋冻，不宜过早减衣，尤其护好腿脚。保持情绪稳定，适当运动以助阳气升发。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《春夜喜雨》</div>
             <div class="poem-author">【唐】杜甫</div>
-            <div class="poem-content"><p>好雨知时节，当春乃发生。</p><p>随风潜入夜，润物细无声。</p><p>野径云俱黑，江船火独明。</p><p>晓看红湿处，花重锦官城。</p></div>
+            <div class="poem-content"><p>好雨知时节，当春乃发生。</p><p>随风潜入夜，润物细无声。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 3. 惊蛰 ==================== -->
     <article class="term-card" id="jingzhe">
-      <div class="term-card-header">
+      <div class="term-card-hero">
         <img src="../images/spring/jingzhe.jpg" alt="惊蛰 - 春雷乍响，万物惊醒" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">3</span>
-          <span class="term-name-tag">惊蛰 <span class="term-pinyin">Jīngzhé</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年3月5日—7日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">345°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">春雷始鸣，气温较快回升</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>惊蛰，古称"启蛰"，是春季的第三个节气。"惊"即惊醒，"蛰"指蛰伏的虫类。此时春雷乍响，惊醒蛰伏于地下冬眠的昆虫，万物开始焕发生机。惊蛰前后，天气转暖，渐有春雷，中国大部分地区进入春耕大忙季节。俗话说"惊蛰不耙地，好比蒸馍走了气"，农事活动由此全面展开。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🍑</div><div class="phenology-name">一候 · 桃始华</div><div class="phenology-desc">桃花开始绽放，满山遍野一片粉红</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🐦</div><div class="phenology-name">二候 · 仓庚鸣</div><div class="phenology-desc">黄鹂鸟开始鸣叫，歌声清脆悦耳</div></li>
-            <li class="phenology-item"><div class="phenology-icon">⚡</div><div class="phenology-name">三候 · 鹰化为鸠</div><div class="phenology-desc">鹰躲藏起来，鸠鸟大量出现，春意盎然</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">祭白虎</div>惊蛰日祭白虎化解口舌之争，以猪血喂白虎纸像</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">打小人</div>拍打纸人驱赶霉运，祈求新的一年顺遂平安</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🧄</span><div class="custom-item-text"><div class="custom-item-title">炒虫</div>炒玉米、黄豆等谷物，象征"炒虫灭害"祈丰收</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🍎</span><div class="custom-item-text"><div class="custom-item-title">吃梨</div>惊蛰吃梨，与"离"谐音，寓意疾病远离，身体健康</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🍐</div><div class="food-name">梨</div><div class="food-desc">润肺止咳，清热降火，惊蛰养生首选水果</div></div>
-            <div class="food-item"><div class="food-emoji">🌽</div><div class="food-name">炒玉米</div><div class="food-desc">"炒虫"习俗代表，象征消灭害虫，祈求丰收</div></div>
-            <div class="food-item"><div class="food-emoji">🥚</div><div class="food-name">煎蛋</div><div class="food-desc">惊蛰煎蛋，象征万物萌生，生命力旺盛</div></div>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">03</span>
+          <h2 class="term-hero-name">惊蛰</h2>
+          <p class="term-hero-pinyin">Jingzhe</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年3月5日—7日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：345°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：春雷始鸣，气温回暖</span>
           </div>
         </div>
-        <div class="term-section">
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——惊蛰，古称“启蛰”，是春季的第三个节气。“惊”即惊醒，“蛰”指蛰伏的虫类。此时春雷乍响，惊醒蛰伏于地下冬眠的昆虫，万物开始焕发生机。惊蛰前后，天气转暖，渐有春雷，中国大部分地区进入春耕大忙季节。俗话说“惊蛰不耙地，好比蒸馍走了气”，农事活动由此全面展开。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_peach.svg" alt=""><span class="step-label">一候 · 桃始华</span><span class="step-desc">桃树开始开花，粉红满枝</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_oriole.svg" alt=""><span class="step-label">二候 · 仓庚鸣</span><span class="step-desc">黄鹂鸟开始婉转啼鸣</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_lightning.svg" alt=""><span class="step-label">三候 · 鹰化为鸠</span><span class="step-desc">鹰躲起来繁衍，布谷鸟出现</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🔔</span><div class="custom-item-text"><div class="custom-item-title">防虫保墒</div>惊蛰虫醒，及时防治病虫害</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">春耕整地</div>深耕翻土，施足基肥，准备春播</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">茶园管理</div>修剪茶树，追施催芽肥</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🐯</span><div class="custom-item-text"><div class="custom-item-title">祭白虎</div>纸糊白虎抹猪油，防口舌是非</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🥁</span><div class="custom-item-text"><div class="custom-item-title">蒙鼓皮</div>效仿天庭雷神击鼓，迎接春雷</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍐</span><div class="custom-item-text"><div class="custom-item-title">吃梨</div>谐音离字，寓意远离疾病虫害</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍐</div><div class="food-name">惊蛰梨</div><div class="food-desc">润肺清热，远离病害</div></div>
+            <div class="food-item"><div class="food-emoji">🥚</div><div class="food-name">炒豆</div><div class="food-desc">炒黄豆声如虫鸣，寓意灭虫</div></div>
+            <div class="food-item"><div class="food-emoji">🫘</div><div class="food-name">醪糟</div><div class="food-desc">糯米酒酿，温补驱寒</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>惊蛰春雷乍动，人体阳气加速升发。养生宜疏肝理气，保持心情愉悦。多食菠菜、芹菜等绿色蔬菜清肝火，少食油腻辛辣。早睡早起，晨起梳头百下，助阳气通达全身。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《观田家》</div>
@@ -1345,268 +355,240 @@ body::before {
       </div>
     </article>
 
-    <!-- ==================== 4. 春分 ==================== -->
     <article class="term-card" id="chunfen">
-      <div class="term-card-header">
+      <div class="term-card-hero">
         <img src="../images/spring/chunfen.jpg" alt="春分 - 昼夜平分，阴阳调和" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">4</span>
-          <span class="term-name-tag">春分 <span class="term-pinyin">Chūnfēn</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年3月20日—22日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">0°（春分点）</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">昼夜等长，气候温和，雨水充沛</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>春分，是春季第四个节气，也是昼夜平分的标志。"分"有"平分"之意，春分日太阳直射赤道，全球昼夜几乎等长，各为12小时。春分之后，北半球白昼渐长，黑夜渐短。此时气候温和，雨水充沛，阳光明媚，正是踏青赏花的大好时节。古人将春分视为阴阳平衡的象征，讲究顺应天时，调和身心。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🐦</div><div class="phenology-name">一候 · 玄鸟至</div><div class="phenology-desc">燕子从南方飞来，是春天的使者</div></li>
-            <li class="phenology-item"><div class="phenology-icon">⚡</div><div class="phenology-name">二候 · 雷乃发声</div><div class="phenology-desc">春雷开始轰鸣，大地充满蓬勃生机</div></li>
-            <li class="phenology-item"><div class="phenology-icon">⚡</div><div class="phenology-name">三候 · 始电</div><div class="phenology-desc">雷声之后开始出现闪电，天地间电光闪烁</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">竖蛋</div>春分竖蛋，"春分到，蛋儿俏"，考验平衡的趣味游戏</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🪁</span><div class="custom-item-text"><div class="custom-item-title">放风筝</div>春分放风筝，沐浴春风，祈求好运和健康</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌸</span><div class="custom-item-text"><div class="custom-item-title">春祭</div>春分日祭祀祖先，扫墓祭祖，慎终追远</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">送春牛图</div>印制春牛图挨家挨户赠送，祈求五谷丰登</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🥚</div><div class="food-name">春菜</div><div class="food-desc">采摘春季时令野菜，"春分吃春菜"是传统食俗</div></div>
-            <div class="food-item"><div class="food-emoji">🍡</div><div class="food-name">汤圆</div><div class="food-desc">春分吃汤圆，象征团圆美满，还用来粘雀嘴</div></div>
-            <div class="food-item"><div class="food-emoji">🌿</div><div class="food-name">荠菜</div><div class="food-desc">春分时荠菜最鲜嫩，包饺子、煮汤皆美味</div></div>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">04</span>
+          <h2 class="term-hero-name">春分</h2>
+          <p class="term-hero-pinyin">Chunfen</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年3月20日—22日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：0°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：昼夜等长，气温稳定回升</span>
           </div>
         </div>
-        <div class="term-section">
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——春分，是春季第四个节气，也是昼夜平分的标志。“分”有“平分”之意，春分日太阳直射赤道，全球昼夜几乎等长，各为12小时。春分之后，北半球白昼渐长，黑夜渐短。此时气候温和，雨水充沛，阳光明媚，正是踏青赏花的大好时节。古人将春分视为阴阳平衡的象征，讲究顺应天时，调和身心。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_oriole.svg" alt=""><span class="step-label">一候 · 玄鸟至</span><span class="step-desc">燕子从南方飞回北方筑巢</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_lightning.svg" alt=""><span class="step-label">二候 · 雷乃发声</span><span class="step-desc">春分后雨水增多，开始打雷</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_lightning.svg" alt=""><span class="step-label">三候 · 始电</span><span class="step-desc">雷声之外，还能看到闪电</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">春播大忙</div>北方播种春小麦，南方早稻插秧</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">越冬管理</div>冬小麦拔节期，追肥防病</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐛</span><div class="custom-item-text"><div class="custom-item-title">植树造林</div>春分栽树成活率高，全民植树</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🥚</span><div class="custom-item-text"><div class="custom-item-title">竖蛋</div>春分鸡蛋最易竖立，全球流行</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🪁</span><div class="custom-item-text"><div class="custom-item-title">放风筝</div>踏青放鸢，祈福除晦</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">祭日</div>古代帝王春分祭日，民间祭祀太阳神</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🥬</div><div class="food-name">春菜</div><div class="food-desc">野苋菜煮鱼片，春汤灌脏</div></div>
+            <div class="food-item"><div class="food-emoji">🍡</div><div class="food-name">太阳糕</div><div class="food-desc">糯米糕印金乌，祭日供品</div></div>
+            <div class="food-item"><div class="food-emoji">🧅</div><div class="food-name">驴打滚</div><div class="food-desc">豆面糯米卷，北方春分小吃</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>春分阴阳各半，养生重在平衡调和。饮食宜寒热均衡，忌大热大寒。可食荠菜、香椿、春笋等时令春菜。起居晚睡早起，多到户外踏青，让身心与自然同步舒展。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
-            <div class="poem-title">《春日》</div>
-            <div class="poem-author">【宋】朱熹</div>
-            <div class="poem-content"><p>胜日寻芳泗水滨，无边光景一时新。</p><p>等闲识得东风面，万紫千红总是春。</p></div>
+            <div class="poem-title">《春分》</div>
+            <div class="poem-author">【唐】刘长卿</div>
+            <div class="poem-content"><p>日月阳阴两均天，玄鸟不辞桃花寒。</p><p>从来今日竖鸡子，川上良人放纸鸢。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 5. 清明 ==================== -->
     <article class="term-card" id="qingming">
-      <div class="term-card-header">
+      <div class="term-card-hero">
         <img src="../images/spring/qingming.jpg" alt="清明 - 天朗气清，万物明净" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">5</span>
-          <span class="term-name-tag">清明 <span class="term-pinyin">Qīngmíng</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年4月4日—6日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">15°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">天气清澈明朗，气温进一步回升</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>清明，既是二十四节气之一，也是中国传统四大节日之一。"清明"二字，取"天气清朗，四野明净"之意。此时天气回暖，草木繁茂，万物清洁而明净，故谓之清明。清明时节，既是祭祖扫墓、缅怀先人的庄重时刻，也是踏青赏春、亲近自然的欢乐时光，兼具自然与人文两大内涵。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🌺</div><div class="phenology-name">一候 · 桐始华</div><div class="phenology-desc">梧桐树开始开花，洁白的花朵缀满枝头</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🐭</div><div class="phenology-name">二候 · 田鼠化为鴽</div><div class="phenology-desc">田鼠躲回洞穴，鹌鹑等小鸟开始活跃</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌈</div><div class="phenology-name">三候 · 虹始见</div><div class="phenology-desc">雨后初晴，天空中开始出现彩虹</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🕯️</span><div class="custom-item-text"><div class="custom-item-title">扫墓祭祖</div>清明扫墓，缅怀先人，慎终追远，传承孝道</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🪁</span><div class="custom-item-text"><div class="custom-item-title">踏青</div>趁清明时节郊游踏青，感受春天的美好与生机</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🪁</span><div class="custom-item-text"><div class="custom-item-title">放风筝</div>清明放风筝，夜间拉线挂灯，称为"神灯"</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🏃</span><div class="custom-item-text"><div class="custom-item-title">插柳</div>折柳枝插于门楣或头上，辟邪祈福，纪念先人</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🟢</div><div class="food-name">青团</div><div class="food-desc">用艾草汁和糯米制成，碧绿如玉，清香软糯</div></div>
-            <div class="food-item"><div class="food-emoji">🥟</div><div class="food-name">馓子</div><div class="food-desc">油炸面食，香脆可口，清明传统食品之一</div></div>
-            <div class="food-item"><div class="food-emoji">🌿</div><div class="food-name">清明果</div><div class="food-desc">以鼠曲草或艾草为原料制作的节令食品</div></div>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">05</span>
+          <h2 class="term-hero-name">清明</h2>
+          <p class="term-hero-pinyin">Qingming</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年4月4日—6日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：15°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：气清景明，降雨增多</span>
           </div>
         </div>
-        <div class="term-section">
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——清明，既是二十四节气之一，也是中国传统四大节日之一。“清明”二字，取“天气清朗，四野明净”之意。此时天气回暖，草木繁茂，万物清洁而明净，故谓之清明。清明时节，既是祭祖扫墓、缅怀先人的庄重时刻，也是踏青赏春、亲近自然的欢乐时光，兼具自然与人文两大内涵。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_flower.svg" alt=""><span class="step-label">一候 · 桐始华</span><span class="step-desc">泡桐树开出淡紫色的花朵</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_mouse.svg" alt=""><span class="step-label">二候 · 田鼠化为鴽</span><span class="step-desc">田鼠回洞，鹌鹑类小鸟活跃田间</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_rainbow.svg" alt=""><span class="step-label">三候 · 虹始见</span><span class="step-desc">雨后天空开始出现彩虹</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌽</span><div class="custom-item-text"><div class="custom-item-title">春播扫尾</div>玉米、棉花等春播作物抢晴播种</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">麦田管理</div>小麦孕穗期，防倒伏防赤霉病</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">采明前茶</div>清明前茶叶品质最佳，名明前茶</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🪦</span><div class="custom-item-text"><div class="custom-item-title">扫墓祭祖</div>缅怀先人，慎终追远</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌸</span><div class="custom-item-text"><div class="custom-item-title">踏青春游</div>草木萌新，携家出游赏春</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">插柳戴柳</div>门前插柳、头戴柳圈，辟邪祈福</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🍡</div><div class="food-name">青团</div><div class="food-desc">艾草汁和糯米，豆沙为馅</div></div>
+            <div class="food-item"><div class="food-emoji">🌰</div><div class="food-name">馓子</div><div class="food-desc">油炸面食细如金丝</div></div>
+            <div class="food-item"><div class="food-emoji">🥚</div><div class="food-name">清明蛋</div><div class="food-desc">煮鸡蛋染色互赠，寓意圆满</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>清明时节清气上升，是养肝护肝的黄金期。宜多食荠菜、菠菜、山药等柔肝养肝之物。踏青郊游舒展身心，注意花粉过敏。情绪上避免过度悲伤，扫墓后宜转念踏青。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《清明》</div>
             <div class="poem-author">【唐】杜牧</div>
-            <div class="poem-content"><p>清明时节雨纷纷，</p><p>路上行人欲断魂。</p><p>借问酒家何处有？</p><p>牧童遥指杏花村。</p></div>
+            <div class="poem-content"><p>清明时节雨纷纷，路上行人欲断魂。</p><p>借问酒家何处有？牧童遥指杏花村。</p></div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- ==================== 6. 谷雨 ==================== -->
     <article class="term-card" id="guyu">
-      <div class="term-card-header">
+      <div class="term-card-hero">
         <img src="../images/spring/guyu.jpg" alt="谷雨 - 春雨充沛，百谷生长" loading="lazy">
-        <div class="term-card-overlay">
-          <span class="term-number">6</span>
-          <span class="term-name-tag">谷雨 <span class="term-pinyin">Gǔyǔ</span></span>
-        </div>
-      </div>
-      <div class="term-card-body">
-        <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年4月19日—21日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">30°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">降雨增多，温暖湿润，利于播种</div></div></div>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
-          <p>谷雨，是春季的最后一个节气。"谷雨"取"雨生百谷"之意，此时降雨明显增多，充沛的雨水滋润着田间的谷物幼苗，使之茁壮成长。谷雨时节，柳絮飞落，杜鹃夜啼，牡丹吐蕊，樱桃红熟，正是"杨花落尽子规啼"的暮春时节。谷雨之后，气温进一步升高，夏季的脚步渐近。</p>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
-          <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦆</div><div class="phenology-name">一候 · 浮萍开始生长</div><div class="phenology-desc">池塘中浮萍开始蔓延，水面铺满绿色</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">二候 · 布谷鸟鸣叫</div><div class="phenology-desc">布谷鸟声声催耕，提醒农人及时播种</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🦜</div><div class="phenology-name">三候 · 戴胜降于桑</div><div class="phenology-desc">戴胜鸟落在桑树上，蚕事即将开始</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民俗传统</h3>
-          <ul class="custom-list">
-            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">采谷雨茶</div>谷雨时节采制的春茶，清香宜人，明目清火</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🖼️</span><div class="custom-item-text"><div class="custom-item-title">赏牡丹</div>谷雨前后牡丹盛开，洛阳赏牡丹是传统盛事</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌊</span><div class="custom-item-text"><div class="custom-item-title">祭海</div>沿海地区谷雨祭海，祈求出海平安、鱼虾满仓</div></li>
-            <li class="custom-item"><span class="custom-item-icon">🌿</span><div class="custom-item-text"><div class="custom-item-title">走谷雨</div>妇女走村串亲，或到野外走一圈，寓意消灾祛病</div></li>
-          </ul>
-        </div>
-        <div class="term-section">
-          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 节气美食</h3>
-          <div class="food-grid">
-            <div class="food-item"><div class="food-emoji">🍵</div><div class="food-name">谷雨茶</div><div class="food-desc">谷雨当天采摘的春茶，温良去火，香气清远</div></div>
-            <div class="food-item"><div class="food-emoji">🥮</div><div class="food-name">谷雨饼</div><div class="food-desc">用春季新麦磨面烙饼，薄脆香酥，味道鲜美</div></div>
-            <div class="food-item"><div class="food-emoji">🌿</div><div class="food-name">香椿芽</div><div class="food-desc">谷雨前后香椿最嫩，炒鸡蛋、拌豆腐皆美味</div></div>
+        <div class="term-card-hero-overlay">
+          <span class="term-hero-number">06</span>
+          <h2 class="term-hero-name">谷雨</h2>
+          <p class="term-hero-pinyin">Guyu</p>
+          <div class="term-hero-meta">
+            <span><img src="../images/icons/meta_calendar.svg" alt="">节气时间：每年4月19日—21日</span>
+            <span><img src="../images/icons/meta_location.svg" alt="">太阳黄经：30°</span>
+            <span><img src="../images/icons/meta_climate.svg" alt="">气候特征：降雨增多，气温升高</span>
           </div>
         </div>
-        <div class="term-section">
+      </div>
+      <div class="term-lifa">
+        <p><span class="lifa-label">历法含义</span>——谷雨，是春季的最后一个节气。“谷雨”取“雨生百谷”之意，此时降雨明显增多，充沛的雨水滋润着田间的谷物幼苗，使之茁壮成长。谷雨时节，柳絮飞落，杜鹃夜啼，牡丹吐蕊，樱桃红熟，正是“杨花落尽子规啼”的暮春时节。谷雨之后，气温进一步升高，夏季的脚步渐近。</p>
+        <div class="lifa-line"></div>
+      </div>
+      <div class="term-card-grid">
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
+          <div class="phenology-row">
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_goose.svg" alt=""><span class="step-label">一候 · 浮萍开始生长</span><span class="step-desc">池塘水面浮萍渐生</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_cuckoo.svg" alt=""><span class="step-label">二候 · 布谷鸟鸣叫</span><span class="step-desc">布谷鸟振翅高飞，声声催耕</span></div>
+              <div class="phenology-step"><img class="step-icon" src="../images/spring/pheno_hoopoe.svg" alt=""><span class="step-label">三候 · 戴胜降于桑</span><span class="step-desc">戴胜鸟落在桑树上，蚕事将起</span></div>
+          </div>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🌾</span> 农事活动</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🌱</span><div class="custom-item-text"><div class="custom-item-title">播种移苗</div>谷雨前后种瓜点豆，春播冲刺</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌾</span><div class="custom-item-text"><div class="custom-item-title">水稻育秧</div>南方早稻秧田管理，防寒保苗</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🐛</span><div class="custom-item-text"><div class="custom-item-title">防治病虫</div>气温回暖虫害增多，加强监测</div></li>
+          </ul>
+        </div>
+        <div class="grid-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🎎</span> 民间习俗</h3>
+          <ul class="custom-list">
+            <li class="custom-item"><span class="custom-item-icon">🍵</span><div class="custom-item-text"><div class="custom-item-title">喝谷雨茶</div>谷雨当天茶叶清火明目，一年佳品</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌸</span><div class="custom-item-text"><div class="custom-item-title">赏牡丹</div>谷雨三朝看牡丹，牡丹又称谷雨花</div></li>
+            <li class="custom-item"><span class="custom-item-icon">🌊</span><div class="custom-item-text"><div class="custom-item-title">祭海</div>沿海渔民谷雨祭海，祈求出海平安</div></li>
+          </ul>
+        </div>
+        <div class="grid-section full-width">
+          <h3 class="term-section-title"><span class="term-section-icon">🍽️</span> 时令食俗</h3>
+          <div class="food-grid">
+            <div class="food-item"><div class="food-emoji">🌿</div><div class="food-name">香椿</div><div class="food-desc">雨前香椿嫩如丝，炒蛋一绝</div></div>
+            <div class="food-item"><div class="food-emoji">🍵</div><div class="food-name">谷雨茶</div><div class="food-desc">雨前茶清火明目，回甘悠长</div></div>
+            <div class="food-item"><div class="food-emoji">🍓</div><div class="food-name">樱桃</div><div class="food-desc">谷雨樱桃红，春末第一果</div></div>
+          </div>
+        </div>
+        <div class="grid-section full-width health-section">
+          <h3 class="term-section-title"><span class="term-section-icon">🧘</span> 养生要点</h3>
+          <p>谷雨是春季最后一个节气，养生重在健脾祛湿，迎接夏季。饮食多食薏米、赤小豆、山药等祛湿健脾之物。适当运动出汗排湿。谷雨后气温升高，注意增减衣物，防止春火上升。</p>
+        </div>
+        <div class="grid-section full-width">
           <h3 class="term-section-title"><span class="term-section-icon">📜</span> 节气诗词</h3>
           <div class="poem-block">
             <div class="poem-title">《七言诗》</div>
             <div class="poem-author">【清】郑板桥</div>
-            <div class="poem-content"><p>不风不雨正晴和，翠竹亭亭好节柯。</p><p>最爱晚凉佳客至，一壶新茗泡松萝。</p><p>几枝新叶萧萧竹，数笔横皴淡淡山。</p><p>正好清明连谷雨，一杯香茗坐其间。</p></div>
+            <div class="poem-content"><p>不风不雨正晴和，翠竹亭亭好节柯。</p><p>最爱晚凉佳客至，一壶新茗泡松萝。</p></div>
           </div>
         </div>
       </div>
     </article>
 
+    </div>
   </div>
-
   <!-- ========== 页脚 ========== -->
   <footer class="spring-footer">
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <h3>🌸 二十四节气 · 春和景明</h3>
-          <p>二十四节气是中华民族数千年智慧的结晶，2016年被列入联合国教科文组织人类非物质文化遗产代表作名录。春季节气，承载着万物复苏的美好愿景，传递着人与自然和谐共生的东方哲学。</p>
+          <h3>🌸 二十四节气</h3>
+          <p>传承千年智慧，感受节气之美。以古人观天察地之心，领略四时流转的韵律与诗意。</p>
         </div>
         <div class="footer-links-group">
-          <h4>四季导航</h4>
+          <h4>四季详情</h4>
           <ul>
-            <li><a href="#">🌸 春季篇</a></li>
-            <li><a href="#">☀️ 夏季篇</a></li>
-            <li><a href="#">🍂 秋季篇</a></li>
-            <li><a href="#">❄️ 冬季篇</a></li>
+            <li><a href="spring.html">🌸 春季</a></li>
+            <li><a href="summer.html">☀️ 夏季</a></li>
+            <li><a href="autumn.html">🍂 秋季</a></li>
+            <li><a href="winter.html">❄️ 冬季</a></li>
           </ul>
         </div>
         <div class="footer-links-group">
-          <h4>关于节气</h4>
+          <h4>探索更多</h4>
           <ul>
-            <li><a href="#">节气起源</a></li>
-            <li><a href="#">历法知识</a></li>
-            <li><a href="#">非遗传承</a></li>
-            <li><a href="#">联系我们</a></li>
+            <li><a href="index.html">🏠 首页总览</a></li>
+            <li><a href="culture.html">📚 节气文化</a></li>
+            <li><a href="scenery.html">🏞️ 节气风物</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 二十四节气文化网 · 春和景明专题 | 传承中华节气智慧，弘扬传统文化之美</p>
+        <p>© 2025 二十四节气 · 传承中华传统文化</p>
       </div>
     </div>
   </footer>
 
   <!-- ========== 回到顶部 ========== -->
-  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="回到顶部">↑</button>
-
-  <!-- ========== JavaScript ========== -->
-  <script>
-    var nav = document.getElementById('mainNav');
-    var backToTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', function() {
-      var scrollY = window.scrollY;
-      if (scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
-      if (scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList.remove('visible'); }
-      updateTermNav();
-    });
-
-    function toggleNav() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-
-    function updateTermNav() {
-      var sections = document.querySelectorAll('.term-card');
-      var navLinks = document.querySelectorAll('.term-nav a');
-      var currentId = '';
-      sections.forEach(function(section) {
-        if (window.scrollY >= section.offsetTop - 150) {
-          currentId = section.getAttribute('id');
-        }
-      });
-      navLinks.forEach(function(link) {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + currentId) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.term-card').forEach(function(card) {
-      observer.observe(card);
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        var targetId = this.getAttribute('href').substring(1);
-        var target = document.getElementById(targetId);
-        if (target) {
-          window.scrollTo({ top: target.offsetTop - 140, behavior: 'smooth' });
-          document.getElementById('navLinks').classList.remove('open');
-        }
-      });
-    });
-  </script>
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
 
 </body>
 </html>

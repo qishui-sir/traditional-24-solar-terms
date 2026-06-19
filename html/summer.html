@@ -7,6 +7,7 @@
   <meta name="description" content="夏季节气专题：立夏、小满、芒种、夏至、小暑、大暑，感受万物繁茂、暑气蒸腾的仲夏之美。">
   <meta name="keywords" content="二十四节气,夏季,立夏,小满,芒种,夏至,小暑,大暑,中国传统节日">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
   <style>
 :root {
   --summer-blue: #4A90E2;
@@ -288,6 +289,7 @@ body::before {
   border-right: 3px solid var(--summer-pink);
 }
 .term-nav {
+  text-align: center;
   position: sticky;
   top: 70px;
   z-index: 100;
@@ -295,21 +297,13 @@ body::before {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--summer-border);
   padding: 1rem 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.term-nav::-webkit-scrollbar {
-  height: 3px;
-}
-.term-nav::-webkit-scrollbar-thumb {
-  background: var(--summer-blue-light);
-  border-radius: 3px;
-}
-.term-nav-inner {
+  }
+.term-nav.term-nav.term-nav-inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
 }
@@ -440,7 +434,10 @@ body::before {
   font-size: 0.9rem;
 }
 .term-meta-icon {
-  font-size: 1.2rem;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .term-meta-label {
   color: var(--summer-text-light);
@@ -491,8 +488,10 @@ body::before {
   transform: translateY(-3px);
 }
 .phenology-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .phenology-name {
   font-weight: 600;
@@ -779,79 +778,6 @@ body::before {
   }
 }
 
-/* ========== 左上角季节导航 ========== */
-.top-left-nav {
-  position: fixed;
-  top: 85px;
-  left: 20px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.top-left-nav-trigger {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4A90E2, #7CB0F2);
-  border: 3px solid rgba(255,255,255,0.8);
-  box-shadow: 0 4px 20px rgba(74,144,226,0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: leftNavPulseS 3s ease-in-out infinite;
-}
-.top-left-nav-trigger:hover {
-  transform: scale(1.15) rotate(-10deg);
-  box-shadow: 0 8px 35px rgba(74,144,226,0.6);
-}
-@keyframes leftNavPulseS {
-  0%, 100% { box-shadow: 0 4px 20px rgba(74,144,226,0.4); }
-  50% { box-shadow: 0 4px 30px rgba(74,144,226,0.7); }
-}
-.top-left-nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-width: 0;
-  overflow: hidden;
-  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  opacity: 0;
-}
-.top-left-nav-menu.show {
-  max-width: 200px;
-  opacity: 1;
-}
-.top-left-nav-item {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  padding: 10px 18px;
-  text-decoration: none;
-  color: #2A70C2;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  transform: translateX(-20px);
-}
-.top-left-nav-menu.show .top-left-nav-item {
-  transform: translateX(0);
-}
-.top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
 .top-left-nav-item:hover {
   background: linear-gradient(135deg, #4A90E2, #7CB0F2);
   color: #fff;
@@ -862,28 +788,43 @@ body::before {
   background: linear-gradient(135deg, #4A90E2, #7CB0F2);
   color: #fff;
 }
-.top-left-nav-hint {
-  font-size: 10px;
-  color: #4A90E2;
-  text-align: center;
+/* ============================================
+   节气点按切换 - Tab Switch
+   ============================================ */
+.term-card {
+  display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-  margin-top: 4px;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
-.top-left-nav-menu.show ~ .top-left-nav-hint {
-  opacity: 0.7;
+.term-card.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.term-nav a.active {
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+@keyframes termFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.term-card.active {
+  animation: termFadeIn 0.45s ease forwards;
 }
 
-  </style>
+</style>
 </head>
 <body>
 
   <!-- ========== 左上角季节导航 ========== -->
   <div class="top-left-nav">
-    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">☀️</button>
-    <div class="top-left-nav-menu" id="topLeftNavMenu">
+    <div class="top-left-nav-row">
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
+      <span class="top-left-nav-hint">点击收起</span>
+    </div>
+    <div class="top-left-nav-menu show" id="topLeftNavMenu">
       <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
       <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
       <a href="summer.html" class="top-left-nav-item active">☀️ 夏季详情</a>
@@ -892,16 +833,9 @@ body::before {
       <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
-    <span class="top-left-nav-hint">点击展开</span>
   </div>
   <script>
-    function toggleTopLeftNav() {
-      const menu = document.getElementById('topLeftNavMenu');
-      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
-      menu.classList.toggle('show');
-      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
-    }
-  </script>
+    </script>
 
   <nav class="summer-nav" id="mainNav">
     <div class="nav-container">
@@ -967,12 +901,12 @@ body::before {
 
   <div class="term-nav" id="termNav">
     <div class="term-nav-inner">
-      <a href="#lixia" class="active">立夏</a>
-      <a href="#xiaoman">小满</a>
-      <a href="#mangzhong">芒种</a>
-      <a href="#xiazhi">夏至</a>
-      <a href="#xiaoshu">小暑</a>
-      <a href="#dashu">大暑</a>
+      <a href="#" data-term="lixia" onclick="return switchTerm(&quot;lixia&quot;)" class="active">立夏</a>
+      <a href="#" data-term="xiaoman" onclick="return switchTerm(&quot;xiaoman&quot;)">小满</a>
+      <a href="#" data-term="mangzhong" onclick="return switchTerm(&quot;mangzhong&quot;)">芒种</a>
+      <a href="#" data-term="xiazhi" onclick="return switchTerm(&quot;xiazhi&quot;)">夏至</a>
+      <a href="#" data-term="xiaoshu" onclick="return switchTerm(&quot;xiaoshu&quot;)">小暑</a>
+      <a href="#" data-term="dashu" onclick="return switchTerm(&quot;dashu&quot;)">大暑</a>
     </div>
   </div>
 
@@ -989,21 +923,21 @@ body::before {
       <div class="term-card-body">
         <div class="term-meta">
           <div class="term-meta-item">
-            <span class="term-meta-icon">📅</span>
+            <img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt="">
             <div>
               <div class="term-meta-label">节气时间</div>
               <div class="term-meta-value">每年5月5日—7日</div>
             </div>
           </div>
           <div class="term-meta-item">
-            <span class="term-meta-icon">📍</span>
+            <img class="term-meta-icon" src="../images/icons/meta_location.svg" alt="">
             <div>
               <div class="term-meta-label">太阳黄经</div>
               <div class="term-meta-value">45°</div>
             </div>
           </div>
           <div class="term-meta-item">
-            <span class="term-meta-icon">🌡️</span>
+            <img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt="">
             <div>
               <div class="term-meta-label">气候特征</div>
               <div class="term-meta-value">气温显著升高，雷雨增多</div>
@@ -1018,17 +952,17 @@ body::before {
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
             <li class="phenology-item">
-              <div class="phenology-icon">🦃</div>
+              <img class="phenology-icon" src="../images/summer/pheno_mole_cricket.svg" alt="">
               <div class="phenology-name">一候 · 蝼蝈鸣</div>
               <div class="phenology-desc">蝼蛄开始在田间鸣叫，预示着夏季的到来</div>
             </li>
             <li class="phenology-item">
-              <div class="phenology-icon">🦆</div>
+              <img class="phenology-icon" src="../images/summer/pheno_earthworm.svg" alt="">
               <div class="phenology-name">二候 · 蚯蚓出</div>
               <div class="phenology-desc">地下温度升高，蚯蚓爬出地面活动</div>
             </li>
             <li class="phenology-item">
-              <div class="phenology-icon">🌿</div>
+              <img class="phenology-icon" src="../images/summer/pheno_gourd.svg" alt="">
               <div class="phenology-name">三候 · 王瓜生</div>
               <div class="phenology-desc">王瓜藤蔓快速生长，枝繁叶茂</div>
             </li>
@@ -1085,15 +1019,15 @@ body::before {
       <div class="term-card-body">
         <div class="term-meta">
           <div class="term-meta-item">
-            <span class="term-meta-icon">📅</span>
+            <img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt="">
             <div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年5月20日—22日</div></div>
           </div>
           <div class="term-meta-item">
-            <span class="term-meta-icon">📍</span>
+            <img class="term-meta-icon" src="../images/icons/meta_location.svg" alt="">
             <div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">60°</div></div>
           </div>
           <div class="term-meta-item">
-            <span class="term-meta-icon">🌡️</span>
+            <img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt="">
             <div><div class="term-meta-label">气候特征</div><div class="term-meta-value">南北温差缩小，降水增多</div></div>
           </div>
         </div>
@@ -1104,9 +1038,12 @@ body::before {
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦋</div><div class="phenology-name">一候 · 苦菜秀</div><div class="phenology-desc">苦菜繁茂开花，成为夏季最早的野菜</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌾</div><div class="phenology-name">二候 · 靡草死</div><div class="phenology-desc">喜阴的细软草类因日晒强烈而枯死</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌞</div><div class="phenology-name">三候 · 麦秋至</div><div class="phenology-desc">麦子开始成熟，虽在夏季却有秋收之象</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_herb.svg" alt="">
+              <div class="phenology-name">一候 · 苦菜秀</div><div class="phenology-desc">苦菜繁茂开花，成为夏季最早的野菜</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_wheat_wilt.svg" alt="">
+              <div class="phenology-name">二候 · 靡草死</div><div class="phenology-desc">喜阴的细软草类因日晒强烈而枯死</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_wheat.svg" alt="">
+              <div class="phenology-name">三候 · 麦秋至</div><div class="phenology-desc">麦子开始成熟，虽在夏季却有秋收之象</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -1147,9 +1084,9 @@ body::before {
       </div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月5日—7日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">75°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温显著升高，梅雨季节开始</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月5日—7日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">75°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温显著升高，梅雨季节开始</div></div></div>
         </div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
@@ -1158,9 +1095,12 @@ body::before {
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦅</div><div class="phenology-name">一候 · 螳螂生</div><div class="phenology-desc">螳螂因感受到阴气而生，开始活动</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">二候 · 鵙始鸣</div><div class="phenology-desc">伯劳鸟开始鸣叫，声传郊野</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">三候 · 反舌无声</div><div class="phenology-desc">反舌鸟停止鸣叫，万物生长进入新阶段</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_mantis.svg" alt="">
+              <div class="phenology-name">一候 · 螳螂生</div><div class="phenology-desc">螳螂因感受到阴气而生，开始活动</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_shrike.svg" alt="">
+              <div class="phenology-name">二候 · 鵙始鸣</div><div class="phenology-desc">伯劳鸟开始鸣叫，声传郊野</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_shrike.svg" alt="">
+              <div class="phenology-name">三候 · 反舌无声</div><div class="phenology-desc">反舌鸟停止鸣叫，万物生长进入新阶段</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -1201,9 +1141,9 @@ body::before {
       </div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月21日—22日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">90°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">白昼最长，阳气盛极而衰</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年6月21日—22日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">90°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">白昼最长，阳气盛极而衰</div></div></div>
         </div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
@@ -1212,9 +1152,21 @@ body::before {
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦩</div><div class="phenology-name">一候 · 鹿角解</div><div class="phenology-desc">鹿的角开始脱落，因阳气始衰</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🕊️</div><div class="phenology-name">二候 · 蝉始鸣</div><div class="phenology-desc">雄性知了开始鸣叫，夏日蝉声起</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌿</div><div class="phenology-name">三候 · 半夏生</div><div class="phenology-desc">半夏草开始生长，为夏季中药</div></li>
+            <li class="phenology-item">
+              <img class="phenology-icon" src="../images/summer/pheno_deer.svg" alt="">
+              <div class="phenology-name">一候 · 鹿角解</div>
+              <div class="phenology-desc">鹿的角开始脱落，因阳气盛极而衰，鹿角属阳，故先解落，标志着阴气开始萌生。</div>
+            </li>
+            <li class="phenology-item">
+              <img class="phenology-icon" src="../images/summer/pheno_shrike.svg" alt="">
+              <div class="phenology-name">二候 · 蝉始鸣</div>
+              <div class="phenology-desc">雄性知了感受到阴气滋生，开始鼓翼鸣叫，嘹亮蝉声拉开盛夏序幕。</div>
+            </li>
+            <li class="phenology-item">
+              <img class="phenology-icon" src="../images/summer/pheno_gourd.svg" alt="">
+              <div class="phenology-name">三候 · 半夏生</div>
+              <div class="phenology-desc">半夏草在仲夏时节蓬勃生长，其块茎可入药，是夏季采收的重要中药材。</div>
+            </li>
           </ul>
         </div>
         <div class="term-section">
@@ -1255,9 +1207,9 @@ body::before {
       </div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月6日—8日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">105°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温升高，进入伏天前期</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月6日—8日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">105°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温升高，进入伏天前期</div></div></div>
         </div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
@@ -1266,9 +1218,12 @@ body::before {
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦅</div><div class="phenology-name">一候 · 温风至</div><div class="phenology-desc">风中带着热浪，气温明显升高</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🐦</div><div class="phenology-name">二候 · 蟋蟀居宇</div><div class="phenology-desc">蟋蟀离开田野，躲到屋檐下避暑</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🪹</div><div class="phenology-name">三候 · 鹰始鸷</div><div class="phenology-desc">老鹰因地面气温高而飞向高空活动</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_hawk.svg" alt="">
+              <div class="phenology-name">一候 · 温风至</div><div class="phenology-desc">风中带着热浪，气温明显升高</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_cricket.svg" alt="">
+              <div class="phenology-name">二候 · 蟋蟀居宇</div><div class="phenology-desc">蟋蟀离开田野，躲到屋檐下避暑</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_hawk.svg" alt="">
+              <div class="phenology-name">三候 · 鹰始鸷</div><div class="phenology-desc">老鹰因地面气温高而飞向高空活动</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -1309,9 +1264,9 @@ body::before {
       </div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月22日—24日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">120°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">全年最热时段，高温高湿</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年7月22日—24日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">120°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">全年最热时段，高温高湿</div></div></div>
         </div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3>
@@ -1320,9 +1275,12 @@ body::before {
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦎</div><div class="phenology-name">一候 · 腐草为萤</div><div class="phenology-desc">腐草化生萤火虫，夏夜萤火纷飞</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌡️</div><div class="phenology-name">二候 · 土润溽暑</div><div class="phenology-desc">土地潮湿闷热，空气湿度达到顶峰</div></li>
-            <li class="phenology-item"><div class="phenology-icon">⛈️</div><div class="phenology-name">三候 · 大雨时行</div><div class="phenology-desc">频繁出现雷雨，大雨驱散暑气</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_firefly.svg" alt="">
+              <div class="phenology-name">一候 · 腐草为萤</div><div class="phenology-desc">腐草化生萤火虫，夏夜萤火纷飞</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_heat.svg" alt="">
+              <div class="phenology-name">二候 · 土润溽暑</div><div class="phenology-desc">土地潮湿闷热，空气湿度达到顶峰</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/summer/pheno_storm.svg" alt="">
+              <div class="phenology-name">三候 · 大雨时行</div><div class="phenology-desc">频繁出现雷雨，大雨驱散暑气</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -1378,46 +1336,36 @@ body::before {
 
 <!-- 补齐全部JS脚本，卡片滚动显示、导航高亮全部生效 -->
 <script>
-const mainNav = document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>30){
-    mainNav.classList.add('scrolled')
-  }else{
-    mainNav.classList.remove('scrolled')
-  }
-})
-function toggleNav(){
-  document.getElementById('navLinks').classList.toggle('open')
-}
-const cards = document.querySelectorAll('.term-card');
-const showCard=()=>{
-  cards.forEach(item=>{
-    const rect = item.getBoundingClientRect();
-    if(rect.top < window.innerHeight-120){
-      item.classList.add('visible')
+    // ========== 节气点按切换 ==========
+    const termCards = document.querySelectorAll('.term-card');
+    const termNavLinks = document.querySelectorAll('.term-nav a');
+
+    function switchTerm(termId) {
+      termCards.forEach(card => card.classList.remove('active'));
+      const target = document.getElementById(termId);
+      if (target) {
+        void target.offsetWidth;
+        target.classList.add('active');
+      }
+      termNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-term') === termId) link.classList.add('active');
+      });
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        if (rect.top < 0 || rect.top > window.innerHeight - 100) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      return false;
     }
-  })
-}
-window.addEventListener('scroll',showCard)
-window.addEventListener('load',showCard)
-const topBtn = document.querySelector('.back-to-top');
-if(topBtn){
-window.addEventListener('scroll',()=>{
-  topBtn.classList.toggle('visible',window.scrollY>400)
-})
-topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'})
-}
-const navA = document.querySelectorAll('.term-nav a');
-const sections = cards;
-window.addEventListener('scroll',()=>{
-  let idx=0;
-  sections.forEach((sec,i)=>{
-    if(window.scrollY >= sec.offsetTop-200) idx=i
-  })
-  navA.forEach(a=>a.classList.remove('active'))
-  navA[idx].classList.add('active')
-})
-</script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (termCards.length > 0 && !document.querySelector('.term-card.active')) {
+        termCards[0].classList.add('active');
+      }
+    });
+  </script>
 
 <!-- ========== 返回首页浮动按钮 - 节气徽章浮球 ========== -->
 <style>
@@ -1444,5 +1392,6 @@ window.addEventListener('scroll',()=>{
 </div>
 <script>function toggleFloatMenu(){const menu=document.getElementById('floatMenu');const hint=document.getElementById('floatHint');menu.classList.toggle('show');hint.textContent=menu.classList.contains('show')?'点击收起':'点击展开'}</script>
 
+  <script src="../js/common.js"></script>
 </body>
 </html>

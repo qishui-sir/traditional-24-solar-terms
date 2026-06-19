@@ -7,6 +7,7 @@
   <meta name="description" content="冬季节气专题：立冬、小雪、大雪、冬至、小寒、大寒，感受万物闭藏、瑞雪丰年的东方智慧。">
   <meta name="keywords" content="二十四节气,冬季,立冬,小雪,大雪,冬至,小寒,大寒,中国传统节日">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
   <style>
 html {
   scroll-behavior: smooth;
@@ -144,12 +145,16 @@ body::before {
 .intro-text {font-size:1.05rem;color:var(--winter-text-light);text-indent:2em;margin-bottom:1rem;}
 .intro-quote {text-align:center;font-style:italic;color:var(--winter-red);font-size:1rem;margin-top:1.5rem;padding:1rem;border-left:3px solid var(--winter-red);border-right:3px solid var(--winter-red);}
 .term-nav {
+  text-align: center;
   position:sticky;top:70px;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--winter-border);padding:1rem 0;overflow-x:auto;
-}
-.term-nav::-webkit-scrollbar {height:3px;}
-.term-nav::-webkit-scrollbar-thumb {background:var(--winter-green-light);border-radius:3px;}
-.term-nav-inner {max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:center;gap:0.5rem;}
+  border-bottom:1px solid var(--winter-border);padding:1rem 0;}
+.term-nav.term-nav.term-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;gap:0.5rem;}
 .term-nav a {
   text-decoration:none;color:var(--winter-text-light);padding:0.5rem 1.2rem;border-radius:20px;
   font-size:0.9rem;white-space:nowrap;border:1px solid transparent;transition:0.3s;
@@ -181,7 +186,12 @@ body::before {
 .term-card-body {padding:2rem 3rem 3rem;}
 .term-meta {display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
 .term-meta-item {display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:var(--winter-bg);border-radius:12px;border:1px solid var(--winter-border);font-size:0.9rem;}
-.term-meta-icon {font-size:1.2rem;}
+.term-meta-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .term-meta-label {color:var(--winter-text-light);font-size:0.8rem;}
 .term-meta-value {color:var(--winter-green-dark);font-weight:600;}
 .term-section {margin-bottom:2rem;}
@@ -191,7 +201,12 @@ body::before {
 .phenology-list {list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
 .phenology-item {text-align:center;padding:1.2rem;background:linear-gradient(135deg,rgba(42,92,104,0.05),rgba(200,85,61,0.05));border-radius:16px;border:1px solid var(--winter-border);transition:0.3s;}
 .phenology-item:hover {transform:translateY(-3px);}
-.phenology-icon {font-size:2rem;margin-bottom:0.5rem;}
+.phenology-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .phenology-name {font-weight:600;color:var(--winter-green-dark);font-size:0.95rem;margin-bottom:0.3rem;}
 .phenology-desc {font-size:0.85rem;color:var(--winter-text-light);text-indent:0;}
 .custom-list {list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
@@ -262,79 +277,6 @@ body::before {
   .term-card {break-inside:avoid;box-shadow:none;border:1px solid #ddd;}
 }
 
-/* ========== 左上角季节导航 ========== */
-.top-left-nav {
-  position: fixed;
-  top: 85px;
-  left: 20px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.top-left-nav-trigger {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2A5C68, #709FB0);
-  border: 3px solid rgba(255,255,255,0.8);
-  box-shadow: 0 4px 20px rgba(42,92,104,0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: leftNavPulseW 3s ease-in-out infinite;
-}
-.top-left-nav-trigger:hover {
-  transform: scale(1.15) rotate(-10deg);
-  box-shadow: 0 8px 35px rgba(42,92,104,0.6);
-}
-@keyframes leftNavPulseW {
-  0%, 100% { box-shadow: 0 4px 20px rgba(42,92,104,0.4); }
-  50% { box-shadow: 0 4px 30px rgba(42,92,104,0.7); }
-}
-.top-left-nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-width: 0;
-  overflow: hidden;
-  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  opacity: 0;
-}
-.top-left-nav-menu.show {
-  max-width: 200px;
-  opacity: 1;
-}
-.top-left-nav-item {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  padding: 10px 18px;
-  text-decoration: none;
-  color: #2A5C68;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  transform: translateX(-20px);
-}
-.top-left-nav-menu.show .top-left-nav-item {
-  transform: translateX(0);
-}
-.top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
-.top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
 .top-left-nav-item:hover {
   background: linear-gradient(135deg, #2A5C68, #709FB0);
   color: #fff;
@@ -345,28 +287,43 @@ body::before {
   background: linear-gradient(135deg, #2A5C68, #709FB0);
   color: #fff;
 }
-.top-left-nav-hint {
-  font-size: 10px;
-  color: #2A5C68;
-  text-align: center;
+/* ============================================
+   节气点按切换 - Tab Switch
+   ============================================ */
+.term-card {
+  display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-  margin-top: 4px;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
-.top-left-nav-menu.show ~ .top-left-nav-hint {
-  opacity: 0.7;
+.term-card.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.term-nav a.active {
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+@keyframes termFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.term-card.active {
+  animation: termFadeIn 0.45s ease forwards;
 }
 
-  </style>
+</style>
 </head>
 <body>
 
   <!-- ========== 左上角季节导航 ========== -->
   <div class="top-left-nav">
-    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">❄️</button>
-    <div class="top-left-nav-menu" id="topLeftNavMenu">
+    <div class="top-left-nav-row">
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">❄️</button>
+      <span class="top-left-nav-hint">点击收起</span>
+    </div>
+    <div class="top-left-nav-menu show" id="topLeftNavMenu">
       <a href="index.html" class="top-left-nav-item">🏠 首页总览</a>
       <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
       <a href="summer.html" class="top-left-nav-item">☀️ 夏季详情</a>
@@ -375,16 +332,9 @@ body::before {
       <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
-    <span class="top-left-nav-hint">点击展开</span>
   </div>
   <script>
-    function toggleTopLeftNav() {
-      const menu = document.getElementById('topLeftNavMenu');
-      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
-      menu.classList.toggle('show');
-      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
-    }
-  </script>
+    </script>
 
   <nav class="winter-nav" id="mainNav">
     <div class="nav-container">
@@ -439,12 +389,12 @@ body::before {
   </section>
   <div class="term-nav" id="termNav">
     <div class="term-nav-inner">
-      <a href="#lidong" class="active">立冬</a>
-      <a href="#xiaoxue">小雪</a>
-      <a href="#daxue">大雪</a>
-      <a href="#dongzhi">冬至</a>
-      <a href="#xiaohan">小寒</a>
-      <a href="#dahan">大寒</a>
+      <a href="#" data-term="lidong" onclick="return switchTerm(&quot;lidong&quot;)" class="active">立冬</a>
+      <a href="#" data-term="xiaoxue" onclick="return switchTerm(&quot;xiaoxue&quot;)">小雪</a>
+      <a href="#" data-term="daxue" onclick="return switchTerm(&quot;daxue&quot;)">大雪</a>
+      <a href="#" data-term="dongzhi" onclick="return switchTerm(&quot;dongzhi&quot;)">冬至</a>
+      <a href="#" data-term="xiaohan" onclick="return switchTerm(&quot;xiaohan&quot;)">小寒</a>
+      <a href="#" data-term="dahan" onclick="return switchTerm(&quot;dahan&quot;)">大寒</a>
     </div>
   </div>
   <div class="terms-container">
@@ -453,17 +403,20 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">19</span><span class="term-name-tag">立冬 <span class="term-pinyin">Lìdōng</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年11月7日—8日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">225°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温骤降，万物收藏</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">每年11月7日—8日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">太阳黄经</div><div class="term-meta-value">225°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候特征</div><div class="term-meta-value">气温骤降，万物收藏</div></div></div>
         </div>
         <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span> 历法含义</h3><p>立冬，二十四节气之第十九节气，冬季的第一个节气。"立"有"开始"之意，"冬"代表终了，有万物收藏、规避寒冷的含义。立冬之日，水始冰，地始冻，雉入大水为蜃。自此日起，天地万物进入休养、收藏状态，草木凋零，蛰虫休眠，人类也顺应自然，开始进补御寒。</p></div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span> 物候特征（三候）</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">❄️</div><div class="phenology-name">一候 · 水始冰</div><div class="phenology-desc">气温降至零度以下，水面开始结冰</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🧊</div><div class="phenology-name">二候 · 地始冻</div><div class="phenology-desc">土地开始冻结，寒气渐深</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🦆</div><div class="phenology-name">三候 · 雉入大水为蜃</div><div class="phenology-desc">野鸡蛰伏，海边出现大蛤</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_ice.svg" alt="">
+              <div class="phenology-name">一候 · 水始冰</div><div class="phenology-desc">气温降至零度以下，水面开始结冰</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_frost.svg" alt="">
+              <div class="phenology-name">二候 · 地始冻</div><div class="phenology-desc">土地开始冻结，寒气渐深</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_pheasant.svg" alt="">
+              <div class="phenology-name">三候 · 雉入大水为蜃</div><div class="phenology-desc">野鸡蛰伏，海边出现大蛤</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -498,17 +451,20 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">20</span><span class="term-name-tag">小雪 <span class="term-pinyin">Xiǎoxuě</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">11月22—23日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">黄经</div><div class="term-meta-value">240°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候</div><div class="term-meta-value">气温下降，初雪降临</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">节气时间</div><div class="term-meta-value">11月22—23日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">240°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">气温下降，初雪降临</div></div></div>
         </div>
         <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>小雪代表降雪起始，雪量偏小，民间小雪腌菜，以待寒冬。</p></div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦆</div><div class="phenology-name">虹藏不见</div><div class="phenology-desc">气温低无彩虹</div></li>
-            <li class="phenology-item"><div class="phenology-icon">💨</div><div class="phenology-name">天地阴阳不交</div><div class="phenology-desc">地气下沉阳气上升</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🌎</div><div class="phenology-name">闭塞成冬</div><div class="phenology-desc">天地封藏入冬</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_pheasant.svg" alt="">
+              <div class="phenology-name">虹藏不见</div><div class="phenology-desc">气温低无彩虹</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_taiji.svg" alt="">
+              <div class="phenology-name">天地阴阳不交</div><div class="phenology-desc">地气下沉阳气上升</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_frozen.svg" alt="">
+              <div class="phenology-name">闭塞成冬</div><div class="phenology-desc">天地封藏入冬</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -527,17 +483,20 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">21</span><span class="term-name-tag">大雪 <span class="term-pinyin">Dàxuě</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">时间</div><div class="term-meta-value">12月6—8日</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">黄经</div><div class="term-meta-value">255°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候</div><div class="term-meta-value">大雪纷飞，河面冰封</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">12月6—8日</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">255°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">大雪纷飞，河面冰封</div></div></div>
         </div>
         <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>大雪气温骤寒，降雪范围扩大，民间腌腊肉、存冬粮。</p></div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🦢</div><div class="phenology-name">鹖鴠不鸣</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🐻</div><div class="phenology-name">虎始交</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🎋</div><div class="phenology-name">荔挺出</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_swan.svg" alt="">
+              <div class="phenology-name">鹖鴠不鸣</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_tiger.svg" alt="">
+              <div class="phenology-name">虎始交</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_bamboo.svg" alt="">
+              <div class="phenology-name">荔挺出</div></li>
           </ul>
         </div>
         <div class="poem-block"><div class="poem-title">江雪 柳宗元</div><div class="poem-content"><p>千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。</p></div></div>
@@ -548,9 +507,9 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">22</span><span class="term-name-tag">冬至 <span class="term-pinyin">Dōngzhì</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">时间</div><div class="term-meta-value">12.21-23</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">黄经</div><div class="term-meta-value">270°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">特点</div><div class="term-meta-value">昼最短夜最长，一阳初生</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">12.21-23</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">270°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">特点</div><div class="term-meta-value">昼最短夜最长，一阳初生</div></div></div>
         </div>
         <div class="term-section"><p>冬至大如年，北方饺子南方汤圆，自此开始数九。</p></div>
         <div class="poem-block"><div class="poem-title">冬至 杜甫</div><div class="poem-content"><p>天时人事日相催，冬至阳生春又来。</p></div></div>
@@ -561,9 +520,9 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">23</span><span class="term-name-tag">小寒 <span class="term-pinyin">Xiǎohán</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.5-7</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">黄经</div><div class="term-meta-value">285°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候</div><div class="term-meta-value">三九严寒，全年低温</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.5-7</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">285°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">三九严寒，全年低温</div></div></div>
         </div>
         <div class="poem-block"><div class="poem-title">小寒 朱彝尊</div><div class="poem-content"><p>葵影便移长至日，梅花先趁小寒开。</p></div></div>
       </div>
@@ -573,17 +532,20 @@ body::before {
       <div class="term-card-overlay"><span class="term-number">24</span><span class="term-name-tag">大寒 <span class="term-pinyin">Dàhán</span></span></div>
       <div class="term-card-body">
         <div class="term-meta">
-          <div class="term-meta-item"><span class="term-meta-icon">📅</span><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.20-21</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">📍</span><div><div class="term-meta-label">黄经</div><div class="term-meta-value">300°</div></div></div>
-          <div class="term-meta-item"><span class="term-meta-icon">🌡️</span><div><div class="term-meta-label">气候</div><div class="term-meta-value">寒至极点，静待立春</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_calendar.svg" alt=""><div><div class="term-meta-label">时间</div><div class="term-meta-value">1.20-21</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_location.svg" alt=""><div><div class="term-meta-label">黄经</div><div class="term-meta-value">300°</div></div></div>
+          <div class="term-meta-item"><img class="term-meta-icon" src="../images/icons/meta_climate.svg" alt=""><div><div class="term-meta-label">气候</div><div class="term-meta-value">寒至极点，静待立春</div></div></div>
         </div>
         <div class="term-section"><h3 class="term-section-title"><span class="term-section-icon">📖</span>释义</h3><p>大寒是二十四节气收尾，临近新春，寒气到头，地气回暖。</p></div>
         <div class="term-section">
           <h3 class="term-section-title"><span class="term-section-icon">🌱</span>三候</h3>
           <ul class="phenology-list">
-            <li class="phenology-item"><div class="phenology-icon">🐔</div><div class="phenology-name">一候鸡乳</div><div class="phenology-desc">母鸡开始孵雏</div></li>
-            <li class="phenology-item"><div class="phenology-icon">🦅</div><div class="phenology-name">二候征鸟厉疾</div><div class="phenology-desc">猛禽四处觅食御寒</div></li>
-            <li class="phenology-item"><div class="phenology-icon">💧</div><div class="phenology-name">三候水泽腹坚</div><div class="phenology-desc">河湖冻至深处</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_chicken.svg" alt="">
+              <div class="phenology-name">一候鸡乳</div><div class="phenology-desc">母鸡开始孵雏</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_hawk.svg" alt="">
+              <div class="phenology-name">二候征鸟厉疾</div><div class="phenology-desc">猛禽四处觅食御寒</div></li>
+            <li class="phenology-item"><img class="phenology-icon" src="../images/winter/pheno_marsh_ice.svg" alt="">
+              <div class="phenology-name">三候水泽腹坚</div><div class="phenology-desc">河湖冻至深处</div></li>
           </ul>
         </div>
         <div class="term-section">
@@ -607,41 +569,36 @@ body::before {
   </footer>
   <button class="back-to-top">↑</button>
 <script>
-const mainNav = document.getElementById('mainNav');
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-const backToTop = document.querySelector('.back-to-top');
-const termNavLinks = document.querySelectorAll('.term-nav a');
-const termCards = document.querySelectorAll('.term-card');
-window.addEventListener('scroll',()=>{
-  mainNav.classList.toggle('scrolled',window.scrollY>50);
-  backToTop.classList.toggle('visible',window.scrollY>400);
-  termCards.forEach(card=>{
-    const t = card.getBoundingClientRect().top;
-    if(t<window.innerHeight-150) card.classList.add('visible');
-  });
-  let now = window.scrollY+200;
-  termNavLinks.forEach(link=>link.classList.remove('active'));
-  termCards.forEach((card,idx)=>{
-    if(now>=card.offsetTop&&now<card.offsetTop+card.offsetHeight){
-      termNavLinks[idx].classList.add('active');
+    // ========== 节气点按切换 ==========
+    const termCards = document.querySelectorAll('.term-card');
+    const termNavLinks = document.querySelectorAll('.term-nav a');
+
+    function switchTerm(termId) {
+      termCards.forEach(card => card.classList.remove('active'));
+      const target = document.getElementById(termId);
+      if (target) {
+        void target.offsetWidth;
+        target.classList.add('active');
+      }
+      termNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-term') === termId) link.classList.add('active');
+      });
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        if (rect.top < 0 || rect.top > window.innerHeight - 100) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      return false;
     }
-  })
-})
-navToggle.onclick = ()=>navLinks.classList.toggle('open');
-termNavLinks.forEach(item=>{
-  item.onclick = e=>{
-    e.preventDefault();
-    const id = item.getAttribute('href');
-    const dom = document.querySelector(id);
-    dom.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-})
-backToTop.onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
-window.onload = ()=>{
-  setTimeout(()=>termCards[0].classList.add('visible'),200);
-}
-</script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (termCards.length > 0 && !document.querySelector('.term-card.active')) {
+        termCards[0].classList.add('active');
+      }
+    });
+  </script>
 
 <!-- ========== 返回首页浮动按钮 - 节气徽章浮球 ========== -->
 <style>
@@ -668,5 +625,6 @@ window.onload = ()=>{
 </div>
 <script>function toggleFloatMenu(){const menu=document.getElementById('floatMenu');const hint=document.getElementById('floatHint');menu.classList.toggle('show');hint.textContent=menu.classList.contains('show')?'点击收起':'点击展开'}</script>
 
+  <script src="../js/common.js"></script>
 </body>
 </html>

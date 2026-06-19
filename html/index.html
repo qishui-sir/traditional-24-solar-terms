@@ -6,6 +6,7 @@
   <title>二十四节气 · 四时序歌</title>
   <meta name="description" content="二十四节气文化展示网站，传承中华节气智慧，探索春生夏长秋收冬藏的东方哲学。">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
   <style>
     /* ========== 全局变量 & 重置 ========== */
     *{margin:0;padding:0;box-sizing:border-box}
@@ -19,10 +20,6 @@
       --spring:#5B8C5A;--summer:#4A90E2;--autumn:#C17817;--winter:#4A7C8A;
     }
     body{font-family:"Noto Serif SC","STSong","SimSun",serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .3s,color .2s}
-    ::-webkit-scrollbar{width:6px}
-    ::-webkit-scrollbar-track{background:var(--border)}
-    ::-webkit-scrollbar-thumb{background:var(--green);border-radius:8px}
-
     /* ========== 导航栏 ========== */
     .main-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
     .main-nav.scrolled{box-shadow:var(--shadow);background:var(--bg-card)}
@@ -418,78 +415,7 @@
     .season-box,.term-entry{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .4s}
 
     /* ========== 左上角季节导航 ========== */
-    .top-left-nav {
-      position: fixed;
-      top: 85px;
-      left: 20px;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .top-left-nav-trigger {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #5B8C5A, #7DB87D);
-      border: 3px solid rgba(255,255,255,0.8);
-      box-shadow: 0 4px 20px rgba(91,140,90,0.4);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      animation: leftNavPulseIndex 3s ease-in-out infinite;
-    }
-    .top-left-nav-trigger:hover {
-      transform: scale(1.15) rotate(-10deg);
-      box-shadow: 0 8px 35px rgba(91,140,90,0.6);
-    }
-    @keyframes leftNavPulseIndex {
-      0%, 100% { box-shadow: 0 4px 20px rgba(91,140,90,0.4); }
-      50% { box-shadow: 0 4px 30px rgba(91,140,90,0.7); }
-    }
-    .top-left-nav-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      max-width: 0;
-      overflow: hidden;
-      transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-      opacity: 0;
-    }
-    .top-left-nav-menu.show {
-      max-width: 200px;
-      opacity: 1;
-    }
-    .top-left-nav-item {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
-      padding: 10px 18px;
-      text-decoration: none;
-      color: #3D6B3D;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      transform: translateX(-20px);
-    }
-    .top-left-nav-menu.show .top-left-nav-item {
-      transform: translateX(0);
-    }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(1) { transition-delay: 0.05s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(2) { transition-delay: 0.1s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(3) { transition-delay: 0.15s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(4) { transition-delay: 0.2s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(5) { transition-delay: 0.25s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(6) { transition-delay: 0.3s; }
-    .top-left-nav-menu.show .top-left-nav-item:nth-child(7) { transition-delay: 0.35s; }
+    
     .top-left-nav-item:hover {
       background: linear-gradient(135deg, #5B8C5A, #7DB87D);
       color: #fff;
@@ -500,45 +426,28 @@
       background: linear-gradient(135deg, #5B8C5A, #7DB87D);
       color: #fff;
     }
-    .top-left-nav-hint {
-      font-size: 10px;
-      color: #5B8C5A;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      white-space: nowrap;
-      margin-top: 4px;
-    }
-    .top-left-nav-trigger:hover + .top-left-nav-menu + .top-left-nav-hint,
-    .top-left-nav-menu.show ~ .top-left-nav-hint {
-      opacity: 0.7;
-    }
-  </style>
+    </style>
 </head>
 <body>
 
   <!-- ========== 左上角季节导航 ========== -->
   <div class="top-left-nav">
-    <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
-    <div class="top-left-nav-menu" id="topLeftNavMenu">
+    <div class="top-left-nav-row">
+      <button class="top-left-nav-trigger" onclick="toggleTopLeftNav()" title="导航菜单">🌿</button>
+      <span class="top-left-nav-hint">点击收起</span>
+    </div>
+    <div class="top-left-nav-menu show" id="topLeftNavMenu">
       <a href="index.html" class="top-left-nav-item active">🏠 首页总览</a>
       <a href="spring.html" class="top-left-nav-item">🌸 春季详情</a>
-      <a href="summer.html" class="top-left-nav-item">☀️ 夏季详情</a>
+      <a href="summer.html" class="top-left-nav-item">🌿 夏季详情</a>
       <a href="autumn.html" class="top-left-nav-item">🍂 秋季详情</a>
       <a href="winter.html" class="top-left-nav-item">❄️ 冬季详情</a>
       <a href="culture.html" class="top-left-nav-item">📚 节气文化</a>
       <a href="scenery.html" class="top-left-nav-item">🏞️ 节气风物</a>
     </div>
-    <span class="top-left-nav-hint">点击展开</span>
   </div>
   <script>
-    function toggleTopLeftNav() {
-      const menu = document.getElementById('topLeftNavMenu');
-      const hint = menu.parentElement.querySelector('.top-left-nav-hint');
-      menu.classList.toggle('show');
-      hint.textContent = menu.classList.contains('show') ? '点击收起' : '点击展开';
-    }
-  </script>
+    </script>
 
 <!-- 导航栏（原index.html） -->
 <nav class="main-nav" id="mainNav">
@@ -1290,5 +1199,7 @@ document.getElementById('navToggle').addEventListener('click',()=>document.getEl
 // 页面加载完成后初始化季节动画
 document.addEventListener('DOMContentLoaded', initSeasonAnimations);
 </script>
+
+  <script src="../js/common.js"></script>
 </body>
 </html>
