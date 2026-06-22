@@ -571,40 +571,9 @@
         document.getElementById('navLinks').classList.remove('open');
       });
     });
-  
-    // 滚动渐显
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('scroll-visible');
-          entry.target.classList.remove('scroll-hidden');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.goods-card').forEach(card => {
-      card.classList.add('scroll-hidden');
-      revealObserver.observe(card);
-    });
 
   </script>
 
-  <script src="../js/common.js">
-    // 滚动渐显
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('scroll-visible');
-          entry.target.classList.remove('scroll-hidden');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.goods-card').forEach(card => {
-      card.classList.add('scroll-hidden');
-      revealObserver.observe(card);
-    });
-
-  </script>
+  <script src="../js/common.js"></script>
 </body>
 </html>

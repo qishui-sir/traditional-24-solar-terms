@@ -21,7 +21,7 @@
     }
     body{font-family:"Noto Serif SC","STSong","SimSun",serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .3s,color .2s}
     /* ========== 导航栏 ========== */
-    .main-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+    .main-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
     .main-nav.scrolled{box-shadow:var(--shadow);background:var(--bg-card)}
     .nav-container{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px}
     .nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;font-size:1.3rem;color:var(--green-d)}
@@ -75,6 +75,7 @@
       z-index: 10;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 30px;
       padding: 8px 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -147,12 +148,12 @@
       100% { filter: brightness(1) saturate(0.9) hue-rotate(0deg); }
     }
 
-    .hero-season-tag{background:rgba(0,0,0,.5);backdrop-filter:blur(8px);display:inline-block;padding:.3rem 1rem;border-radius:40px;font-size:.85rem;letter-spacing:2px;margin-bottom:1rem}
+    .hero-season-tag{background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:inline-block;padding:.3rem 1rem;border-radius:40px;font-size:.85rem;letter-spacing:2px;margin-bottom:1rem}
     .hero-title{font-size:3.2rem;font-weight:700;margin-bottom:.5rem;letter-spacing:3px}
     .hero-desc{font-size:1rem;margin-bottom:1.5rem;opacity:.9}
     .hero-btn{background:var(--green);color:#fff;border:none;padding:.7rem 1.6rem;border-radius:40px;text-decoration:none;display:inline-block;font-weight:500;transition:.2s}
     .hero-btn:hover{background:var(--green-d);transform:translateY(-2px)}
-    .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);backdrop-filter:blur(4px);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:2rem;cursor:pointer;z-index:10;transition:.2s}
+    .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:2rem;cursor:pointer;z-index:10;transition:.2s}
     .hero-arrow-prev{left:20px}
     .hero-arrow-next{right:20px}
     .hero-arrow:hover{background:var(--green);color:#fff}
@@ -279,7 +280,7 @@
     .detail-desc{font-size:.85rem;color:var(--text2);line-height:1.8;margin-top:.3rem}
 
     /* 节气详情弹窗 */
-    .term-popup-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+    .term-popup-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
     .term-popup-overlay.show{display:flex}
     .term-popup{background:var(--bg2);border-radius:20px;max-width:500px;width:90%;padding:2rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:popIn .3s ease}
     @keyframes popIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
@@ -324,7 +325,7 @@
     .season-box-header .season-label.autumn{background:var(--autumn)}
     .season-box-header .season-label.winter{background:var(--winter)}
     .season-terms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;padding:0 1.2rem 1.2rem}
-    .term-entry{background:rgba(255,255,255,.85);border:1px solid var(--border);border-radius:12px;padding:.8rem .5rem;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text);display:block;backdrop-filter:blur(4px)}
+    .term-entry{background:rgba(255,255,255,.85);border:1px solid var(--border);border-radius:12px;padding:.8rem .5rem;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text);display:block;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
     .term-entry:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(91,140,90,.12);border-color:var(--green-l);background:rgba(255,255,255,.95)}
     .term-entry .term-name{font-size:1rem;font-weight:600;color:var(--green-d);margin-bottom:.2rem;letter-spacing:1px}
     .term-entry .term-date-small{font-size:.7rem;color:var(--text3)}
@@ -350,7 +351,7 @@
 
     /* ========== 响应式 ========== */
     @media(max-width:768px){
-      .nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--bg-card);backdrop-filter:blur(20px);padding:1rem;border-bottom:1px solid var(--border)}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--bg-card);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:1rem;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}
       .nav-toggle{display:flex}
       .hero-title{font-size:2rem}
@@ -425,11 +426,13 @@
     </div>
   </div>
 </nav>
-
-<!-- 轮播区（原index.html，保持四张图片） -->
+<!-- 轮播区（首页封面 + 四张季节图片） -->
 <section class="hero-banner">
   <div class="hero-slides" id="heroSlides">
-    <div class="hero-slide active spring-slide" style="background-image:url('../images/spring/spring.jpg')">
+        <div class="hero-slide active home-slide" style="background-image:url('../images/home.png');background-size:cover;background-position:center center">
+      <div class="hero-slide-content"><span class="hero-season-tag">二十四节气</span><a href="index.html" class="hero-btn">🌿 探索节气 →</a></div>
+    </div>
+    <div class="hero-slide spring-slide" style="background-image:url('../images/spring/spring.jpg')">
       <div class="hero-slide-content"><span class="hero-season-tag">春 · 生</span><h1 class="hero-title">万物复苏 · 春耕始萌</h1><p class="hero-desc">立春雨水惊蛰春分清明谷雨，大地从沉寂中苏醒</p><a href="spring.html" class="hero-btn">🌸 春和景明 →</a></div>
     </div>
     <div class="hero-slide summer-slide" style="background-image:url('../images/summer/summer.jpg')">
@@ -447,7 +450,7 @@
     <span class="hero-current-term-label">当前节气</span>
     <span class="hero-current-term-name" id="currentTermName">加载中...</span>
   </div>
-  <div class="hero-dots" id="heroDots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  <div class="hero-dots" id="heroDots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   <button class="hero-arrow hero-arrow-prev" id="prevSlide">&#8249;</button>
   <button class="hero-arrow hero-arrow-next" id="nextSlide">&#8250;</button>
 </section>
@@ -753,42 +756,49 @@ function displayCurrentTerm() {
   console.log('🌿 当前节气: ' + term.name + ' | 季节: ' + term.season);
 }
 
-const seasonOrder = { spring: 0, summer: 1, autumn: 2, winter: 3 };
+const seasonOrder = { spring: 1, summer: 2, autumn: 3, winter: 4 };
 const currentSeason = getCurrentSeason();
 
 let slideIndex = 0;
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.dot');
 let autoTimer;
-
-// 重新排序幻灯片：当前季节优先
+// 重新排序幻灯片：当前季节优先（首页封面始终在第一）
 function reorderSlides() {
   const container = document.getElementById('heroSlides');
   const slideArray = Array.from(slides);
   const dotArray = Array.from(dots);
   
-  // 计算偏移量：当前季节幻灯片的索引
-  const offset = seasonOrder[currentSeason];
+  // 首页封面始终固定在最前面
+  const homeSlide = slideArray[0];
+  const homeDot = dotArray[0];
+  const seasonSlides = slideArray.slice(1);
+  const seasonDots = dotArray.slice(1);
   
-  // 重新排列幻灯片和圆点
-  const reorderedSlides = [...slideArray.slice(offset), ...slideArray.slice(0, offset)];
-  const reorderedDots = [...dotArray.slice(offset), ...dotArray.slice(0, offset)];
+  // 计算季节幻灯片偏移量（相对季节数组内部索引）
+  const seasonOffset = seasonOrder[currentSeason] - 1;
   
-  // 清空并重新添加
+  // 重新排列季节幻灯片和圆点（不包含首页封面）
+  const reorderedSeasonSlides = [...seasonSlides.slice(seasonOffset), ...seasonSlides.slice(0, seasonOffset)];
+  const reorderedSeasonDots = [...seasonDots.slice(seasonOffset), ...seasonDots.slice(0, seasonOffset)];
+  
+  // 清空并重新添加：首页封面始终在最前
   container.innerHTML = '';
-  reorderedSlides.forEach((slide, i) => {
+  container.appendChild(homeSlide);
+  homeSlide.classList.add('active');
+  reorderedSeasonSlides.forEach(slide => {
     container.appendChild(slide);
-    if (i === 0) slide.classList.add('active');
-    else slide.classList.remove('active');
+    slide.classList.remove('active');
   });
   
-  // 更新圆点
+  // 更新圆点：首页封面圆点始终在最前
   const dotsContainer = document.getElementById('heroDots');
   dotsContainer.innerHTML = '';
-  reorderedDots.forEach((dot, i) => {
+  dotsContainer.appendChild(homeDot);
+  homeDot.classList.add('active');
+  reorderedSeasonDots.forEach(dot => {
     dotsContainer.appendChild(dot);
-    if (i === 0) dot.classList.add('active');
-    else dot.classList.remove('active');
+    dot.classList.remove('active');
   });
 }
 
@@ -1132,3 +1142,5 @@ document.addEventListener('DOMContentLoaded', initSeasonAnimations);
   <script src="../js/common.js"></script>
 </body>
 </html>
+
+
