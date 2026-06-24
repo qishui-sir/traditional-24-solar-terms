@@ -114,5 +114,101 @@ body { margin: 0; padding: 0; }
 @media print {
   .top-left-nav { display: none !important; }
 }
-
-
+/* --- 背景音乐控制按钮 --- */
+.music-toggle {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9998;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 0 rgba(91,140,90,0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+  overflow: hidden;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.music-toggle img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+/* 播放中：脉冲光晕 + 图标旋转 */
+.music-toggle.playing {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15), 0 0 24px rgba(91,140,90,0.5), 0 0 48px rgba(91,140,90,0.25);
+  border-color: rgba(91,140,90,0.5);
+}
+.music-toggle.playing img {
+  animation: musicSpin 4s linear infinite;
+}
+/* 暂停状态：图标静止 + 半透明叠加 */
+.music-toggle.paused {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.music-toggle.paused img {
+  opacity: 0.55;
+  filter: grayscale(0.5);
+  animation: none;
+}
+/* 悬停效果 */
+.music-toggle:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 32px rgba(91,140,90,0.55), 0 0 60px rgba(91,140,90,0.3);
+}
+.music-toggle:active {
+  transform: scale(0.92);
+  transition: transform 0.12s ease;
+}
+/* 提示文字（点击后短暂显示） */
+.music-toggle .music-tooltip {
+  position: absolute;
+  bottom: 64px;
+  right: -20px;
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: "Noto Serif SC", serif;
+  letter-spacing: 1px;
+}
+.music-toggle.show-tooltip .music-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes musicSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* 响应式 */
+@media (max-width: 768px) {
+  .music-toggle {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+  .music-toggle img {
+    width: 22px;
+    height: 22px;
+  }
+}
+@media print {
+  .music-toggle { display: none !important; }
+}

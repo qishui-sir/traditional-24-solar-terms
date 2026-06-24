@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -1665,6 +1665,13 @@
       });
     })();
   </script>
+
+  <!-- 背景音乐 -->
+  <audio id="bgmAudio" src="../mp3/back_music.mp3" loop preload="auto"></audio>
+  <button class="music-toggle playing" id="musicToggleBtn" title="音乐开关">
+    <img src="../mp3/ui_music.png" alt="音乐">
+    <span class="music-tooltip" id="musicTooltip">暂停音乐</span>
+  </button>
 
 </body>
 </html>
